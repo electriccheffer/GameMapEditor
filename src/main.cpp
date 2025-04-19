@@ -1,10 +1,11 @@
 #include <ncurses.h>
+#include "../include/window_functions.hpp"
 
 
 int main(int argc, char** argv){
 
 	initscr(); 
-	printw("HELLO, WORLD!");
+	//Create three divided windows
 	refresh(); 
 	getch(); 
 	endwin();
