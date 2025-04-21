@@ -1,7 +1,7 @@
 #include <ncurses.h>
 #include "../include/window_functions.hpp"
 #include <iostream>
-
+#define MAX_WINDOWS 3
 
 	int detailsBoxWidth; 
 	int detailsBoxHeight;
@@ -16,7 +16,7 @@
 	int optionsBoxStartY;
 	int optionsBoxStartX;
 	int typedCharacter;
-	WINDOW *windows[3]; 
+	WINDOW *windows[MAX_WINDOWS]; 
 
 void initializeWindowVariables(){
 
@@ -60,17 +60,21 @@ int main(int argc, char** argv){
 	wrefresh(detailsBoxWindow);
 	wrefresh(mapEditorBoxWindow);
 	wrefresh(optionsBoxWindow); 	
-	WINDOW *activeWindow = mapEditorBoxWindow;
-	int windowIndex = 0; 	
+	int windowIndex = 2; 	
+	WINDOW *activeWindow = windows[windowIndex];
+	wmove(activeWindow,1,1);	
+	
 	while(((typedCharacter = wgetch(activeWindow)) != KEY_F(1))){
 		switch(typedCharacter){
 		
 			case KEY_PPAGE:
-				activeWindow = windows[++windowIndex % 3]; 
+				windowIndex = (windowIndex + 1) % MAX_WINDOWS; 
+				activeWindow = windows[windowIndex]; 
 				wmove(activeWindow,1,1); 
 				break; 
 			case KEY_NPAGE: 
-				activeWindow = windows[--windowIndex % 3]; 
+				windowIndex = (windowIndex - 1 + MAX_WINDOWS) % MAX_WINDOWS;
+				activeWindow = windows[windowIndex]; 
 				wmove(activeWindow,1,1);
 				break; 
 		
