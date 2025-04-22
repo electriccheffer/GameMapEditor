@@ -6,8 +6,10 @@ class Model{
 	public: 
 		unsigned int getCursorXPosition();		
 		unsigned int getCursorYPosition();
+		void setCursorXPosition(unsigned int newCursorXPosition);
 	protected: 
-		unsigned int cursorXPosition; 
+		unsigned int cursorXPosition = 0;
+	        unsigned int cursorYPosition; 	
 
 }; 
 

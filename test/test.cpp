@@ -20,3 +20,11 @@ TEST(OptionsModelTest,GetCursorYPosition){
 	EXPECT_EQ(0,yPosition);
 }
 
+TEST(OptionsModelTest,SetCursorXPosition){
+
+
+	OptionsModel model = {}; 
+	unsigned int xPosition = 1; 
+	model.setCursorXPosition(xPosition);
+        EXPECT_EQ(xPosition,model.getCursorXPosition()); 
+}
