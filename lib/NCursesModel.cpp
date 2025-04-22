@@ -8,10 +8,15 @@ unsigned int Model::getCursorXPosition(){
 
 unsigned int Model::getCursorYPosition(){
 
-	return 0; 
+	return this->cursorYPosition; 
 }
 
 void Model::setCursorXPosition(unsigned int newCursorXPosition){
 
 	this->cursorXPosition = newCursorXPosition; 
+}
+
+void Model::setCursorYPosition(unsigned int newCursorYPosition){
+
+	this->cursorYPosition = newCursorYPosition; 
 }

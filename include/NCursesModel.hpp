@@ -7,9 +7,10 @@ class Model{
 		unsigned int getCursorXPosition();		
 		unsigned int getCursorYPosition();
 		void setCursorXPosition(unsigned int newCursorXPosition);
+		void setCursorYPosition(unsigned int newCursorYPosition);
 	protected: 
 		unsigned int cursorXPosition = 0;
-	        unsigned int cursorYPosition; 	
+	        unsigned int cursorYPosition = 0; 	
 
 }; 
 
