@@ -31,6 +31,6 @@ class NCursesView{
 		int cursorXPosition = 1; 
 		int cursorYPosition = 1; 
 		WINDOW *windows[MAX_WINDOWS]; 
-		void rewriteScreen(); 
+	       	void rewriteScreen(); 
 };
 #endif

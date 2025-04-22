@@ -12,8 +12,8 @@ int main(int argc, char** argv){
 	curs_set(2);	
 	keypad(stdscr,true); 
 	int typedCharacter; 
+	refresh(); 
 	NCursesView view = {}; 	
-	std::this_thread::sleep_for(std::chrono::seconds(3)); 
 	while(((typedCharacter = getch()) != KEY_F(1))){
 		view.recieveCharacter(typedCharacter);		
 	}

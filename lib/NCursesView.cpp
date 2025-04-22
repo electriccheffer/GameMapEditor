@@ -18,7 +18,8 @@ NCursesView::NCursesView(){
 	windows[1] = this->editorWindow; 
 	windows[2] = this->optionsWindow; 
 	this->activeWindow = this->optionsWindow;
-	this->rewriteScreen(); 
+	
+	this->rewriteScreen();  
 }
 
 void NCursesView::recieveCharacter(int character){
@@ -43,23 +44,23 @@ void NCursesView::recieveCharacter(int character){
 void NCursesView::rewriteScreen(){
 		
 		box(this->descriptionWindow,0,0);
-		mvwprintw(this->descriptionWindow,this->borderYPosition,
-				this->borderXPosition,"Details Box Window"); 
-		
 		box(this->editorWindow,0,0);
-		mvwprintw(this->editorWindow,this->borderYPosition,
-				this->borderXPosition,"Map Editor Box Window");
-
 		box(this->optionsWindow,0,0);
+		
+		mvwprintw(this->descriptionWindow,this->borderYPosition,
+	       		this->borderXPosition,"Details Box Window"); 
+		mvwprintw(this->editorWindow,this->borderYPosition,
+			this->borderXPosition,"Map Editor Box Window");
 		mvwprintw(this->optionsWindow,this->borderYPosition,
-				this->borderXPosition,"Options Box Window");
+			this->borderXPosition,"Options Box Window");
 	
-		wrefresh(this->descriptionWindow);
+	
+		wrefresh(this->descriptionWindow); 
 		wrefresh(this->editorWindow);
 		wrefresh(this->optionsWindow);
 
 		wmove(this->activeWindow,this->cursorXPosition,
-			this->cursorYPosition);
+		this->cursorYPosition);
 
 		wrefresh(this->activeWindow); 
 		
