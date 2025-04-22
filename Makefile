@@ -17,6 +17,7 @@ test :  $(testObjectFiles)
 	g++ $(testObjectFiles) -o $(testDirectory)/test $(gtestLink)
 	$(testDirectory)/test
 	rm $(testObjectFiles)
+	rm test/test
 
 build : $(buildDirectory)/main.o
 	g++ $(completedProject) -o $(buildDirectory)/main -lncurses
