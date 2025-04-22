@@ -1,10 +1,12 @@
 build : ./build/main.o
-	g++ ./build/main.o ./build/window_functions.o ./build/NCursesView.o -o ./build/main -lncurses
+	g++ ./build/main.o ./build/window_functions.o ./build/NCursesView.o \
+	       	./build/NCursesModel.o -o ./build/main -lncurses
 	./build/main
 	rm ./build/main
-	rm ./build/window_functions.o ./build/main.o ./build/NCursesView.o 
+	rm ./build/window_functions.o ./build/main.o ./build/NCursesView.o ./build/NCursesModel.o 
 
-./build/main.o: ./src/main.cpp ./build/window_functions.o ./build/NCursesView.o
+./build/main.o: ./src/main.cpp ./build/window_functions.o ./build/NCursesView.o \
+	./build/NCursesModel.o
 	g++ -c ./src/main.cpp -o ./build/main.o -lncurses
 
 ./build/window_functions.o: ./lib/window_functions.cpp
@@ -12,3 +14,6 @@ build : ./build/main.o
 
 ./build/NCursesView.o: ./lib/NCursesView.cpp
 	g++ -c ./lib/NCursesView.cpp -o ./build/NCursesView.o 
+
+./build/NCursesModel.o: ./lib/NCursesModel.cpp
+	g++ -c ./lib/NCursesModel.cpp -o ./build/NCursesModel.o 
