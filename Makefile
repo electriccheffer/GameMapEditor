@@ -1,19 +1,27 @@
-build : ./build/main.o
-	g++ ./build/main.o ./build/window_functions.o ./build/NCursesView.o \
-	       	./build/NCursesModel.o -o ./build/main -lncurses
-	./build/main
-	rm ./build/main
-	rm ./build/window_functions.o ./build/main.o ./build/NCursesView.o ./build/NCursesModel.o 
+buildDirectory = ./build
 
-./build/main.o: ./src/main.cpp ./build/window_functions.o ./build/NCursesView.o \
-	./build/NCursesModel.o
-	g++ -c ./src/main.cpp -o ./build/main.o -lncurses
+libraryDirectory = ./lib
 
-./build/window_functions.o: ./lib/window_functions.cpp
-	g++ -c ./lib/window_functions.cpp -o ./build/window_functions.o 
+objectFiles =  $(buildDirectory)/window_functions.o $(buildDirectory)/NCursesView.o \
+	       	$(buildDirectory)/NCursesModel.o 
 
-./build/NCursesView.o: ./lib/NCursesView.cpp
-	g++ -c ./lib/NCursesView.cpp -o ./build/NCursesView.o 
+completedProject = $(objectFiles) $(buildDirectory)/main.o
 
-./build/NCursesModel.o: ./lib/NCursesModel.cpp
-	g++ -c ./lib/NCursesModel.cpp -o ./build/NCursesModel.o 
+
+build : $(buildDirectory)/main.o
+	g++ $(completedProject) -o $(buildDirectory)/main -lncurses
+	$(buildDirectory)/main
+	rm $(buildDirectory)/main
+	rm $(objectFiles) 
+
+$(buildDirectory)/main.o: ./src/main.cpp $(objectFiles)
+	g++ -c ./src/main.cpp -o $(buildDirectory)/main.o -lncurses
+
+$(buildDirectory)/window_functions.o: $(libraryDirectory)/window_functions.cpp
+	g++ -c $(libraryDirectory)/window_functions.cpp -o $(buildDirectory)/window_functions.o 
+
+$(buildDirectory)/NCursesView.o: $(libraryDirectory)/NCursesView.cpp
+	g++ -c $(libraryDirectory)/NCursesView.cpp -o $(buildDirectory)/NCursesView.o 
+
+$(buildDirectory)/NCursesModel.o: $(libraryDirectory)/NCursesModel.cpp
+	g++ -c $(libraryDirectory)/NCursesModel.cpp -o $(buildDirectory)/NCursesModel.o 
