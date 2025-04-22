@@ -5,6 +5,7 @@ class Model{
 
 	public: 
 		unsigned int getCursorXPosition();		
+		unsigned int getCursorYPosition(); 
 	protected: 
 		unsigned int cursorXPosition; 
 
