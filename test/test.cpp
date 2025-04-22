@@ -1,37 +1,47 @@
 #include <gtest/gtest.h>
 #include "../include/NCursesModel.hpp"
+#include <ncurses.h>
 
 TEST(TrivialTest,AlwaysPasses){
 
 	EXPECT_TRUE(true);
 }
 
-TEST(OptionsModelTest,GetCursorXPosition){
+TEST(ModelTest,GetCursorXPosition){
 
-	OptionsModel model = {}; 
+	Model model = {}; 
 	unsigned int xPosition = model.getCursorXPosition(); 
 	EXPECT_EQ(0,xPosition);
 }
 
-TEST(OptionsModelTest,GetCursorYPosition){
+TEST(ModelTest,GetCursorYPosition){
 
-	OptionsModel model = {}; 
+	Model model = {}; 
 	unsigned int yPosition = model.getCursorYPosition(); 
 	EXPECT_EQ(0,yPosition);
 }
 
-TEST(OptionsModelTest,SetCursorXPosition){
+TEST(ModelTest,SetCursorXPosition){
 	
-	OptionsModel model = {}; 
+	Model model = {}; 
 	unsigned int xPosition = 1; 
 	model.setCursorXPosition(xPosition);
         EXPECT_EQ(xPosition,model.getCursorXPosition()); 
 }
 
-TEST(OptionsModelTest,SetCursorYPosition){
+TEST(ModelTest,SetCursorYPosition){
 	
-	OptionsModel model = {}; 
+	Model model = {}; 
 	unsigned int yPosition = 1; 
 	model.setCursorYPosition(yPosition);
         EXPECT_EQ(yPosition,model.getCursorYPosition()); 
+}
+
+TEST(EditorModelTest,DefaultConstructor){
+	
+	EditorModel editorModel = {}; 
+	unsigned int windowWidth = COLS/2; 
+	unsigned int windowHeight = LINES / 2; 
+	EXPECT_EQ(windowWidth,editorModel.getWindowWidth());
+	EXPECT_EQ(windowHeight,editorModel.getWindowHeight());
 }
