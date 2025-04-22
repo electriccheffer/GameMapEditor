@@ -2,17 +2,30 @@ buildDirectory = ./build
 
 libraryDirectory = ./lib
 
+testDirectory = ./test
+
 objectFiles =  $(buildDirectory)/window_functions.o $(buildDirectory)/NCursesView.o \
 	       	$(buildDirectory)/NCursesModel.o 
 
+testObjectFiles = $(objectFiles) $(testDirectory)/test.o
+
 completedProject = $(objectFiles) $(buildDirectory)/main.o
 
+gtestLink = -lgtest -lgtest_main -lncurses
+
+test :  $(testObjectFiles)
+	g++ $(testObjectFiles) -o $(testDirectory)/test $(gtestLink)
+	$(testDirectory)/test
+	rm $(objectFiles)
 
 build : $(buildDirectory)/main.o
 	g++ $(completedProject) -o $(buildDirectory)/main -lncurses
 	$(buildDirectory)/main
 	rm $(buildDirectory)/main
 	rm $(objectFiles) 
+
+$(testDirectory)/test.o: $(testDirectory)/test.cpp
+	g++ -c $(testDirectory)/test.cpp -o $(testDirectory)/test.o
 
 $(buildDirectory)/main.o: ./src/main.cpp $(objectFiles)
 	g++ -c ./src/main.cpp -o $(buildDirectory)/main.o -lncurses
