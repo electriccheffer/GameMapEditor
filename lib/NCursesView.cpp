@@ -54,13 +54,18 @@ void NCursesView::rewriteScreen(){
 		mvwprintw(this->optionsWindow,this->borderYPosition,
 			this->borderXPosition,"Options Box Window");
 	
-	
-		wrefresh(this->descriptionWindow); 
-		wrefresh(this->editorWindow);
-		wrefresh(this->optionsWindow);
+		for(int i = 0 ; i < MAX_WINDOWS ; i++){
+		
+			if(i == this->windowIndex){
+			
+				continue; 
+			}
+			wrefresh(windows[i]); 
+		
+		}	
 
 		wmove(this->activeWindow,this->cursorXPosition,
-		this->cursorYPosition);
+			this->cursorYPosition);
 
 		wrefresh(this->activeWindow); 
 		
