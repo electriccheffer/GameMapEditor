@@ -19,3 +19,4 @@ TEST(OptionsModelTest,GetCursorYPosition){
 	unsigned int yPosition = model.getCursorYPosition(); 
 	EXPECT_EQ(0,yPosition);
 }
+
