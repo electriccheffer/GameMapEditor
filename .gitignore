@@ -1,2 +1,4 @@
 TODOS.txt
 build/
+test/test.o
+test/test

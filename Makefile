@@ -16,7 +16,7 @@ gtestLink = -lgtest -lgtest_main -lncurses
 test :  $(testObjectFiles)
 	g++ $(testObjectFiles) -o $(testDirectory)/test $(gtestLink)
 	$(testDirectory)/test
-	rm $(objectFiles)
+	rm $(testObjectFiles)
 
 build : $(buildDirectory)/main.o
 	g++ $(completedProject) -o $(buildDirectory)/main -lncurses
