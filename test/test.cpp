@@ -44,4 +44,4 @@ TEST(EditorModelTest,DefaultConstructor){
 	unsigned int windowHeight = LINES / 2; 
 	EXPECT_EQ(windowWidth,editorModel.getWindowWidth());
 	EXPECT_EQ(windowHeight,editorModel.getWindowHeight());
-}
+};
