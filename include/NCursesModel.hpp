@@ -5,6 +5,8 @@
 class Model{
 
 	public:
+		Model();
+		virtual ~Model() = default; 
 		unsigned int getCursorXPosition();		
 		unsigned int getCursorYPosition();
 		unsigned int getWindowWidth();

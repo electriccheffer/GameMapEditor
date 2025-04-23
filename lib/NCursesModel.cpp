@@ -1,5 +1,12 @@
 #include "../include/NCursesModel.hpp"
 
+Model::Model(){
+	this->cursorXPosition = 0;
+	this->cursorYPosition = 0;
+	this->windowWidth = 0;
+	this->windowHeight = 0; 
+}
+
 unsigned int Model::getCursorXPosition(){
 
 	return this->cursorXPosition; 

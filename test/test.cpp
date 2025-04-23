@@ -3,6 +3,7 @@
 #include <ncurses.h>
 #include "TestSubclasses.hpp"
 #include "../include/NCursesController.hpp"
+#include <iostream>
 
 TEST(TrivialTest,AlwaysPasses){
 
@@ -62,4 +63,11 @@ TEST(ControllerTest,TakeInputPageDownTest){
 	controller.takeInput(KEY_NPAGE);
         int currentModel = controller.getCurrentModelIndexTestAccess(); 
  	EXPECT_EQ(2,currentModel);
+}
+
+TEST(ControllerTest,GetCurrentModelTest){
+
+	ControllerTestSubclass controller = {}; 
+	Model& model = controller.getCurrentModelTestAccess(); 
+	EXPECT_EQ(typeid(model),typeid(OptionsModel));
 }

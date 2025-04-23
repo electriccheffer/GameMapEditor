@@ -1,10 +1,15 @@
 #include "../include/NCursesController.hpp"
 #include <ncurses.h>
+#include "../include/NCursesModel.hpp"
+#include <memory>
 
 Controller::Controller(){
 
 	this->currentModelIndex = 0; 		
 
+	this->models[0] = std::make_unique<OptionsModel>();  
+	this->models[1] = std::make_unique<DetailsModel>();
+	this->models[2] = std::make_unique<EditorModel>();
 }
 
 
@@ -31,4 +36,10 @@ int Controller::getCurrentModelIndex(){
 
 	return this->currentModelIndex; 
 
+}
+
+Model& Controller::getCurrentModel(){
+
+
+	return *this->models[this->getCurrentModelIndex()]; 
 }
