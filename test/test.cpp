@@ -44,4 +44,20 @@ TEST(EditorModelTest,DefaultConstructor){
 	unsigned int windowHeight = LINES / 2; 
 	EXPECT_EQ(windowWidth,editorModel.getWindowWidth());
 	EXPECT_EQ(windowHeight,editorModel.getWindowHeight());
-};
+}
+
+TEST(ControllerTest,TakeInputPageUpTest){
+
+	ControllerTestSubclass controller = {}; 
+	controller.takeInput(KEY_PPAGE);
+        int currentModel = controller.getCurrentModelNumber(); 
+ 	EXPECT_EQ(1,currentModel); 	
+} 
+
+TEST(ControllerTest,TakeInputPageDownTest){
+	
+	ControllerTestSubclass controller = {}; 
+	controller.takeInput(KEY_NPAGE);
+        int currentModel = controller.getCurrentModelNumber(); 
+ 	EXPECT_EQ(2,currentModel);
+}

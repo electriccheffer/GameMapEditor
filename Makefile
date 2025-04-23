@@ -7,7 +7,7 @@ testDirectory = ./test
 objectFiles =  $(buildDirectory)/window_functions.o $(buildDirectory)/NCursesView.o \
 	       	$(buildDirectory)/NCursesModel.o 
 
-testObjectFiles = $(objectFiles) $(testDirectory)/test.o
+testObjectFiles = $(objectFiles) $(testDirectory)/test.o 
 
 completedProject = $(objectFiles) $(buildDirectory)/main.o
 
