@@ -71,3 +71,19 @@ TEST(ControllerTest,GetCurrentModelTest){
 	Model& model = controller.getCurrentModelTestAccess(); 
 	EXPECT_EQ(typeid(model),typeid(OptionsModel));
 }
+
+TEST(ControllerTest,GetCurrentModelTestIncremented){
+
+	ControllerTestSubclass controller = {};
+        controller.takeInput(KEY_PPAGE);
+	Model& model = controller.getCurrentModelTestAccess(); 
+	EXPECT_EQ(typeid(model),typeid(DetailsModel));
+}
+
+TEST(ControllerTest,GetCurrentModelTestDecremented){
+
+	ControllerTestSubclass controller = {};
+        controller.takeInput(KEY_NPAGE);
+	Model& model = controller.getCurrentModelTestAccess(); 
+	EXPECT_EQ(typeid(model),typeid(EditorModel));
+}
