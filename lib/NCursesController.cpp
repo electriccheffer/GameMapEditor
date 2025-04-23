@@ -43,3 +43,8 @@ Model& Controller::getCurrentModel(){
 
 	return *this->models[this->getCurrentModelIndex()]; 
 }
+
+void Controller::updateView(){
+	
+	this->view.renderModel(this->getCurrentModel()); 
+}

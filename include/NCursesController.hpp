@@ -3,6 +3,7 @@
 #define MAX_WINDOWS 3 
 #include "../include/NCursesModel.hpp"
 #include <memory>
+#include "../include/NCursesView.hpp"
 
 class Controller{
 
@@ -14,6 +15,8 @@ class Controller{
 		Model& getCurrentModel(); 
 		int currentModelIndex; 
 		std::unique_ptr<Model> models[MAX_WINDOWS]; 			
+		void updateView(); 
+		NCursesView view; 
 }; 
 
 #endif

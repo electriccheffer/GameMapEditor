@@ -1,13 +1,16 @@
 #ifndef NCURSESVIEW_HPP
 #define NCURSESVIEW_HPP 
 #include <ncurses.h>
+#include "../include/NCursesModel.hpp"
 #define MAX_WINDOWS 3
 
 class NCursesView{
 	
 	public:
 	       NCursesView(); 	
-	       void recieveCharacter(int character); 
+	       void recieveCharacter(int character);
+	       void renderModel(Model& model); 
+
 	protected: 
 		WINDOW *editorWindow; 
 		WINDOW *optionsWindow; 

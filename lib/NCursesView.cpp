@@ -1,6 +1,7 @@
 #include <ncurses.h>
 #include "../include/NCursesView.hpp"
 #include "../include/window_functions.hpp"
+#include "../include/NCursesModel.hpp"
 
 NCursesView::NCursesView(){
 
@@ -70,3 +71,9 @@ void NCursesView::rewriteScreen(){
 		wrefresh(this->activeWindow); 
 		
  }
+
+
+void NCursesView::renderModel(Model& model){
+
+
+}
