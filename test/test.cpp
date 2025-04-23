@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 #include "../include/NCursesModel.hpp"
 #include <ncurses.h>
+#include "TestSubclasses.hpp"
+#include "../include/NCursesController.hpp"
 
 TEST(TrivialTest,AlwaysPasses){
 
@@ -50,7 +52,7 @@ TEST(ControllerTest,TakeInputPageUpTest){
 
 	ControllerTestSubclass controller = {}; 
 	controller.takeInput(KEY_PPAGE);
-        int currentModel = controller.getCurrentModelNumber(); 
+        int currentModel = controller.getCurrentModelIndexTestAccess(); 
  	EXPECT_EQ(1,currentModel); 	
 } 
 
@@ -58,6 +60,6 @@ TEST(ControllerTest,TakeInputPageDownTest){
 	
 	ControllerTestSubclass controller = {}; 
 	controller.takeInput(KEY_NPAGE);
-        int currentModel = controller.getCurrentModelNumber(); 
+        int currentModel = controller.getCurrentModelIndexTestAccess(); 
  	EXPECT_EQ(2,currentModel);
 }

@@ -5,9 +5,9 @@ libraryDirectory = ./lib
 testDirectory = ./test
 
 objectFiles =  $(buildDirectory)/window_functions.o $(buildDirectory)/NCursesView.o \
-	       	$(buildDirectory)/NCursesModel.o 
+	       	$(buildDirectory)/NCursesModel.o $(buildDirectory)/NCursesController.o 
 
-testObjectFiles = $(objectFiles) $(testDirectory)/test.o 
+testObjectFiles = $(objectFiles) $(testDirectory)/test.o $(buildDirectory)/TestSubclasses.o 
 
 completedProject = $(objectFiles) $(buildDirectory)/main.o
 
@@ -33,6 +33,9 @@ clean :
 $(testDirectory)/test.o: $(testDirectory)/test.cpp
 	g++ -c $(testDirectory)/test.cpp -o $(testDirectory)/test.o
 
+$(buildDirectory)/TestSubclasses.o: $(testDirectory)/TestSubclasses.cpp
+	g++ -c $(testDirectory)/TestSubclasses.cpp -o $(buildDirectory)/TestSubclasses.o
+
 $(buildDirectory)/main.o: ./src/main.cpp $(objectFiles)
 	g++ -c ./src/main.cpp -o $(buildDirectory)/main.o -lncurses
 
@@ -44,3 +47,7 @@ $(buildDirectory)/NCursesView.o: $(libraryDirectory)/NCursesView.cpp
 
 $(buildDirectory)/NCursesModel.o: $(libraryDirectory)/NCursesModel.cpp
 	g++ -c $(libraryDirectory)/NCursesModel.cpp -o $(buildDirectory)/NCursesModel.o 
+
+$(buildDirectory)/NCursesController.o: $(libraryDirectory)/NCursesController.cpp
+	g++ -c $(libraryDirectory)/NCursesController.cpp -o \
+		$(buildDirectory)/NCursesController.o
