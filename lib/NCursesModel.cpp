@@ -1,5 +1,6 @@
 #include "../include/NCursesModel.hpp"
-
+#include <string>
+ 
 Model::Model(){
 	this->cursorXPosition = 0;
 	this->cursorYPosition = 0;
@@ -36,5 +37,11 @@ unsigned int Model::getWindowWidth(){
 unsigned int Model::getWindowHeight(){
 	
 	return this->windowHeight; 
+
+}
+
+std::string Model::getWindowDescription(){
+
+	return this->description; 
 
 }

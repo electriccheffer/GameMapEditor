@@ -13,9 +13,9 @@ int main(int argc, char** argv){
 	keypad(stdscr,true); 
 	int typedCharacter; 
 	refresh(); 
-	NCursesView view = {}; 	
+	NCursesController controller = {}; 	
 	while(((typedCharacter = getch()) != KEY_F(1))){
-		view.recieveCharacter(typedCharacter);		
+		controller.takeInput(typedCharacter);		
 	}
 	endwin();
 	return 0; 

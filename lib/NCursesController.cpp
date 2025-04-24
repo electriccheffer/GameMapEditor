@@ -10,6 +10,7 @@ Controller::Controller(){
 	this->models[0] = std::make_unique<OptionsModel>();  
 	this->models[1] = std::make_unique<DetailsModel>();
 	this->models[2] = std::make_unique<EditorModel>();
+	this->view = {this->models}; 
 }
 
 
@@ -28,7 +29,7 @@ void Controller::takeInput(int character){
 			break; 
 
 	}	
-
+	this->updateView(); 
 }
 
 
@@ -46,5 +47,5 @@ Model& Controller::getCurrentModel(){
 
 void Controller::updateView(){
 	
-	this->view.renderModel(this->getCurrentModel()); 
+	this->view.updateModel(this->getCurrentModel()); 
 }

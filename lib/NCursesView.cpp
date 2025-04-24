@@ -2,78 +2,62 @@
 #include "../include/NCursesView.hpp"
 #include "../include/window_functions.hpp"
 #include "../include/NCursesModel.hpp"
-
-NCursesView::NCursesView(){
-
-	this->descriptionWindow = create_new_window(this->detailsBoxHeight,
-				  this->detailsBoxWidth,this->detailsBoxStartY,
-				  this->detailsBoxStartX);
-	this->editorWindow = create_new_window(this->mapEditorBoxHeight,
-					       this->mapEditorBoxWidth,
-					       this->mapEditorBoxStartY,
-					       this->mapEditorBoxStartX);
-	this->optionsWindow = create_new_window(this->optionsBoxHeight,this->optionsBoxWidth,
-				   		this->optionsBoxStartY,
-						this->optionsBoxStartX);
-	windows[0] = this->descriptionWindow; 
-	windows[1] = this->editorWindow; 
-	windows[2] = this->optionsWindow; 
-	this->activeWindow = this->optionsWindow;
+/*
+ *TODO: Alter constructor for Model based build.  
+ *
+ *
+ * **/
+NCursesView::NCursesView(Model models[]){
 	
-	this->rewriteScreen();  
-}
+	this->models[0] = models[0]; 
+	this->models[1] = models[1]; 
+	this->models[2] = models[2]; 
 
-void NCursesView::recieveCharacter(int character){
+	this->modelMap[typeid(OptionsModel)] = 0; 
+	this->modelMap[typeid(DetailsModel)] = 1; 
+	this->modelMap[typeid(EditorModel)] = 2; 
 
-	switch(character){
-		
-		case KEY_PPAGE:
-			this->windowIndex = (this->windowIndex + 1) % MAX_WINDOWS; 
-			this->activeWindow = this->windows[this->windowIndex]; 
-			break; 
-		case KEY_NPAGE: 
-			this->windowIndex = (this->windowIndex - 1 + MAX_WINDOWS) % 
-						MAX_WINDOWS;
-			this->activeWindow = this->windows[this->windowIndex]; 
-			break; 
-		
+	OptionsModel optionsModel = this->models[0];  
+	EditorModel editorModel =  this->models[1]; 
+	DetailsModel detailsModel =  this->models[2]; 
+	
+	WINDOW *optionsWindow = create_new_window(optionsModel.getWindowHeight(),
+						optionsModel.getWindowWidth(),
+						optionsModel.getCursorYPosition(),
+						optionsModel.getCursorXPosition()); 
+	WINDOW *editorWindow = create_new_window( editorModel.getWindowHeight(),
+						editorModel.getWindowWidth(),
+						editorModel.getCursorYPosition(),
+						editorModel.getCursorXPosition()); 
+	WINDOW *detailsWindow = create_new_window(detailsModel.getWindowHeight(),
+						detailsModel.getWindowWidth(),
+						detailsModel.getCursorYPosition(),
+						detailsModel.getCursorXPosition()); 	
+	this->windows[0] = optionsWindow; 
+	this->windows[1] = editorWindow; 
+	this->windows[2] = detailsWindow; 
+
+	for(Model model : this->models){
+	
+		this->renderModel(model);
+	
 	}
-	
-	this->rewriteScreen(); 	
 }
-
-void NCursesView::rewriteScreen(){
-		
-		box(this->descriptionWindow,0,0);
-		box(this->editorWindow,0,0);
-		box(this->optionsWindow,0,0);
-		
-		mvwprintw(this->descriptionWindow,this->borderYPosition,
-	       		this->borderXPosition,"Details Box Window"); 
-		mvwprintw(this->editorWindow,this->borderYPosition,
-			this->borderXPosition,"Map Editor Box Window");
-		mvwprintw(this->optionsWindow,this->borderYPosition,
-			this->borderXPosition,"Options Box Window");
-	
-		for(int i = 0 ; i < MAX_WINDOWS ; i++){
-		
-			if(i == this->windowIndex){
-			
-				continue; 
-			}
-			wrefresh(windows[i]); 
-		
-		}	
-
-		wmove(this->activeWindow,this->cursorXPosition,
-			this->cursorYPosition);
-
-		wrefresh(this->activeWindow); 
-		
- }
-
 
 void NCursesView::renderModel(Model& model){
 
+	int windowIndex = modelMap[typeid(model)];
+	WINDOW *currentWindow = windows[windowIndex];
+	box(currentWindow,0,0);
+	mvprintw(currentWindow,model.getWindowDescription()); 
+	wmove(currentWindow,model.getCursorXPosition(),model.getCursorYPosition()); 	
+	wrefresh(currentWindow); 
+}
 
+
+void NCursesView::updateModel(Model& model){
+
+	int modelIndex = this->modelMap[typeid(model)]; 
+	this->models[modelIndex] = model; 
+	this->renderModel(this->models[modelIndex]);
 }
