@@ -1,3 +1,4 @@
+#include <ncurses.h>
 #include "../include/NCursesModel.hpp"
 #include <string>
  
@@ -44,4 +45,31 @@ std::string Model::getWindowDescription(){
 
 	return this->description; 
 
+}
+
+EditorModel::EditorModel(){
+
+	this->windowWidth = COLS/2; 
+	this->windowHeight = LINES / 2; 
+	this->description = "Map Editor Box Window";
+	this->cursorXPosition = 1; 
+	this->cursorYPosition = 1; 
+}
+
+OptionsModel::OptionsModel(){
+
+	this->windowWidth = COLS/2; 
+	this->windowHeight = LINES / 2; 
+	this->description = "Options Box Window";
+	this->cursorXPosition = 1; 
+	this->cursorYPosition = 1; 
+}
+
+DetailsModel::DetailsModel(){
+
+	this->windowWidth = COLS; 
+	this->windowHeight = LINES / 2; 
+	this->description = "Details Box Window";
+	this->cursorXPosition = 1; 
+	this->cursorYPosition = 1; 
 }

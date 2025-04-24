@@ -16,10 +16,10 @@ class Model{
 		void setCursorYPosition(unsigned int newCursorYPosition);
 		std::string getWindowDescription(); 
 	protected:	
-		unsigned int cursorXPosition = 1;
-	        unsigned int cursorYPosition = 1; 	
-		unsigned int windowWidth = 0; 
-		unsigned int windowHeight = 0; 
+		unsigned int cursorXPosition;
+	        unsigned int cursorYPosition; 	
+		unsigned int windowWidth; 
+		unsigned int windowHeight; 
 		std::string description; 
 }; 
 
@@ -27,30 +27,22 @@ class Model{
 class EditorModel : public Model{
 
 	public: 
-			
+		EditorModel(); 			
 	protected: 
-		unsigned int windowWidth = COLS/2; 
-		unsigned int windowHeight = LINES / 2; 
-		std::string description = "Map Editor Box Window"; 
+		 
 };
 
 class OptionsModel : public Model{
 
 	public: 
-			
+		OptionsModel(); 	
 	protected: 
-		unsigned int windowWidth = COLS/2; 
-		unsigned int windowHeight = LINES / 2; 
-		std::string description = "Options Box Window";
 };
 
 class DetailsModel : public Model{
 
 	public:
-	
+		DetailsModel(); 	
 	protected: 
-		unsigned int windowWidth = COLS; 
-		unsigned int windowHeight = LINES / 2; 
-		std::string description = "Details Box Window";
 };
 #endif 

@@ -4,22 +4,24 @@
 #include <unordered_map>
 #include <typeindex>
 #include <memory>
-#include "../include/NCursesModel.hpp"
-
+#include <array>
+ 
 #define MAX_WINDOWS 3
+
+class Model;
 
 class NCursesView{
 	
 	public:
-	       NCursesView(); 	
+	       NCursesView(){}; 
+	       NCursesView(std::array<std::unique_ptr<Model>, 3> models); 	
 	       void recieveCharacter(int character);
 	       void updateModel(Model& model); 
 
 	protected: 
 		WINDOW *windows[MAX_WINDOWS]; 
-		WINDOW windows[MAX_WINDOWS]; 
 		std::unordered_map<std::type_index,int> modelMap; 
-		Model models[MAX_WINDOWS]; 
+		std::array<std::unique_ptr<Model>, MAX_WINDOWS> models;
 		void rewriteScreen(); 
 		void renderModel(Model& model);
 

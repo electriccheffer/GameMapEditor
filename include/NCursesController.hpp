@@ -1,9 +1,10 @@
 #ifndef NCURSESCONTROLLER_HPP
 #define NCURSESCONTROLLER_HPP
 #define MAX_WINDOWS 3 
-#include "../include/NCursesModel.hpp"
 #include <memory>
-#include "../include/NCursesView.hpp"
+#include "NCursesView.hpp"
+#include "NCursesModel.hpp"
+#include <array>
 
 class Controller{
 
@@ -14,7 +15,7 @@ class Controller{
 	       	int getCurrentModelIndex();
 		Model& getCurrentModel(); 
 		int currentModelIndex; 
-		std::unique_ptr<Model> models[MAX_WINDOWS]; 			
+		std::array<std::unique_ptr<Model>,3> models; 			
 		void updateView(); 
 		NCursesView view; 
 }; 

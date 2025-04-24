@@ -2,15 +2,19 @@
 #include <ncurses.h>
 #include "../include/NCursesModel.hpp"
 #include <memory>
+#include "../include/NCursesView.hpp"
+#include <utility>
 
-Controller::Controller(){
+Controller::Controller():view({std::make_unique<OptionsModel>(),
+		std::make_unique<DetailsModel>(),
+	        std::make_unique<EditorModel>()
+}){
 
 	this->currentModelIndex = 0; 		
 
 	this->models[0] = std::make_unique<OptionsModel>();  
 	this->models[1] = std::make_unique<DetailsModel>();
 	this->models[2] = std::make_unique<EditorModel>();
-	this->view = {this->models}; 
 }
 
 
