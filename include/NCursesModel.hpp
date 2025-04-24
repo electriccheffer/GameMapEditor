@@ -7,7 +7,9 @@ class Model{
 
 	public:
 		Model();
-		virtual ~Model() = default; 
+		virtual ~Model() = default;
+	        unsigned int getCursorXStartPosition(); 
+		unsigned int getCursorYStartPosition(); 		
 		unsigned int getCursorXPosition();		
 		unsigned int getCursorYPosition();
 		unsigned int getWindowWidth();
@@ -21,6 +23,8 @@ class Model{
 		unsigned int windowWidth; 
 		unsigned int windowHeight; 
 		std::string description; 
+		unsigned int cursorXStartPosition; 
+		unsigned int cursorYStartPosition; 
 }; 
 
 

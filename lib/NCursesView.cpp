@@ -25,24 +25,25 @@ NCursesView::NCursesView(std::array<std::unique_ptr<Model>, 3> models){
 
 	WINDOW *optionsWindow = create_new_window(optionsModel->getWindowHeight(),
 						optionsModel->getWindowWidth(),
-						optionsModel->getCursorYPosition(),
-						optionsModel->getCursorXPosition()); 
+						optionsModel->getCursorYStartPosition(),
+						optionsModel->getCursorXStartPosition()); 
+	
 	WINDOW *editorWindow = create_new_window( editorModel->getWindowHeight(),
 						editorModel->getWindowWidth(),
-						editorModel->getCursorYPosition(),
-						editorModel->getCursorXPosition()); 
+						editorModel->getCursorYStartPosition(),
+						editorModel->getCursorXStartPosition()); 
+	
 	WINDOW *detailsWindow = create_new_window(detailsModel->getWindowHeight(),
 						detailsModel->getWindowWidth(),
-						detailsModel->getCursorYPosition(),
-						detailsModel->getCursorXPosition()); 	
-	
+						detailsModel->getCursorYStartPosition(),
+						detailsModel->getCursorXStartPosition()); 	
+		
 	this->windows[0] = optionsWindow; 
-	this->windows[1] = editorWindow; 
-	this->windows[2] = detailsWindow; 
+	this->windows[1] = detailsWindow; 
+	this->windows[2] = editorWindow; 
 	for(auto& model : this->models){
 		this->renderModel(*model);
 	}
-	std::this_thread::sleep_for(std::chrono::seconds(4)); 
 }
 
 void NCursesView::renderModel(Model& model){
@@ -50,13 +51,10 @@ void NCursesView::renderModel(Model& model){
 	int windowIndex = modelMap[typeid(model)];
 	WINDOW *currentWindow = windows[windowIndex];
 	box(currentWindow,0,0);
-	wprintw(currentWindow,model.getWindowDescription().c_str()); 
+	mvwprintw(currentWindow,0,0,"%s",model.getWindowDescription().c_str()); 
 	wmove(currentWindow,model.getCursorXPosition(),model.getCursorYPosition()); 	
 	wrefresh(currentWindow); 
-	for(auto window : this->windows){
-		wrefresh(window);
 	
-	}
 }
 
 

@@ -3,10 +3,24 @@
 #include <string>
  
 Model::Model(){
-	this->cursorXPosition = 0;
-	this->cursorYPosition = 0;
+	this->cursorXStartPosition = 0;
+	this->cursorYStartPosition = 0;
 	this->windowWidth = 0;
 	this->windowHeight = 0; 
+	this->cursorXPosition = 0; 
+	this->cursorYPosition = 0; 
+}
+
+
+unsigned int Model::getCursorXStartPosition(){
+
+	return this->cursorXStartPosition; 
+}
+
+unsigned int Model::getCursorYStartPosition(){
+
+	return this->cursorYStartPosition;
+	
 }
 
 unsigned int Model::getCursorXPosition(){
@@ -52,8 +66,10 @@ EditorModel::EditorModel(){
 	this->windowWidth = COLS/2; 
 	this->windowHeight = LINES / 2; 
 	this->description = "Map Editor Box Window";
-	this->cursorXPosition = 0; 
-	this->cursorYPosition = 0; 
+	this->cursorXStartPosition = 0; 
+	this->cursorYStartPosition = 0; 
+	this->cursorXPosition = 1; 
+	this->cursorYPosition = 1;
 }
 
 OptionsModel::OptionsModel(){
@@ -61,15 +77,19 @@ OptionsModel::OptionsModel(){
 	this->windowWidth = COLS/2; 
 	this->windowHeight = LINES / 2; 
 	this->description = "Options Box Window";
-	this->cursorXPosition = 0; 
-	this->cursorYPosition = 0; 
+	this->cursorXStartPosition = COLS/2; 
+	this->cursorYStartPosition = 0; 
+	this->cursorXPosition = 1; 
+	this->cursorYPosition = 1;
 }
 
 DetailsModel::DetailsModel(){
 
 	this->windowWidth = COLS; 
-	this->windowHeight = LINES / 2; 
+	this->windowHeight = LINES/2 ; 
 	this->description = "Details Box Window";
-	this->cursorXPosition = 0; 
-	this->cursorYPosition = 0; 
+	this->cursorXStartPosition = 0 ; 
+	this->cursorYStartPosition = LINES/2; 
+	this->cursorXPosition = 1; 
+	this->cursorYPosition = 1;
 }
