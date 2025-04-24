@@ -15,14 +15,12 @@ class NCursesView{
 	public:
 	       NCursesView(){}; 
 	       NCursesView(std::array<std::unique_ptr<Model>, 3> models); 	
-	       void recieveCharacter(int character);
 	       void updateModel(Model& model); 
 
 	protected: 
 		WINDOW *windows[MAX_WINDOWS]; 
 		std::unordered_map<std::type_index,int> modelMap; 
 		std::array<std::unique_ptr<Model>, MAX_WINDOWS> models;
-		void rewriteScreen(); 
 		void renderModel(Model& model);
 
 };
