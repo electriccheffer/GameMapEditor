@@ -5,6 +5,7 @@
 #include <string>
 #include <chrono>
 #include <thread>
+#include <iostream>
 /*
  *TODO: Alter constructor for Model based build.  
  *
@@ -15,13 +16,13 @@ NCursesView::NCursesView(std::array<std::unique_ptr<Model>, 3> models){
         	this->models[i] = std::move(models[i]);
     	}
 
-	this->modelMap[typeid(OptionsModel)] = 0; 
-	this->modelMap[typeid(DetailsModel)] = 1; 
-	this->modelMap[typeid(EditorModel)] = 2; 
+	this->modelMap[typeid(OptionsModel)] = 2; 
+	this->modelMap[typeid(DetailsModel)] = 0; 
+	this->modelMap[typeid(EditorModel)] = 1; 
        	
-	OptionsModel* optionsModel = dynamic_cast<OptionsModel*>(this->models[0].get());  
-	EditorModel* editorModel =  dynamic_cast<EditorModel*>(this->models[2].get());  
-	DetailsModel* detailsModel = dynamic_cast<DetailsModel*>(this->models[1].get());  
+	OptionsModel* optionsModel = dynamic_cast<OptionsModel*>(this->models[2].get());  
+	EditorModel* editorModel =  dynamic_cast<EditorModel*>(this->models[1].get());  
+	DetailsModel* detailsModel = dynamic_cast<DetailsModel*>(this->models[0].get());  
 
 	WINDOW *optionsWindow = create_new_window(optionsModel->getWindowHeight(),
 						optionsModel->getWindowWidth(),
@@ -38,9 +39,9 @@ NCursesView::NCursesView(std::array<std::unique_ptr<Model>, 3> models){
 						detailsModel->getCursorYStartPosition(),
 						detailsModel->getCursorXStartPosition()); 	
 		
-	this->windows[0] = optionsWindow; 
-	this->windows[1] = detailsWindow; 
-	this->windows[2] = editorWindow; 
+	this->windows[2] = optionsWindow; 
+	this->windows[0] = detailsWindow; 
+	this->windows[1] = editorWindow; 
 	for(auto& model : this->models){
 		this->renderModel(*model);
 	}

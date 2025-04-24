@@ -22,8 +22,7 @@ test :  $(testObjectFiles)
 build : $(buildDirectory)/main.o
 	g++ $(completedProject) -o $(buildDirectory)/main -lncurses
 	$(buildDirectory)/main
-	rm $(buildDirectory)/main
-	rm $(objectFiles) 
+	rm -f $(buildDirectory)/*
 
 clean : 
 	rm -f $(testObjectFiles)
