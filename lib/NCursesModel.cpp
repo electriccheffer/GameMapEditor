@@ -52,8 +52,8 @@ EditorModel::EditorModel(){
 	this->windowWidth = COLS/2; 
 	this->windowHeight = LINES / 2; 
 	this->description = "Map Editor Box Window";
-	this->cursorXPosition = 1; 
-	this->cursorYPosition = 1; 
+	this->cursorXPosition = 0; 
+	this->cursorYPosition = 0; 
 }
 
 OptionsModel::OptionsModel(){
@@ -61,8 +61,8 @@ OptionsModel::OptionsModel(){
 	this->windowWidth = COLS/2; 
 	this->windowHeight = LINES / 2; 
 	this->description = "Options Box Window";
-	this->cursorXPosition = 1; 
-	this->cursorYPosition = 1; 
+	this->cursorXPosition = 0; 
+	this->cursorYPosition = 0; 
 }
 
 DetailsModel::DetailsModel(){
@@ -70,6 +70,6 @@ DetailsModel::DetailsModel(){
 	this->windowWidth = COLS; 
 	this->windowHeight = LINES / 2; 
 	this->description = "Details Box Window";
-	this->cursorXPosition = 1; 
-	this->cursorYPosition = 1; 
+	this->cursorXPosition = 0; 
+	this->cursorYPosition = 0; 
 }

@@ -28,7 +28,7 @@ build : $(buildDirectory)/main.o
 clean : 
 	rm -f $(testObjectFiles)
 	rm -f $(completedProject)
-	rm -f ./test/test
+	rm -f ./build/*
 
 $(testDirectory)/test.o: $(testDirectory)/test.cpp
 	g++ -c $(testDirectory)/test.cpp -o $(testDirectory)/test.o
