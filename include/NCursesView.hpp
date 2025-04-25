@@ -10,38 +10,39 @@
 
 class NCursesView{
 	public:
-		NCursesView(Model& model);
-		void updateModel(Model& model); 
+		NCursesView(NCursesModel* model);
+		virtual ~NCursesView() = default; 
+		void updateModel(NCursesModel& model); 
 	protected:
-		virtual void renderModel(Model& model) = 0; 	
+		virtual void renderModel(NCursesModel& model) = 0; 	
 		WINDOW *window; 	
-		Model& model; 
+		NCursesModel* model; 
 };
 
 
 class OptionsView : public NCursesView{
 
 	public:
-		OptionsView(OptionsModel& model);	
+		OptionsView(OptionsModel* model);	
 	protected: 
-		void renderModel(OptionsModel& model);
+		void renderModel(NCursesModel& model) override;
 	
 };
 
 class DescriptionView : public NCursesView{
 
 	public:
-		DescriptionView(DescriptionModel& model)	
+		DescriptionView(DescriptionModel* model);
 	protected:
-	       void renderModel(DescriptionModel& model); 	
+	       void renderModel(NCursesModel& model)override; 	
 };
 
 class EditorView : public NCursesView{
 
 	public: 
-		EditorView(EditorModel& model);
+		EditorView(EditorModel* model);
 	protected: 
-		void renderModel(DescriptionModel& model);
+		void renderModel(NCursesModel& model)override;
 }; 
 
 #endif

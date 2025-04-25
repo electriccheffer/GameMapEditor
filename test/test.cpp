@@ -112,7 +112,7 @@ TEST(OptionsModelTest,TestConstructorSubclasses){
 
 TEST(DetailsModelTest,TestConstructorSubclasses){
 
-	DetailsModel model = {}; 
+	DescriptionModel model = {}; 
 	unsigned int windowWidth = model.getWindowWidth(); 
 	unsigned int windowHeight = model.getWindowHeight(); 
 	std::string  description = model.getWindowDescription();
@@ -122,7 +122,7 @@ TEST(DetailsModelTest,TestConstructorSubclasses){
 	unsigned int cursorYPosition = model.getCursorYPosition();
 	EXPECT_EQ(windowWidth,COLS); 
 	EXPECT_EQ(windowHeight,LINES / 2);
-	EXPECT_EQ(description,"Details Box Window");
+	EXPECT_EQ(description,"Description Box Window");
 	EXPECT_EQ(cursorXStartPosition,0); 
 	EXPECT_EQ(cursorYStartPosition,LINES/2); 
 	EXPECT_EQ(cursorXPosition,1);

@@ -84,11 +84,11 @@ OptionsModel::OptionsModel(){
 	this->cursorYPosition = 1;
 }
 
-DetailsModel::DetailsModel(){
+DescriptionModel::DescriptionModel(){
 
 	this->windowWidth = COLS; 
 	this->windowHeight = LINES/2 ; 
-	this->description = "Details Box Window";
+	this->description = "Description Box Window";
 	this->cursorXStartPosition = 0 ; 
 	this->cursorYStartPosition = LINES/2; 
 	this->cursorXPosition = 1; 

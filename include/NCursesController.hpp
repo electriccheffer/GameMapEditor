@@ -8,17 +8,31 @@
 
 class NCursesController{
 
-		
+	public:
+	        NCursesController(NCursesModel& model, NCursesView& view);
+       	      	virtual void takeInput(int character) = 0;	       
+	protected: 
+		NCursesModel model;
+		NCursesView view; 
 }; 
 
 
 class OptionsController : public Controller{
+	public:
+	        OptionsController(OptionsModel& model, OptionsView& view);
+       	      	void takeInput(int character) override;	       
+	protected: 
 
-	
+		
 
 };
 
 class EditorController : public Controller{
+	public:
+	        EditorController(EditorModel& model, EditorView& view);
+       	      	void takeInput(int character) override;	       
+	protected: 
+
 
 
 
@@ -26,7 +40,10 @@ class EditorController : public Controller{
 
 class DescriptionController : public Controller{
 
-
+	public:
+	        DescriptionController(DescriptionModel& model, DescriptionView& view);
+       	      	void takeInput(int character) override;	       
+	protected: 
 }; 
 
 #endif

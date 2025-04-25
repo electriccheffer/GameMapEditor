@@ -27,5 +27,6 @@ Controller& ControllerContext::takeInput(int character){
 			break; 
 
 	}	
+	
        return std::move(this->controllers[this->getControllerContext()]); 	
 }

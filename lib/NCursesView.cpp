@@ -7,52 +7,66 @@
 #include <thread>
 #include <iostream>
 
-NCursesView::NCursesView(Model& model){
+NCursesView::NCursesView(NCursesModel* model):model(model){
 	
-	this->model = model; 
-	this->*optionsWindow = create_new_window(this->model.getWindowHeight(),
-						 this->model.getWindowWidth(),
-						 this->model.getCursorYStartPosition(),
-						 this->model.getCursorXStartPosition()); 
-	this->renderModel(this->model); 	
+	this->window = create_new_window(model->getWindowHeight(),
+					model->getWindowWidth(),
+					 model->getCursorYStartPosition(),
+					 model->getCursorXStartPosition()); 
 	
 }
 
-void NCursesView::updateModel(Model& model){
+void NCursesView::updateModel(NCursesModel& model){
 	
-	this->model = model; 
+	this->model = &model; 
 	this->renderModel(model);
+
 }
 
-OptionsView::OptionsView(OptionsModel& model):NCursesView(model){}
+OptionsView::OptionsView(OptionsModel* model):NCursesView(model){
 
-void OptionsView::renderModel(OptionsModel& model){
+	this->renderModel(*model); 
+
+}
+
+void OptionsView::renderModel(NCursesModel& model){
 	
+	auto castModel = dynamic_cast<OptionsModel*>(&model);
 	box(this->window,0,0); 
-	mvprintw(this->window,0,0,this->model.getWindowDescription().c_str());
-	wmove(this->window,this->model.getCursorXStartPosition(),
-			    this->model.getCursorYStartPosition()); 
+	mvwprintw(this->window,0,0,"%s",castModel->getWindowDescription().c_str());
+	wmove(this->window,castModel->getCursorXStartPosition(),
+			    castModel->getCursorYStartPosition()); 
 	wrefresh(this->window);
 }
 
-DescriptionView::DescriptionView(DescriptionModel& model):NCursesView(model){}
+DescriptionView::DescriptionView(DescriptionModel* model):NCursesView(model){
 
-void DescriptionView::renderModel(DescriptionModel& model){
+	this->renderModel(*model); 
+}
 
+void DescriptionView::renderModel(NCursesModel& model){
+	auto castModel = dynamic_cast<DescriptionModel*>(&model); 
 	box(this->window,0,0); 
-	mvprintw(this->window,0,0,this->model.getWindowDescription().c_str());
-	wmove(this->window,this->model.getCursorXStartPosition(),
-			    this->model.getCursorYStartPosition()); 
+	mvwprintw(this->window,0,0,"%s",castModel->getWindowDescription().c_str());
+	wmove(this->window,castModel->getCursorXStartPosition(),
+			    castModel->getCursorYStartPosition()); 
 	wrefresh(this->window);
 }
 
-EditorView::EditorView(EditorModel& model):NCursesView(model){}
+EditorView::EditorView(EditorModel* model):NCursesView(model){
 
-void EditorView::renderModel(EditorModel& model){
 
+	this->renderModel(*model); 
+
+
+}
+
+void EditorView::renderModel(NCursesModel& model){
+
+	auto castModel = dynamic_cast<EditorModel*>(&model);
 	box(this->window,0,0); 
-	mvprintw(this->window,0,0,this->model.getWindowDescription().c_str());
-	wmove(this->window,this->model.getCursorXStartPosition(),
-			    this->model.getCursorYStartPosition()); 
+	mvwprintw(this->window,0,0,"%s",castModel->getWindowDescription().c_str());
+	wmove(this->window,castModel->getCursorXStartPosition(),
+			    castModel->getCursorYStartPosition()); 
 	wrefresh(this->window);
 }

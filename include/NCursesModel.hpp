@@ -7,6 +7,7 @@ class NCursesModel{
 
 	public:
 		NCursesModel(); 
+		virtual ~NCursesModel() = default; 
 		unsigned int getCursorXStartPosition(); 
 		unsigned int getCursorYStartPosition(); 
 		unsigned int getCursorXPosition(); 
@@ -40,8 +41,8 @@ class OptionsModel : public NCursesModel{
  
 };
 
-class DetailsModel : public NCursesModel{
+class DescriptionModel : public NCursesModel{
 	public: 
-	       	DetailsModel(); 	
+	       	DescriptionModel(); 	
 };
 #endif 

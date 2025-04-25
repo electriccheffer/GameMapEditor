@@ -5,15 +5,14 @@
 class ControllerContext{
 
 	public:
-	        ControllerContext();	
-		ControllerContext(OptionsController options,DescriptionController description
-				,EditorController editor); 
-		Controller& takeInput(int character); 
-		
+		ControllerContext(); 
+		NCursesController& takeInput(int character);
+				
 	protected:
-	        int getControllerContext(); 	
-		int currentControllerContext; 
-		Controller controllers[MAX_WINDOWS]; 
+		void setCurrentController(NCursesController& newCurrentController);
+		int currentControllerContext;
+	        NCursesController& currentController; 	
+		NCursesController& controllers[MAX_WINDOWS]; 
 }; 
 
 #endif
