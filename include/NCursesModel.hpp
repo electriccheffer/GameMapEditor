@@ -12,6 +12,7 @@ class NCursesModel{
 		unsigned int getCursorXPosition(); 
 		unsigned int getCursorYPosition(); 
 		void setCursorXPosition(unsigned int newCursorXPosition); 
+		void setCursorYPosition(unsigned int newCursorYPosition); 
        	protected: 
 		unsigned int cursorXStartPosition; 
 		unsigned int cursorYStartPosition;

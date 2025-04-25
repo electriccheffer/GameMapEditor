@@ -42,3 +42,11 @@ TEST(ModelTest,ConstructorTestSetCursorXPosition){
 	unsigned int cursorXPosition = model.getCursorXPosition();  
 	EXPECT_EQ(1,cursorXPosition);
 }
+
+TEST(ModelTest,ConstructorTestSetCursorYPosition){
+
+	NCursesModel model = {}; 
+	model.setCursorYPosition(1); 
+	unsigned int cursorYPosition = model.getCursorYPosition();  
+	EXPECT_EQ(1,cursorYPosition);
+}

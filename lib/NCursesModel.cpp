@@ -38,12 +38,12 @@ void NCursesModel::setCursorXPosition(unsigned int newCursorXPosition){
 	this->cursorXPosition = newCursorXPosition; 
 }
 
-/**
-void Model::setCursorYPosition(unsigned int newCursorYPosition){
+void NCursesModel::setCursorYPosition(unsigned int newCursorYPosition){
 
 	this->cursorYPosition = newCursorYPosition; 
 }
 
+/**
 unsigned int Model::getWindowWidth(){
 	
 	return this->windowWidth; 
