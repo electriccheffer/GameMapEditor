@@ -69,7 +69,7 @@ TEST(ControllerTest,GetCurrentModelTest){
 
 	ControllerTestSubclass controller = {}; 
 	Model& model = controller.getCurrentModelTestAccess(); 
-	EXPECT_EQ(typeid(model),typeid(OptionsModel));
+	EXPECT_EQ(typeid(model),typeid(DetailsModel));
 }
 
 TEST(ControllerTest,GetCurrentModelTestIncremented){
@@ -77,7 +77,7 @@ TEST(ControllerTest,GetCurrentModelTestIncremented){
 	ControllerTestSubclass controller = {};
         controller.takeInput(KEY_PPAGE);
 	Model& model = controller.getCurrentModelTestAccess(); 
-	EXPECT_EQ(typeid(model),typeid(DetailsModel));
+	EXPECT_EQ(typeid(model),typeid(EditorModel));
 }
 
 TEST(ControllerTest,GetCurrentModelTestDecremented){
@@ -85,5 +85,5 @@ TEST(ControllerTest,GetCurrentModelTestDecremented){
 	ControllerTestSubclass controller = {};
         controller.takeInput(KEY_NPAGE);
 	Model& model = controller.getCurrentModelTestAccess(); 
-	EXPECT_EQ(typeid(model),typeid(EditorModel));
+	EXPECT_EQ(typeid(model),typeid(OptionsModel));
 }
