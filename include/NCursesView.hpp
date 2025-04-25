@@ -5,23 +5,44 @@
 #include <typeindex>
 #include <memory>
 #include <array>
- 
+#include "NCursesModel.hpp" 
 #define MAX_WINDOWS 3
 
-class Model;
-
 class NCursesView{
-	
 	public:
-	       NCursesView(){}; 
-	       NCursesView(std::array<std::unique_ptr<Model>, 3> models); 	
-	       void updateModel(Model& model); 
-
-	protected: 
-		WINDOW *windows[MAX_WINDOWS]; 
-		std::unordered_map<std::type_index,int> modelMap; 
-		std::array<std::unique_ptr<Model>, MAX_WINDOWS> models;
-		void renderModel(Model& model);
-
+		NCursesView(NCursesModel* model);
+		virtual ~NCursesView() = default; 
+		void updateModel(NCursesModel& model); 
+	protected:
+		virtual void renderModel(NCursesModel& model) = 0; 	
+		WINDOW *window; 	
+		NCursesModel* model; 
 };
+
+
+class OptionsView : public NCursesView{
+
+	public:
+		OptionsView(OptionsModel* model);	
+	protected: 
+		void renderModel(NCursesModel& model) override;
+	
+};
+
+class DescriptionView : public NCursesView{
+
+	public:
+		DescriptionView(DescriptionModel* model);
+	protected:
+	       void renderModel(NCursesModel& model)override; 	
+};
+
+class EditorView : public NCursesView{
+
+	public: 
+		EditorView(EditorModel* model);
+	protected: 
+		void renderModel(NCursesModel& model)override;
+}; 
+
 #endif

@@ -1,89 +1,137 @@
 #include <gtest/gtest.h>
-#include "../include/NCursesModel.hpp"
 #include <ncurses.h>
-#include "TestSubclasses.hpp"
-#include "../include/NCursesController.hpp"
-#include <iostream>
-
+#include "../include/NCursesModel.hpp"
+#include "../include/NCursesContext.hpp"
 TEST(TrivialTest,AlwaysPasses){
 
 	EXPECT_TRUE(true);
 }
 
-TEST(ModelTest,GetCursorXPosition){
-
-	Model model = {}; 
-	unsigned int xPosition = model.getCursorXPosition(); 
-	EXPECT_EQ(0,xPosition);
-}
-
-TEST(ModelTest,GetCursorYPosition){
-
-	Model model = {}; 
-	unsigned int yPosition = model.getCursorYPosition(); 
-	EXPECT_EQ(0,yPosition);
-}
-
-TEST(ModelTest,SetCursorXPosition){
+TEST(ModelTest,ConstructorTestCursorXStartPosition){
 	
-	Model model = {}; 
-	unsigned int xPosition = 1; 
-	model.setCursorXPosition(xPosition);
-        EXPECT_EQ(xPosition,model.getCursorXPosition()); 
+	NCursesModel model = {}; 
+	unsigned int cursorXStartPosition = model.getCursorXStartPosition();
+        EXPECT_EQ(0,cursorXStartPosition);	
 }
 
-TEST(ModelTest,SetCursorYPosition){
-	
-	Model model = {}; 
-	unsigned int yPosition = 1; 
-	model.setCursorYPosition(yPosition);
-        EXPECT_EQ(yPosition,model.getCursorYPosition()); 
+TEST(ModelTest,ConstructorTestCursorYStartPosition){
+
+	NCursesModel model = {}; 
+	unsigned int cursorYStartPosition = model.getCursorYStartPosition();
+        EXPECT_EQ(0,cursorYStartPosition);
 }
 
-TEST(EditorModelTest,DefaultConstructor){
-	
-	EditorModel editorModel = {}; 
-	unsigned int windowWidth = COLS/2; 
-	unsigned int windowHeight = LINES / 2; 
-	EXPECT_EQ(windowWidth,editorModel.getWindowWidth());
-	EXPECT_EQ(windowHeight,editorModel.getWindowHeight());
+TEST(ModelTest,ConstructorTestGetCursorXPosition){
+
+	NCursesModel model = {}; 
+	unsigned int cursorXPosition = model.getCursorXPosition(); 
+	EXPECT_EQ(0,cursorXPosition);
 }
 
-TEST(ControllerTest,TakeInputPageUpTest){
+TEST(ModelTest,ConstructorTestGetCursorYPosition){
 
-	ControllerTestSubclass controller = {}; 
-	controller.takeInput(KEY_PPAGE);
-        int currentModel = controller.getCurrentModelIndexTestAccess(); 
- 	EXPECT_EQ(1,currentModel); 	
-} 
-
-TEST(ControllerTest,TakeInputPageDownTest){
-	
-	ControllerTestSubclass controller = {}; 
-	controller.takeInput(KEY_NPAGE);
-        int currentModel = controller.getCurrentModelIndexTestAccess(); 
- 	EXPECT_EQ(2,currentModel);
+	NCursesModel model = {}; 
+	unsigned int cursorYPosition = model.getCursorXPosition(); 
+	EXPECT_EQ(0,cursorYPosition);
 }
 
-TEST(ControllerTest,GetCurrentModelTest){
+TEST(ModelTest,ConstructorTestSetCursorXPosition){
 
-	ControllerTestSubclass controller = {}; 
-	Model& model = controller.getCurrentModelTestAccess(); 
-	EXPECT_EQ(typeid(model),typeid(DetailsModel));
+	NCursesModel model = {}; 
+	model.setCursorXPosition(1); 
+	unsigned int cursorXPosition = model.getCursorXPosition();  
+	EXPECT_EQ(1,cursorXPosition);
 }
 
-TEST(ControllerTest,GetCurrentModelTestIncremented){
+TEST(ModelTest,ConstructorTestSetCursorYPosition){
 
-	ControllerTestSubclass controller = {};
-        controller.takeInput(KEY_PPAGE);
-	Model& model = controller.getCurrentModelTestAccess(); 
-	EXPECT_EQ(typeid(model),typeid(EditorModel));
+	NCursesModel model = {}; 
+	model.setCursorYPosition(1); 
+	unsigned int cursorYPosition = model.getCursorYPosition();  
+	EXPECT_EQ(1,cursorYPosition);
 }
 
-TEST(ControllerTest,GetCurrentModelTestDecremented){
+TEST(ModelTest,ConstructorTestGetWindowWidth){
 
-	ControllerTestSubclass controller = {};
-        controller.takeInput(KEY_NPAGE);
-	Model& model = controller.getCurrentModelTestAccess(); 
-	EXPECT_EQ(typeid(model),typeid(OptionsModel));
+	NCursesModel model = {}; 
+	unsigned int windowWidth = model.getWindowWidth();  
+	EXPECT_EQ(0,windowWidth);
 }
+
+TEST(ModelTest,ConstructorTestGetWindowHeight){
+
+	NCursesModel model = {}; 
+	unsigned int windowHeight = model.getWindowHeight();  
+	EXPECT_EQ(0,windowHeight);
+}
+
+TEST(ModelTest,ConstructorTestGetWindowDescription){
+
+	NCursesModel model = {}; 
+	std::string description = model.getWindowDescription();  
+	EXPECT_EQ("AbstractClassDoNotInstantiate",description);
+}
+
+TEST(EditorModelTest,TestConstructorSubclasses){
+
+	EditorModel model = {}; 
+	unsigned int windowWidth = model.getWindowWidth(); 
+	unsigned int windowHeight = model.getWindowHeight(); 
+	std::string  description = model.getWindowDescription();
+	unsigned int cursorXStartPosition = model.getCursorXStartPosition(); 
+	unsigned int cursorYStartPosition = model.getCursorYStartPosition(); 
+	unsigned int cursorXPosition = model.getCursorXPosition(); 
+	unsigned int cursorYPosition = model.getCursorYPosition();
+	EXPECT_EQ(windowWidth,COLS/2); 
+	EXPECT_EQ(windowHeight,LINES / 2);
+	EXPECT_EQ(description,"Map Editor Box Window");
+	EXPECT_EQ(cursorXStartPosition,0); 
+	EXPECT_EQ(cursorYStartPosition,0); 
+	EXPECT_EQ(cursorXPosition,1);
+	EXPECT_EQ(cursorYPosition,1); 
+}
+
+TEST(OptionsModelTest,TestConstructorSubclasses){
+
+	OptionsModel model = {}; 
+	unsigned int windowWidth = model.getWindowWidth(); 
+	unsigned int windowHeight = model.getWindowHeight(); 
+	std::string  description = model.getWindowDescription();
+	unsigned int cursorXStartPosition = model.getCursorXStartPosition(); 
+	unsigned int cursorYStartPosition = model.getCursorYStartPosition(); 
+	unsigned int cursorXPosition = model.getCursorXPosition(); 
+	unsigned int cursorYPosition = model.getCursorYPosition();
+	EXPECT_EQ(windowWidth,COLS/2); 
+	EXPECT_EQ(windowHeight,LINES / 2);
+	EXPECT_EQ(description,"Options Box Window");
+	EXPECT_EQ(cursorXStartPosition,COLS/2); 
+	EXPECT_EQ(cursorYStartPosition,0); 
+	EXPECT_EQ(cursorXPosition,1);
+	EXPECT_EQ(cursorYPosition,1); 
+}
+
+TEST(DetailsModelTest,TestConstructorSubclasses){
+
+	DescriptionModel model = {}; 
+	unsigned int windowWidth = model.getWindowWidth(); 
+	unsigned int windowHeight = model.getWindowHeight(); 
+	std::string  description = model.getWindowDescription();
+	unsigned int cursorXStartPosition = model.getCursorXStartPosition(); 
+	unsigned int cursorYStartPosition = model.getCursorYStartPosition(); 
+	unsigned int cursorXPosition = model.getCursorXPosition(); 
+	unsigned int cursorYPosition = model.getCursorYPosition();
+	EXPECT_EQ(windowWidth,COLS); 
+	EXPECT_EQ(windowHeight,LINES / 2);
+	EXPECT_EQ(description,"Description Box Window");
+	EXPECT_EQ(cursorXStartPosition,0); 
+	EXPECT_EQ(cursorYStartPosition,LINES/2); 
+	EXPECT_EQ(cursorXPosition,1);
+	EXPECT_EQ(cursorYPosition,1); 
+};
+
+//TODO: make test helper factory functions
+//TODO: test get controllerContext
+
+//TODO: test controller returned by default
+//TODO: test controller returned by increment
+//TODO: test controller returned by decrement 

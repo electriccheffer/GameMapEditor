@@ -2,64 +2,65 @@
 #include "../include/NCursesModel.hpp"
 #include <string>
  
-Model::Model(){
+NCursesModel::NCursesModel(){
 	this->cursorXStartPosition = 0;
 	this->cursorYStartPosition = 0;
 	this->windowWidth = 0;
 	this->windowHeight = 0; 
 	this->cursorXPosition = 0; 
 	this->cursorYPosition = 0; 
+	this->description = "AbstractClassDoNotInstantiate";
 }
 
 
-unsigned int Model::getCursorXStartPosition(){
+unsigned int NCursesModel::getCursorXStartPosition(){
 
 	return this->cursorXStartPosition; 
 }
 
-unsigned int Model::getCursorYStartPosition(){
+unsigned int NCursesModel::getCursorYStartPosition(){
 
 	return this->cursorYStartPosition;
 	
 }
 
-unsigned int Model::getCursorXPosition(){
+unsigned int NCursesModel::getCursorXPosition(){
 
 	return this->cursorXPosition; 
 }
 
-unsigned int Model::getCursorYPosition(){
+unsigned int NCursesModel::getCursorYPosition(){
 
 	return this->cursorYPosition; 
 }
 
-void Model::setCursorXPosition(unsigned int newCursorXPosition){
-
-	this->cursorXPosition = newCursorXPosition; 
-}
-
-void Model::setCursorYPosition(unsigned int newCursorYPosition){
-
-	this->cursorYPosition = newCursorYPosition; 
-}
-
-unsigned int Model::getWindowWidth(){
+unsigned int NCursesModel::getWindowWidth(){
 	
 	return this->windowWidth; 
-
 }
 
-unsigned int Model::getWindowHeight(){
+unsigned int NCursesModel::getWindowHeight(){
 	
 	return this->windowHeight; 
 
 }
 
-std::string Model::getWindowDescription(){
+std::string NCursesModel::getWindowDescription(){
 
 	return this->description; 
 
 }
+
+void NCursesModel::setCursorXPosition(unsigned int newCursorXPosition){
+
+	this->cursorXPosition = newCursorXPosition; 
+}
+
+void NCursesModel::setCursorYPosition(unsigned int newCursorYPosition){
+
+	this->cursorYPosition = newCursorYPosition; 
+}
+
 
 EditorModel::EditorModel(){
 
@@ -83,11 +84,11 @@ OptionsModel::OptionsModel(){
 	this->cursorYPosition = 1;
 }
 
-DetailsModel::DetailsModel(){
+DescriptionModel::DescriptionModel(){
 
 	this->windowWidth = COLS; 
 	this->windowHeight = LINES/2 ; 
-	this->description = "Details Box Window";
+	this->description = "Description Box Window";
 	this->cursorXStartPosition = 0 ; 
 	this->cursorYStartPosition = LINES/2; 
 	this->cursorXPosition = 1; 

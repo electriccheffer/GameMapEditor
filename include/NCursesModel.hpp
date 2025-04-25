@@ -3,50 +3,46 @@
 #include <ncurses.h>
 #include <string>
 
-class Model{
+class NCursesModel{
 
 	public:
-		Model();
-		virtual ~Model() = default;
-	        unsigned int getCursorXStartPosition(); 
-		unsigned int getCursorYStartPosition(); 		
-		unsigned int getCursorXPosition();		
+		NCursesModel(); 
+		virtual ~NCursesModel() = default; 
+		unsigned int getCursorXStartPosition(); 
+		unsigned int getCursorYStartPosition(); 
+		unsigned int getCursorXPosition(); 
 		unsigned int getCursorYPosition();
-		unsigned int getWindowWidth();
+	        unsigned int getWindowWidth(); 	
 		unsigned int getWindowHeight(); 
-		void setCursorXPosition(unsigned int newCursorXPosition);
-		void setCursorYPosition(unsigned int newCursorYPosition);
 		std::string getWindowDescription(); 
-	protected:	
+		void setCursorXPosition(unsigned int newCursorXPosition); 
+		void setCursorYPosition(unsigned int newCursorYPosition); 
+       	protected: 
+		unsigned int cursorXStartPosition; 
+		unsigned int cursorYStartPosition;
 		unsigned int cursorXPosition;
-	        unsigned int cursorYPosition; 	
-		unsigned int windowWidth; 
+		unsigned int cursorYPosition;
+	       	unsigned int windowWidth; 	
 		unsigned int windowHeight; 
 		std::string description; 
-		unsigned int cursorXStartPosition; 
-		unsigned int cursorYStartPosition; 
 }; 
 
 
-class EditorModel : public Model{
-
+class EditorModel : public NCursesModel{
+	
 	public: 
-		EditorModel(); 			
-	protected: 
-		 
+		EditorModel();  
 };
 
-class OptionsModel : public Model{
-
+class OptionsModel : public NCursesModel{
+	
 	public: 
-		OptionsModel(); 	
-	protected: 
+		OptionsModel(); 
+ 
 };
 
-class DetailsModel : public Model{
-
-	public:
-		DetailsModel(); 	
-	protected: 
+class DescriptionModel : public NCursesModel{
+	public: 
+	       	DescriptionModel(); 	
 };
 #endif 

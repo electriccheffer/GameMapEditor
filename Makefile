@@ -4,49 +4,32 @@ libraryDirectory = ./lib
 
 testDirectory = ./test
 
-objectFiles =  $(buildDirectory)/window_functions.o $(buildDirectory)/NCursesView.o \
-	       	$(buildDirectory)/NCursesModel.o $(buildDirectory)/NCursesController.o 
-
-testObjectFiles = $(objectFiles) $(testDirectory)/test.o $(buildDirectory)/TestSubclasses.o 
-
-completedProject = $(objectFiles) $(buildDirectory)/main.o
+buildObjectFiles = $(buildDirectory)/NCursesModel.o $(buildDirectory)/NCursesView.o \
+		   $(buildDirectory)/window_functions.o \
+		   $(buildDirectory)/NCursesController.o $(buildDirectory)/NCursesContext.o    
+		   
+testObjectFiles = $(testDirectory)/test.o
 
 gtestLink = -lgtest -lgtest_main -lncurses
 
-test :  $(testObjectFiles)
-	g++ $(testObjectFiles) -o $(testDirectory)/test $(gtestLink)
+test :  $(testObjectFiles) $(buildObjectFiles)
+	g++ $(testObjectFiles) $(buildObjectFiles) -o $(testDirectory)/test $(gtestLink)
 	$(testDirectory)/test
-	rm $(testObjectFiles)
-	rm test/test
+	make clean
 
-build : $(buildDirectory)/main.o
-	g++ $(completedProject) -o $(buildDirectory)/main -lncurses
-	$(buildDirectory)/main
-	rm -f $(buildDirectory)/*
-
-clean : 
+clean: 
+	rm -f $(buildObjectFiles)
 	rm -f $(testObjectFiles)
-	rm -f $(completedProject)
-	rm -f ./build/*
+	rm -f test/test
 
-$(testDirectory)/test.o: $(testDirectory)/test.cpp
+$(testObjectFiles): $(testDirectory)/test.cpp 
 	g++ -c $(testDirectory)/test.cpp -o $(testDirectory)/test.o
 
-$(buildDirectory)/TestSubclasses.o: $(testDirectory)/TestSubclasses.cpp
-	g++ -c $(testDirectory)/TestSubclasses.cpp -o $(buildDirectory)/TestSubclasses.o
-
-$(buildDirectory)/main.o: ./src/main.cpp $(objectFiles)
-	g++ -c ./src/main.cpp -o $(buildDirectory)/main.o -lncurses
-
-$(buildDirectory)/window_functions.o: $(libraryDirectory)/window_functions.cpp
-	g++ -c $(libraryDirectory)/window_functions.cpp -o $(buildDirectory)/window_functions.o 
-
-$(buildDirectory)/NCursesView.o: $(libraryDirectory)/NCursesView.cpp
+$(buildObjectFiles): $(libraryDirectory)/NCursesModel.cpp
+	g++ -c $(libraryDirectory)/NCursesModel.cpp -o $(buildDirectory)/NCursesModel.o
+	g++ -c $(libraryDirectory)/window_functions.cpp -o \
+	       	$(buildDirectory)/window_functions.o
 	g++ -c $(libraryDirectory)/NCursesView.cpp -o $(buildDirectory)/NCursesView.o 
-
-$(buildDirectory)/NCursesModel.o: $(libraryDirectory)/NCursesModel.cpp
-	g++ -c $(libraryDirectory)/NCursesModel.cpp -o $(buildDirectory)/NCursesModel.o 
-
-$(buildDirectory)/NCursesController.o: $(libraryDirectory)/NCursesController.cpp
 	g++ -c $(libraryDirectory)/NCursesController.cpp -o \
-		$(buildDirectory)/NCursesController.o
+	       	$(buildDirectory)/NCursesController.o
+	g++ -c $(libraryDirectory)/NCursesContext.cpp -o $(buildDirectory)/NCursesContext.o

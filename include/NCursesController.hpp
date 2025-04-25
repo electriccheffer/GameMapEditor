@@ -6,18 +6,45 @@
 #include "NCursesModel.hpp"
 #include <array>
 
-class Controller{
+class NCursesController{
 
 	public:
-		Controller(); 
-		void takeInput(int character);				
-	protected:
-	       	int getCurrentModelIndex();
-		Model& getCurrentModel(); 
-		int currentModelIndex; 
-		std::array<std::unique_ptr<Model>,3> models; 			
+	        NCursesController(NCursesModel& model, NCursesView& view);
+       	      	virtual void takeInput(int character) = 0;	       
+	protected: 
 		void updateView(); 
-		NCursesView view; 
+		NCursesModel& model;
+		NCursesView& view; 
+}; 
+
+
+class OptionsController : public NCursesController{
+	public:
+	        OptionsController(OptionsModel& model, OptionsView& view);
+       	      	void takeInput(int character) override;	       
+	protected: 
+
+		
+
+};
+
+class EditorController : public NCursesController{
+	public:
+	        EditorController(EditorModel& model, EditorView& view);
+       	      	void takeInput(int character) override;	       
+	protected: 
+
+
+
+
+}; 
+
+class DescriptionController : public NCursesController{
+
+	public:
+	        DescriptionController(DescriptionModel& model, DescriptionView& view);
+       	      	void takeInput(int character) override;	       
+	protected: 
 }; 
 
 #endif

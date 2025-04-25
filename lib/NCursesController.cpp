@@ -6,49 +6,19 @@
 #include <utility>
 #include <iostream>
 
-Controller::Controller():view({std::make_unique<DetailsModel>(),
-		std::make_unique<EditorModel>(),
-	        std::make_unique<OptionsModel>()}){
-
-	this->currentModelIndex = 0; 		
-	this->models[2] = std::make_unique<OptionsModel>();  
-	this->models[0] = std::make_unique<DetailsModel>();
-	this->models[1] = std::make_unique<EditorModel>();
+NCursesController::NCursesController(NCursesModel& model, NCursesView& view)
+	:model(model),view(view){
+	this->view = view; 
+	this->model = model;	
 }
 
-
-void Controller::takeInput(int character){
+void NCursesController::updateView(){
 	
-	switch(character){
-	
-		case KEY_PPAGE:
-			this->currentModelIndex = (this->currentModelIndex + 1)
-			       			% MAX_WINDOWS; 
-			break; 
-	
-		case KEY_NPAGE:
-			this->currentModelIndex = (this->currentModelIndex - 1 + MAX_WINDOWS)
-						  % MAX_WINDOWS; 
-			break; 
-
-	}	
-	this->updateView(); 
+	this->view.updateModel(this->model); 
 }
 
+void OptionsController::takeInput(int character){}
 
-int Controller::getCurrentModelIndex(){
+void EditorController::takeInput(int character){}
 
-	return this->currentModelIndex; 
-
-}
-
-Model& Controller::getCurrentModel(){
-
-
-	return *this->models[this->getCurrentModelIndex()]; 
-}
-
-void Controller::updateView(){
-	
-	this->view.updateModel(this->getCurrentModel()); 
-}
+void DescriptionController::takeInput(int character){}
