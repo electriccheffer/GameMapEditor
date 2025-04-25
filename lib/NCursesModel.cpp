@@ -33,12 +33,12 @@ unsigned int NCursesModel::getCursorYPosition(){
 	return this->cursorYPosition; 
 }
 
-/**
-void Model::setCursorXPosition(unsigned int newCursorXPosition){
+void NCursesModel::setCursorXPosition(unsigned int newCursorXPosition){
 
 	this->cursorXPosition = newCursorXPosition; 
 }
 
+/**
 void Model::setCursorYPosition(unsigned int newCursorYPosition){
 
 	this->cursorYPosition = newCursorYPosition; 

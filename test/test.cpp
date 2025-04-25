@@ -19,7 +19,6 @@ TEST(ModelTest,ConstructorTestCursorYStartPosition){
 	NCursesModel model = {}; 
 	unsigned int cursorYStartPosition = model.getCursorYStartPosition();
         EXPECT_EQ(0,cursorYStartPosition);
-
 }
 
 TEST(ModelTest,ConstructorTestGetCursorXPosition){
@@ -27,7 +26,6 @@ TEST(ModelTest,ConstructorTestGetCursorXPosition){
 	NCursesModel model = {}; 
 	unsigned int cursorXPosition = model.getCursorXPosition(); 
 	EXPECT_EQ(0,cursorXPosition);
-
 }
 
 TEST(ModelTest,ConstructorTestGetCursorYPosition){
@@ -35,5 +33,12 @@ TEST(ModelTest,ConstructorTestGetCursorYPosition){
 	NCursesModel model = {}; 
 	unsigned int cursorYPosition = model.getCursorXPosition(); 
 	EXPECT_EQ(0,cursorYPosition);
+}
 
+TEST(ModelTest,ConstructorTestSetCursorXPosition){
+
+	NCursesModel model = {}; 
+	model.setCursorXPosition(1); 
+	unsigned int cursorXPosition = model.getCursorXPosition();  
+	EXPECT_EQ(1,cursorXPosition);
 }
