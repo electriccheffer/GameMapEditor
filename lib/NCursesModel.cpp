@@ -84,7 +84,6 @@ OptionsModel::OptionsModel(){
 	this->cursorYPosition = 1;
 }
 
-/*
 DetailsModel::DetailsModel(){
 
 	this->windowWidth = COLS; 
@@ -95,5 +94,3 @@ DetailsModel::DetailsModel(){
 	this->cursorXPosition = 1; 
 	this->cursorYPosition = 1;
 }
-**/
-

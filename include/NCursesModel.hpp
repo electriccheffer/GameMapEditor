@@ -41,6 +41,7 @@ class OptionsModel : public NCursesModel{
 };
 
 class DetailsModel : public NCursesModel{
- 
+	public: 
+	       	DetailsModel(); 	
 };
 #endif 

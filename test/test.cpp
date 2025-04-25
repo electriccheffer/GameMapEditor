@@ -93,7 +93,7 @@ TEST(EditorModelTest,TestConstructorSubclasses){
 
 TEST(OptionsModelTest,TestConstructorSubclasses){
 
-	EditorModel model = {}; 
+	OptionsModel model = {}; 
 	unsigned int windowWidth = model.getWindowWidth(); 
 	unsigned int windowHeight = model.getWindowHeight(); 
 	std::string  description = model.getWindowDescription();
@@ -103,9 +103,28 @@ TEST(OptionsModelTest,TestConstructorSubclasses){
 	unsigned int cursorYPosition = model.getCursorYPosition();
 	EXPECT_EQ(windowWidth,COLS/2); 
 	EXPECT_EQ(windowHeight,LINES / 2);
-	EXPECT_EQ(description,"Map Editor Box Window");
+	EXPECT_EQ(description,"Options Box Window");
 	EXPECT_EQ(cursorXStartPosition,COLS/2); 
 	EXPECT_EQ(cursorYStartPosition,0); 
+	EXPECT_EQ(cursorXPosition,1);
+	EXPECT_EQ(cursorYPosition,1); 
+}
+
+TEST(DetailsModelTest,TestConstructorSubclasses){
+
+	DetailsModel model = {}; 
+	unsigned int windowWidth = model.getWindowWidth(); 
+	unsigned int windowHeight = model.getWindowHeight(); 
+	std::string  description = model.getWindowDescription();
+	unsigned int cursorXStartPosition = model.getCursorXStartPosition(); 
+	unsigned int cursorYStartPosition = model.getCursorYStartPosition(); 
+	unsigned int cursorXPosition = model.getCursorXPosition(); 
+	unsigned int cursorYPosition = model.getCursorYPosition();
+	EXPECT_EQ(windowWidth,COLS); 
+	EXPECT_EQ(windowHeight,LINES / 2);
+	EXPECT_EQ(description,"Details Box Window");
+	EXPECT_EQ(cursorXStartPosition,0); 
+	EXPECT_EQ(cursorYStartPosition,LINES/2); 
 	EXPECT_EQ(cursorXPosition,1);
 	EXPECT_EQ(cursorYPosition,1); 
 }
