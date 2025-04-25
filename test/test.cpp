@@ -50,3 +50,10 @@ TEST(ModelTest,ConstructorTestSetCursorYPosition){
 	unsigned int cursorYPosition = model.getCursorYPosition();  
 	EXPECT_EQ(1,cursorYPosition);
 }
+
+TEST(ModelTest,ConstructorTestGetWindowWidth){
+
+	NCursesModel model = {}; 
+	unsigned int windowWidth = model.getWindowWidth();  
+	EXPECT_EQ(0,windowWidth);
+}
