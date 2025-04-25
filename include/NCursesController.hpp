@@ -9,7 +9,8 @@
 class NCursesController{
 
 	public:
-	        NCursesController(NCursesModel& model, NCursesView& view);
+		virtual ~NCursesController() = default; 
+		NCursesController(NCursesModel& model, NCursesView& view);
        	      	virtual void takeInput(int character) = 0;	       
 	protected: 
 		void updateView(); 

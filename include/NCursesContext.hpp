@@ -6,7 +6,7 @@ class ControllerContext{
 	public:
 		ControllerContext(OptionsController* options, EditorController* editor,
 				  DescriptionController* description); 
-		NCursesController& takeInput(int character);
+		NCursesController* takeInput(int character);
 				
 	protected:
 		int getControllerContext();

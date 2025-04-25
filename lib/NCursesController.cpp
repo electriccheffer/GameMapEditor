@@ -17,8 +17,21 @@ void NCursesController::updateView(){
 	this->view.updateModel(this->model); 
 }
 
+OptionsController::OptionsController(OptionsModel& model, OptionsView& view):NCursesController(dynamic_cast<NCursesModel&>(model),dynamic_cast<NCursesView&>(view)){
+	
+
+}
+
 void OptionsController::takeInput(int character){}
 
+
+EditorController::EditorController(EditorModel& model, EditorView& view):NCursesController(dynamic_cast<NCursesModel&>(model),dynamic_cast<NCursesView&>(view)){
+
+
+}
 void EditorController::takeInput(int character){}
 
+DescriptionController::DescriptionController(DescriptionModel& model, DescriptionView& view)
+					:NCursesController(dynamic_cast<NCursesModel&>(model),dynamic_cast<NCursesView&>(view)){
+}
 void DescriptionController::takeInput(int character){}
