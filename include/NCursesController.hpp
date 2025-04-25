@@ -12,12 +12,13 @@ class NCursesController{
 	        NCursesController(NCursesModel& model, NCursesView& view);
        	      	virtual void takeInput(int character) = 0;	       
 	protected: 
-		NCursesModel model;
-		NCursesView view; 
+		void updateView(); 
+		NCursesModel& model;
+		NCursesView& view; 
 }; 
 
 
-class OptionsController : public Controller{
+class OptionsController : public NCursesController{
 	public:
 	        OptionsController(OptionsModel& model, OptionsView& view);
        	      	void takeInput(int character) override;	       
@@ -27,7 +28,7 @@ class OptionsController : public Controller{
 
 };
 
-class EditorController : public Controller{
+class EditorController : public NCursesController{
 	public:
 	        EditorController(EditorModel& model, EditorView& view);
        	      	void takeInput(int character) override;	       
@@ -38,7 +39,7 @@ class EditorController : public Controller{
 
 }; 
 
-class DescriptionController : public Controller{
+class DescriptionController : public NCursesController{
 
 	public:
 	        DescriptionController(DescriptionModel& model, DescriptionView& view);

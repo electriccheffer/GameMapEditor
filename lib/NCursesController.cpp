@@ -6,7 +6,8 @@
 #include <utility>
 #include <iostream>
 
-NCursesController:NCursesController(NCursesModel& model, NCCursesView& view){
+NCursesController::NCursesController(NCursesModel& model, NCursesView& view)
+	:model(model),view(view){
 	this->view = view; 
 	this->model = model;	
 }

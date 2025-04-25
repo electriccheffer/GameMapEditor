@@ -5,7 +5,7 @@
 #include <typeindex>
 #include <memory>
 #include <array>
- 
+#include "NCursesModel.hpp" 
 #define MAX_WINDOWS 3
 
 class NCursesView{
