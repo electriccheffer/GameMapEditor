@@ -8,7 +8,7 @@ NCursesModel::NCursesModel(){
 //	this->windowWidth = 0;
 //	this->windowHeight = 0; 
 	this->cursorXPosition = 0; 
-//	this->cursorYPosition = 0; 
+	this->cursorYPosition = 0; 
 }
 
 
@@ -28,12 +28,12 @@ unsigned int NCursesModel::getCursorXPosition(){
 	return this->cursorXPosition; 
 }
 
-/**
-unsigned int Model::getCursorYPosition(){
+unsigned int NCursesModel::getCursorYPosition(){
 
 	return this->cursorYPosition; 
 }
 
+/**
 void Model::setCursorXPosition(unsigned int newCursorXPosition){
 
 	this->cursorXPosition = newCursorXPosition; 
