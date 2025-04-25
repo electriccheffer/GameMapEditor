@@ -11,3 +11,10 @@ Model& ControllerTestSubclass::getCurrentModelTestAccess(){
 
 	return this->getCurrentModel(); 
 }
+
+
+int ControllerContextTestSubclass::getControllerContextTestAccess(){
+
+	return this->getControllerContext(); 
+
+}

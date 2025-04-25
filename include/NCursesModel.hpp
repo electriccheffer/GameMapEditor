@@ -3,50 +3,23 @@
 #include <ncurses.h>
 #include <string>
 
-class Model{
+class NCursesModel{
 
-	public:
-		Model();
-		virtual ~Model() = default;
-	        unsigned int getCursorXStartPosition(); 
-		unsigned int getCursorYStartPosition(); 		
-		unsigned int getCursorXPosition();		
-		unsigned int getCursorYPosition();
-		unsigned int getWindowWidth();
-		unsigned int getWindowHeight(); 
-		void setCursorXPosition(unsigned int newCursorXPosition);
-		void setCursorYPosition(unsigned int newCursorYPosition);
-		std::string getWindowDescription(); 
-	protected:	
-		unsigned int cursorXPosition;
-	        unsigned int cursorYPosition; 	
-		unsigned int windowWidth; 
-		unsigned int windowHeight; 
-		std::string description; 
-		unsigned int cursorXStartPosition; 
-		unsigned int cursorYStartPosition; 
+	 
 }; 
 
 
-class EditorModel : public Model{
+class EditorModel : public NCursesModel{
 
-	public: 
-		EditorModel(); 			
-	protected: 
-		 
+	 
 };
 
-class OptionsModel : public Model{
+class OptionsModel : public NCursesModel{
 
-	public: 
-		OptionsModel(); 	
-	protected: 
+ 
 };
 
-class DetailsModel : public Model{
-
-	public:
-		DetailsModel(); 	
-	protected: 
+class DetailsModel : public NCursesModel{
+ 
 };
 #endif 

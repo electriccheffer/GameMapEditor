@@ -12,16 +12,14 @@ class Model;
 
 class NCursesView{
 	
-	public:
-	       NCursesView(){}; 
-	       NCursesView(std::array<std::unique_ptr<Model>, 3> models); 	
-	       void updateModel(Model& model); 
-
-	protected: 
-		WINDOW *windows[MAX_WINDOWS]; 
-		std::unordered_map<std::type_index,int> modelMap; 
-		std::array<std::unique_ptr<Model>, MAX_WINDOWS> models;
-		void renderModel(Model& model);
-
 };
+
+
+class OptionsView : public NCursesView{};
+
+
+class DescriptionView : public NCursesView{};
+
+class EditorView : public NCursesView{}; 
+
 #endif
