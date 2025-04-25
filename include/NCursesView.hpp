@@ -8,18 +8,40 @@
  
 #define MAX_WINDOWS 3
 
-class Model;
-
 class NCursesView{
-	
+	public:
+		NCursesView(Model& model);
+		void updateModel(Model& model); 
+	protected:
+		virtual void renderModel(Model& model) = 0; 	
+		WINDOW *window; 	
+		Model& model; 
 };
 
 
-class OptionsView : public NCursesView{};
+class OptionsView : public NCursesView{
 
+	public:
+		OptionsView(OptionsModel& model);	
+	protected: 
+		void renderModel(OptionsModel& model);
+	
+};
 
-class DescriptionView : public NCursesView{};
+class DescriptionView : public NCursesView{
 
-class EditorView : public NCursesView{}; 
+	public:
+		DescriptionView(DescriptionModel& model)	
+	protected:
+	       void renderModel(DescriptionModel& model); 	
+};
+
+class EditorView : public NCursesView{
+
+	public: 
+		EditorView(EditorModel& model);
+	protected: 
+		void renderModel(DescriptionModel& model);
+}; 
 
 #endif
