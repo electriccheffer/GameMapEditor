@@ -73,7 +73,6 @@ EditorModel::EditorModel(){
 	this->cursorYPosition = 1;
 }
 
-/**
 OptionsModel::OptionsModel(){
 
 	this->windowWidth = COLS/2; 
@@ -85,6 +84,7 @@ OptionsModel::OptionsModel(){
 	this->cursorYPosition = 1;
 }
 
+/*
 DetailsModel::DetailsModel(){
 
 	this->windowWidth = COLS; 

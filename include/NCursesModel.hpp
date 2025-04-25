@@ -34,7 +34,9 @@ class EditorModel : public NCursesModel{
 };
 
 class OptionsModel : public NCursesModel{
-
+	
+	public: 
+		OptionsModel(); 
  
 };
 
