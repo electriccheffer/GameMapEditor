@@ -22,3 +22,10 @@ TEST(ModelTest,ConstructorTestCursorYStartPosition){
 
 }
 
+TEST(ModelTest,ConstructorTestGetCursorXPosition){
+
+	NCursesModel model = {}; 
+	unsigned int cursorXPosition = model.getCursorXPosition(); 
+	EXPECT_EQ(0,cursorXPosition);
+
+}

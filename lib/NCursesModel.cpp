@@ -7,7 +7,7 @@ NCursesModel::NCursesModel(){
 	this->cursorYStartPosition = 0;
 //	this->windowWidth = 0;
 //	this->windowHeight = 0; 
-//	this->cursorXPosition = 0; 
+	this->cursorXPosition = 0; 
 //	this->cursorYPosition = 0; 
 }
 
@@ -23,12 +23,12 @@ unsigned int NCursesModel::getCursorYStartPosition(){
 	
 }
 
-/**
-unsigned int Model::getCursorXPosition(){
+unsigned int NCursesModel::getCursorXPosition(){
 
 	return this->cursorXPosition; 
 }
 
+/**
 unsigned int Model::getCursorYPosition(){
 
 	return this->cursorYPosition; 

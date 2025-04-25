@@ -9,9 +9,12 @@ class NCursesModel{
 		NCursesModel(); 
 		unsigned int getCursorXStartPosition(); 
 		unsigned int getCursorYStartPosition(); 
+		unsigned int getCursorXPosition(); 
        	protected: 
 		unsigned int cursorXStartPosition; 
 		unsigned int cursorYStartPosition;
+		unsigned int cursorXPosition;
+
 }; 
 
 
