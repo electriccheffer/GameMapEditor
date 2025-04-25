@@ -12,7 +12,7 @@ int ControllerContext::getControllerContext(){
 
 }
 
-Controller& ControllerContext::takeInput(int character){
+NCursesController& ControllerContext::takeInput(int character){
 
 	switch(character){
 	
@@ -28,5 +28,5 @@ Controller& ControllerContext::takeInput(int character){
 
 	}	
 	
-       return std::move(this->controllers[this->getControllerContext()]); 	
+       return *controllers[this->currentControllerContext]; 	
 }

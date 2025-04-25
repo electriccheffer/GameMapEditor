@@ -127,4 +127,7 @@ TEST(DetailsModelTest,TestConstructorSubclasses){
 	EXPECT_EQ(cursorYStartPosition,LINES/2); 
 	EXPECT_EQ(cursorXPosition,1);
 	EXPECT_EQ(cursorYPosition,1); 
-}; 
+};
+
+
+

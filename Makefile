@@ -6,8 +6,8 @@ testDirectory = ./test
 
 buildObjectFiles = $(buildDirectory)/NCursesModel.o $(buildDirectory)/NCursesView.o \
 		   $(buildDirectory)/window_functions.o \
-		   $(buildDirectory)/NCursesController.o
-
+		   $(buildDirectory)/NCursesController.o $(buildDirectory)/NCursesContext.o    
+		   
 testObjectFiles = $(testDirectory)/test.o
 
 gtestLink = -lgtest -lgtest_main -lncurses
@@ -32,3 +32,4 @@ $(buildObjectFiles): $(libraryDirectory)/NCursesModel.cpp
 	g++ -c $(libraryDirectory)/NCursesView.cpp -o $(buildDirectory)/NCursesView.o 
 	g++ -c $(libraryDirectory)/NCursesController.cpp -o \
 	       	$(buildDirectory)/NCursesController.o
+	g++ -c $(libraryDirectory)/NCursesContext.cpp -o $(buildDirectory)/NCursesContext.o
