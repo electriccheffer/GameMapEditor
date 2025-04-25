@@ -1,7 +1,10 @@
 #include <gtest/gtest.h>
 #include <ncurses.h>
 #include "../include/NCursesModel.hpp"
+#include "../include/NCursesView.hpp"
+#include "../include/NCursesController.hpp"
 #include "../include/NCursesContext.hpp"
+
 TEST(TrivialTest,AlwaysPasses){
 
 	EXPECT_TRUE(true);
@@ -129,12 +132,28 @@ TEST(DetailsModelTest,TestConstructorSubclasses){
 	EXPECT_EQ(cursorYPosition,1); 
 };
 
-//TODO: make test helper factory functions
-//TODO: test get controllerContext
 TEST(ContextControllerTest,TestGetControllerContext){
 	
+	EditorModel editorModel = {}; 
+	OptionsModel optionsModel = {}; 
+	DescriptionModel descriptionModel = {}; 
+	
+	EditorView editorView(&editorModel); 
+	OptionsView optionsView(&optionsModel); 
+	DescriptionView descriptionView(&descriptionModel); 
+	
+	EditorController editorController = {editorModel,editorView}; 
+	OptionsController optionsController = {optionsModel,optionsView}; 
+	DescriptionController descriptionController = {descriptionModel,descriptionView};
+
+	ControllerContext context(&optionsController,&editorController,&descriptionController); 
+
+	NCursesController* controllerResult = context.takeInput(KEY_PPAGE);
+
+	EditorController* editorControlleResult = 
+		dynamic_cast<EditorController*>(controllerResult); 
+	
+	EXPECT_EQ(typeid(*editorControlleResult),typeid(EditorController));
+
 
 }
-//TODO: test controller returned by default
-//TODO: test controller returned by increment
-//TODO: test controller returned by decrement 

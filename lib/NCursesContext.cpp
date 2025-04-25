@@ -1,4 +1,5 @@
 #include "../include/NCursesContext.hpp"
+#include "../include/NCursesController.hpp"
 
 ControllerContext::ControllerContext(OptionsController* options, EditorController* editor,
 				  DescriptionController* description) {
@@ -15,7 +16,7 @@ int ControllerContext::getControllerContext(){
 
 }
 
-NCursesController& ControllerContext::takeInput(int character){
+NCursesController* ControllerContext::takeInput(int character){
 
 	switch(character){
 	
@@ -31,5 +32,5 @@ NCursesController& ControllerContext::takeInput(int character){
 
 	}	
 	
-       return *controllers[this->currentControllerContext]; 	
+       return controllers[this->currentControllerContext]; 	
 }
