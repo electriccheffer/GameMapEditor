@@ -5,7 +5,11 @@
 
 class NCursesModel{
 
-	 
+	public:
+		NCursesModel(); 
+		unsigned int getCursorXStartPosition(); 
+       	protected: 
+		unsigned int cursorXStartPosition; 
 }; 
 
 

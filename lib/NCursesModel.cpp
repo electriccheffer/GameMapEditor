@@ -2,21 +2,21 @@
 #include "../include/NCursesModel.hpp"
 #include <string>
  
-Model::Model(){
+NCursesModel::NCursesModel(){
 	this->cursorXStartPosition = 0;
-	this->cursorYStartPosition = 0;
-	this->windowWidth = 0;
-	this->windowHeight = 0; 
-	this->cursorXPosition = 0; 
-	this->cursorYPosition = 0; 
+//	this->cursorYStartPosition = 0;
+//	this->windowWidth = 0;
+//	this->windowHeight = 0; 
+//	this->cursorXPosition = 0; 
+//	this->cursorYPosition = 0; 
 }
 
 
-unsigned int Model::getCursorXStartPosition(){
+unsigned int NCursesModel::getCursorXStartPosition(){
 
 	return this->cursorXStartPosition; 
 }
-
+/**
 unsigned int Model::getCursorYStartPosition(){
 
 	return this->cursorYStartPosition;
@@ -93,3 +93,5 @@ DetailsModel::DetailsModel(){
 	this->cursorXPosition = 1; 
 	this->cursorYPosition = 1;
 }
+**/
+
