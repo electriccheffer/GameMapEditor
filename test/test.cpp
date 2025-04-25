@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <ncurses.h>
 #include "../include/NCursesModel.hpp"
-
+#include "../include/NCursesContext.hpp"
 TEST(TrivialTest,AlwaysPasses){
 
 	EXPECT_TRUE(true);
@@ -129,5 +129,12 @@ TEST(DetailsModelTest,TestConstructorSubclasses){
 	EXPECT_EQ(cursorYPosition,1); 
 };
 
+//TODO: make test helper factory functions
+//TODO: test get controllerContext
+TEST(ContextControllerTest,TestGetControllerContext){
+	
 
-
+}
+//TODO: test controller returned by default
+//TODO: test controller returned by increment
+//TODO: test controller returned by decrement 

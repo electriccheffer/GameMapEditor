@@ -4,12 +4,12 @@
 class ControllerContext{
 
 	public:
-		ControllerContext(); 
+		ControllerContext(OptionsController* options, EditorController* editor,
+				  DescriptionController* description); 
 		NCursesController& takeInput(int character);
 				
 	protected:
 		int getControllerContext();
-		void setCurrentController(NCursesController& newCurrentController);
 		int currentControllerContext;
 		NCursesController* controllers[MAX_WINDOWS]; 
 }; 

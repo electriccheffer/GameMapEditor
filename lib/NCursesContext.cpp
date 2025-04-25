@@ -1,9 +1,12 @@
 #include "../include/NCursesContext.hpp"
 
-ControllerContext::ControllerContext(){
+ControllerContext::ControllerContext(OptionsController* options, EditorController* editor,
+				  DescriptionController* description) {
 
 	this->currentControllerContext = 0; 
-
+	this->controllers[0] = options; 
+	this->controllers[1] = editor;
+	this->controllers[2] = description;
 }
 
 int ControllerContext::getControllerContext(){
