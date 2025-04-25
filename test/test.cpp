@@ -57,3 +57,10 @@ TEST(ModelTest,ConstructorTestGetWindowWidth){
 	unsigned int windowWidth = model.getWindowWidth();  
 	EXPECT_EQ(0,windowWidth);
 }
+
+TEST(ModelTest,ConstructorTestGetWindowHeight){
+
+	NCursesModel model = {}; 
+	unsigned int windowHeight = model.getWindowHeight();  
+	EXPECT_EQ(0,windowHeight);
+}
