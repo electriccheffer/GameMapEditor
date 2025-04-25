@@ -64,3 +64,10 @@ TEST(ModelTest,ConstructorTestGetWindowHeight){
 	unsigned int windowHeight = model.getWindowHeight();  
 	EXPECT_EQ(0,windowHeight);
 }
+
+TEST(ModelTest,ConstructorTestGetWindowDescription){
+
+	NCursesModel model = {}; 
+	std::string description = model.getWindowDescription();  
+	EXPECT_EQ("AbstractClassDoNotInstantiate",description);
+}

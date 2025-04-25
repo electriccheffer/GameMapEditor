@@ -9,6 +9,7 @@ NCursesModel::NCursesModel(){
 	this->windowHeight = 0; 
 	this->cursorXPosition = 0; 
 	this->cursorYPosition = 0; 
+	this->description = "AbstractClassDoNotInstantiate";
 }
 
 
@@ -44,6 +45,12 @@ unsigned int NCursesModel::getWindowHeight(){
 
 }
 
+std::string NCursesModel::getWindowDescription(){
+
+	return this->description; 
+
+}
+
 void NCursesModel::setCursorXPosition(unsigned int newCursorXPosition){
 
 	this->cursorXPosition = newCursorXPosition; 
@@ -55,11 +62,7 @@ void NCursesModel::setCursorYPosition(unsigned int newCursorYPosition){
 }
 
 /**
-std::string Model::getWindowDescription(){
 
-	return this->description; 
-
-}
 
 EditorModel::EditorModel(){
 

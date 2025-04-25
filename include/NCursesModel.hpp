@@ -13,6 +13,7 @@ class NCursesModel{
 		unsigned int getCursorYPosition();
 	        unsigned int getWindowWidth(); 	
 		unsigned int getWindowHeight(); 
+		std::string getWindowDescription(); 
 		void setCursorXPosition(unsigned int newCursorXPosition); 
 		void setCursorYPosition(unsigned int newCursorYPosition); 
        	protected: 
@@ -22,6 +23,7 @@ class NCursesModel{
 		unsigned int cursorYPosition;
 	       	unsigned int windowWidth; 	
 		unsigned int windowHeight; 
+		std::string description; 
 }; 
 
 
