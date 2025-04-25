@@ -71,3 +71,22 @@ TEST(ModelTest,ConstructorTestGetWindowDescription){
 	std::string description = model.getWindowDescription();  
 	EXPECT_EQ("AbstractClassDoNotInstantiate",description);
 }
+
+TEST(EditorModelTest,TestConstructorSubclasses){
+
+	EditorModel model = {}; 
+	unsigned int windowWidth = model.getWindowWidth(); 
+	unsigned int windowHeight = model.getWindowHeight(); 
+	std::string  description = model.getWindowDescription();
+	unsigned int cursorXStartPosition = model.getCursorXStartPosition(); 
+	unsigned int cursorYStartPosition = model.getCursorYStartPosition(); 
+	unsigned int cursorXPosition = model.getCursorXPosition(); 
+	unsigned int cursorYPosition = model.getCursorYPosition();
+	EXPECT_EQ(windowWidth,COLS/2); 
+	EXPECT_EQ(windowHeight,LINES / 2);
+	EXPECT_EQ(description,"Map Editor Box Window");
+	EXPECT_EQ(cursorXStartPosition,0); 
+	EXPECT_EQ(cursorYStartPosition,0); 
+	EXPECT_EQ(cursorXPosition,1);
+	EXPECT_EQ(cursorYPosition,1); 
+}

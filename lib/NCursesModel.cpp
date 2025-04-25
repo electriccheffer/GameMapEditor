@@ -61,8 +61,6 @@ void NCursesModel::setCursorYPosition(unsigned int newCursorYPosition){
 	this->cursorYPosition = newCursorYPosition; 
 }
 
-/**
-
 
 EditorModel::EditorModel(){
 
@@ -75,6 +73,7 @@ EditorModel::EditorModel(){
 	this->cursorYPosition = 1;
 }
 
+/**
 OptionsModel::OptionsModel(){
 
 	this->windowWidth = COLS/2; 

@@ -28,8 +28,9 @@ class NCursesModel{
 
 
 class EditorModel : public NCursesModel{
-
-	 
+	
+	public: 
+		EditorModel();  
 };
 
 class OptionsModel : public NCursesModel{
