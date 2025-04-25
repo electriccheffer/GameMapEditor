@@ -8,8 +8,10 @@ class NCursesModel{
 	public:
 		NCursesModel(); 
 		unsigned int getCursorXStartPosition(); 
+		unsigned int getCursorYStartPosition(); 
        	protected: 
 		unsigned int cursorXStartPosition; 
+		unsigned int cursorYStartPosition;
 }; 
 
 

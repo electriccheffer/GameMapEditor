@@ -14,3 +14,11 @@ TEST(ModelTest,ConstructorTestCursorXStartPosition){
         EXPECT_EQ(0,cursorXStartPosition);	
 }
 
+TEST(ModelTest,ConstructorTestCursorYStartPosition){
+
+	NCursesModel model = {}; 
+	unsigned int cursorYStartPosition = model.getCursorYStartPosition();
+        EXPECT_EQ(0,cursorYStartPosition);
+
+}
+
