@@ -4,24 +4,37 @@ libraryDirectory = ./lib
 
 testDirectory = ./test
 
+srdDir =./src
+
 buildObjectFiles = $(buildDirectory)/NCursesModel.o $(buildDirectory)/NCursesView.o\
 		   $(buildDirectory)/window_functions.o\
 		   $(buildDirectory)/NCursesContext.o\
 		   $(buildDirectory)/NCursesController.o\
-		   
+		   $(buildDirectory)/main.o 
+
 testObjectFiles = $(testDirectory)/test.o
 
 gtestLink = -lgtest -lgtest_main -lncurses
+
+ncurseLink = -lncurses
 
 test :  $(testObjectFiles) $(buildObjectFiles)
 	g++ $(buildObjectFiles) $(testObjectFiles) -o $(testDirectory)/test $(gtestLink)
 	$(testDirectory)/test
 	make clean
 
+build: $(buildObjectFiles) 
+	g++ -c $(srdDir)/main.cpp  -o $(buildDirectory)/main.o
+	g++ $(buildObjectFiles) -o $(buildDirectory)/main $(ncurseLink)
+	$(buildDirectory)/main
+	make clean	
+	
+
 clean: 
 	rm -f $(buildObjectFiles)
 	rm -f $(testObjectFiles)
 	rm -f test/test
+	rm -f $(buildDirectory)/main
 
 $(testObjectFiles): $(testDirectory)/test.cpp 
 	g++ -c $(testDirectory)/test.cpp -o $(testDirectory)/test.o
