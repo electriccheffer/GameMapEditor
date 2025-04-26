@@ -1,13 +1,17 @@
 #ifndef TEXTOBJECT_HPP
 #define TEXTOBJECT_HPP
 #include <string>
+#include "../include/Position.hpp"
 
 class TextObject{
 	
 	public:
 		TextObject(); 
-		std::string getText(); 	
+		void setText(std::string& newText); 
+		const std::string getText()const; 	
+		const Position& getPosition()const; 
 	protected: 
 		std::string text; 
+		Position position; 
 };
 #endif

@@ -231,3 +231,21 @@ TEST(TextObjectTest,GetTextTestEmptyString){
 	EXPECT_EQ("",text);
 	
 }
+
+TEST(TextObjectTest,GetPositionTest){
+
+	TextObject textObject = {}; 
+	Position expectedPosition = {}; 
+	Position positionResult = textObject.getPosition(); 
+	EXPECT_TRUE((expectedPosition == positionResult));
+}
+
+TEST(TextObjectTest,SetTextTest){
+	
+	std::string newText = "New Text"; 
+	TextObject textObject = {}; 
+	textObject.setText(newText);
+	std::string textResult = textObject.getText(); 
+	EXPECT_EQ(newText,textResult);
+
+}
