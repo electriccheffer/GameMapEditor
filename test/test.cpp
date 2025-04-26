@@ -198,3 +198,19 @@ TEST(PositionObjectTest,EqualityOperatorFalse){
 	otherPosition.setX(1); 
 	EXPECT_FALSE((position == otherPosition));
 }
+
+TEST(PositionObjectTest,NonEqualityOperatorFalse){
+
+	Position position = {}; 
+	Position otherPosition = {}; 
+	EXPECT_FALSE((position != otherPosition));
+
+}
+
+TEST(PositionObjectTest,NonEqualityOperatorTrue){
+	
+	Position position = {}; 
+	position.setX(1); 
+	Position otherPosition = {}; 
+	EXPECT_TRUE((position != otherPosition));
+}

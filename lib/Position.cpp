@@ -33,3 +33,9 @@ bool Position::operator==(const Position& otherPosition){
 	unsigned int otherY = otherPosition.getY();
 	return (otherX == this->getX() && otherY == this->getY()) ? true : false; 	
 }
+
+bool Position::operator!=(const Position& otherPosition){
+
+	return !(*this == otherPosition); 	
+
+}

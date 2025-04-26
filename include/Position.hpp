@@ -10,6 +10,7 @@ class Position{
 		void setX(unsigned int newX);
 		void setY(unsigned int newY);
 		bool operator==(const Position& otherPosition); 
+		bool operator!=(const Position& otherPosition); 
 	protected:
 		unsigned int xPosition; 
 		unsigned int yPosition; 
