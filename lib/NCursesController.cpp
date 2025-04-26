@@ -22,16 +22,30 @@ OptionsController::OptionsController(OptionsModel& model, OptionsView& view):NCu
 
 }
 
-void OptionsController::takeInput(int character){}
+void OptionsController::takeInput(int character){
+
+	this->view.updateModel(this->model); 	
+
+}
 
 
 EditorController::EditorController(EditorModel& model, EditorView& view):NCursesController(dynamic_cast<NCursesModel&>(model),dynamic_cast<NCursesView&>(view)){
 
 
 }
-void EditorController::takeInput(int character){}
+void EditorController::takeInput(int character){
+
+
+	this->view.updateModel(this->model); 	
+
+}
 
 DescriptionController::DescriptionController(DescriptionModel& model, DescriptionView& view)
 					:NCursesController(dynamic_cast<NCursesModel&>(model),dynamic_cast<NCursesView&>(view)){
 }
-void DescriptionController::takeInput(int character){}
+void DescriptionController::takeInput(int character){
+
+
+	this->view.updateModel(this->model); 	
+
+}

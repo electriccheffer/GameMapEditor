@@ -22,9 +22,9 @@ int main(int argc, char** argv){
 	DescriptionModel descriptionModel = {}; 
 
 	EditorView editorView(&editorModel); 
-	OptionsView optionsView(&optionsModel); 
 	DescriptionView descriptionView(&descriptionModel); 
-
+	OptionsView optionsView(&optionsModel); 
+	
 	EditorController editorController(editorModel,editorView); 
 	OptionsController optionsController(optionsModel,optionsView);
 	DescriptionController descriptionController(descriptionModel,descriptionView); 
