@@ -9,8 +9,9 @@ class TextObject{
 		TextObject(); 
 		void setPosition(Position& newPosition);
 		void setText(std::string& newText); 
-		const std::string getText()const; 	
+		const std::string& getText()const; 	
 		const Position& getPosition()const; 
+		bool operator==(const TextObject& otherTextObject);
 	protected: 
 		std::string text; 
 		Position position; 

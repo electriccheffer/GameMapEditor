@@ -23,11 +23,17 @@ const Position& TextObject::getPosition()const{
 	return this->position;
 }
 
-const std::string TextObject::getText()const{
+const std::string& TextObject::getText()const{
 
 	return this->text; 
 
 }
 
 
+bool TextObject::operator==(const TextObject& otherTextObject){
 
+	Position otherPosition = otherTextObject.getPosition(); 
+	std::string otherText = otherTextObject.getText(); 
+	return (otherPosition == this->position && otherText == this->text);
+
+}

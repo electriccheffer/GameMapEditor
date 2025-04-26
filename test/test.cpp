@@ -259,3 +259,21 @@ TEST(TextObjectTest,SetPositionTest){
 	EXPECT_TRUE((newPosition == positionResult));	
 
 }
+
+
+TEST(TextObjectTest,EqualityOperatorTestTrue){
+
+	TextObject textObject = {}; 
+	TextObject otherTextObject = {}; 
+	EXPECT_TRUE((textObject == otherTextObject));
+}
+
+TEST(TextObjectText,EqualityOperatorTestFalse){
+
+	std::string newText = "NewText"; 
+	TextObject textObject = {}; 
+	textObject.setText(newText);
+	TextObject otherTextObject = {}; 
+	EXPECT_FALSE((textObject == otherTextObject));
+
+}
