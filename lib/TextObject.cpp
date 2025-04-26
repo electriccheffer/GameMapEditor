@@ -5,6 +5,12 @@
 TextObject::TextObject(){
 
 	this->text = ""; 
+}
+
+TextObject::TextObject(std::string& text, Position& position){
+
+	this->text = text; 
+	this->position = position; 
 
 }
 
@@ -35,5 +41,11 @@ bool TextObject::operator==(const TextObject& otherTextObject){
 	Position otherPosition = otherTextObject.getPosition(); 
 	std::string otherText = otherTextObject.getText(); 
 	return (otherPosition == this->position && otherText == this->text);
+
+}
+
+bool TextObject::operator!=(const TextObject& otherTextObject){
+
+	return !(*this == otherTextObject);
 
 }
