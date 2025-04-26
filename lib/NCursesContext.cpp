@@ -5,9 +5,9 @@ ControllerContext::ControllerContext(OptionsController* options, EditorControlle
 				  DescriptionController* description) {
 
 	this->currentControllerContext = 0; 
-	this->controllers[0] = options; 
+	this->controllers[2] = options; 
 	this->controllers[1] = editor;
-	this->controllers[2] = description;
+	this->controllers[0] = description;
 }
 
 int ControllerContext::getControllerContext(){

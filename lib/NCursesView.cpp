@@ -34,8 +34,8 @@ void OptionsView::renderModel(NCursesModel& model){
 	auto castModel = dynamic_cast<OptionsModel*>(&model);
 	box(this->window,0,0); 
 	mvwprintw(this->window,0,0,"%s",castModel->getWindowDescription().c_str());
-	wmove(this->window,castModel->getCursorXStartPosition(),
-			    castModel->getCursorYStartPosition()); 
+	wmove(this->window,castModel->getCursorXPosition(),
+			    castModel->getCursorYPosition()); 
 	wrefresh(this->window);
 }
 
@@ -48,8 +48,8 @@ void DescriptionView::renderModel(NCursesModel& model){
 	auto castModel = dynamic_cast<DescriptionModel*>(&model); 
 	box(this->window,0,0); 
 	mvwprintw(this->window,0,0,"%s",castModel->getWindowDescription().c_str());
-	wmove(this->window,castModel->getCursorXStartPosition(),
-			    castModel->getCursorYStartPosition()); 
+	wmove(this->window,castModel->getCursorXPosition(),
+			    castModel->getCursorYPosition()); 
 	wrefresh(this->window);
 }
 
@@ -66,7 +66,7 @@ void EditorView::renderModel(NCursesModel& model){
 	auto castModel = dynamic_cast<EditorModel*>(&model);
 	box(this->window,0,0); 
 	mvwprintw(this->window,0,0,"%s",castModel->getWindowDescription().c_str());
-	wmove(this->window,castModel->getCursorXStartPosition(),
-			    castModel->getCursorYStartPosition()); 
+	wmove(this->window,castModel->getCursorXPosition(),
+			    castModel->getCursorYPosition()); 
 	wrefresh(this->window);
 }
