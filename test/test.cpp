@@ -5,6 +5,8 @@
 #include "../include/NCursesController.hpp"
 #include "../include/NCursesContext.hpp"
 #include "../include/Position.hpp"
+#include "../include/TextObject.hpp"
+#include <string>
 
 TEST(TrivialTest,AlwaysPasses){
 
@@ -220,4 +222,12 @@ TEST(PositionObjectTest,NonNullConstruct){
 	Position position = {1,2}; 
 	EXPECT_EQ(1,position.getX());
 	EXPECT_EQ(2,position.getY());
+}
+
+TEST(TextObjectTest,GetTextTestEmptyString){
+
+	TextObject textObject = {}; 
+	std::string text = textObject.getText(); 
+	EXPECT_EQ("",text);
+	
 }
