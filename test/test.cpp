@@ -169,3 +169,16 @@ TEST(PositionObjectTest,GetPosition){
 	EXPECT_EQ(0,yPosition); 
 
 }
+
+TEST(PositionObjectTest,SetPosition){
+
+	Position position = {}; 
+	unsigned int xPosition = 1; 
+	unsigned int yPosition = 2; 
+	position.setX(xPosition);
+	position.setY(yPosition); 
+	unsigned int xResult = position.getX();
+	unsigned int yResult = position.getY(); 
+	EXPECT_EQ(xResult,xPosition);
+	EXPECT_EQ(yResult,yPosition);
+}

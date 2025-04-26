@@ -15,3 +15,13 @@ unsigned int Position::getY(){
 
 	return this->yPosition; 
 }
+
+void Position::setX(unsigned int newX){
+
+	this->xPosition = newX; 
+}
+
+void Position::setY(unsigned int newY){
+
+	this->yPosition = newY; 
+}

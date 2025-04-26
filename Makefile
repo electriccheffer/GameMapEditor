@@ -26,12 +26,14 @@ test :  $(buildObjectFiles)
 
 build: $(buildObjectFiles) 
 	g++ -c $(srcDir)/main.cpp  -o $(buildDirectory)/main.o
-	g++ $(buildObjectFiles) -o $(buildDirectory)/main $(ncurseLink)
+	g++ $(buildObjectFiles) $(buildDirectory)/main.o -o $(buildDirectory)/main $(ncurseLink)
 	$(buildDirectory)/main
 	make clean	
 	
 clean: 
 	rm -f $(buildObjectFiles)
+	rm -f build/main.o
+	rm -f build/test.o
 	rm -f test/test
 	rm -f $(buildDirectory)/main
 
