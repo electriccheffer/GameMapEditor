@@ -295,3 +295,10 @@ TEST(TextObjectTest,NonEqualityOperatorNotEqual){
 	TextObject otherTextObject = {}; 
 	EXPECT_TRUE((textObject != otherTextObject)); 
 }
+
+TEST(TextObjectTest,NonEqualityOperatorEqual){
+	
+	TextObject textObject = {}; 
+	TextObject otherTextObject = {}; 
+	EXPECT_FALSE((textObject != otherTextObject)); 
+}
