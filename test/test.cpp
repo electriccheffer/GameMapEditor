@@ -190,3 +190,11 @@ TEST(PositionObjectTest,EqualityOperatorTrue){
 	EXPECT_TRUE((position == otherPosition));
 
 }
+
+TEST(PositionObjectTest,EqualityOperatorFalse){
+
+	Position position = {}; 
+	Position otherPosition = {}; 
+	otherPosition.setX(1); 
+	EXPECT_FALSE((position == otherPosition));
+}
