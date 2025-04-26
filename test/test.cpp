@@ -4,6 +4,7 @@
 #include "../include/NCursesView.hpp"
 #include "../include/NCursesController.hpp"
 #include "../include/NCursesContext.hpp"
+#include "../include/Position.hpp"
 
 TEST(TrivialTest,AlwaysPasses){
 
@@ -113,6 +114,7 @@ TEST(OptionsModelTest,TestConstructorSubclasses){
 	EXPECT_EQ(cursorYPosition,1); 
 }
 
+
 TEST(DetailsModelTest,TestConstructorSubclasses){
 
 	DescriptionModel model = {}; 
@@ -156,4 +158,66 @@ TEST(ContextControllerTest,TestGetControllerContext){
 	EXPECT_EQ(typeid(*editorControlleResult),typeid(EditorController));
 
 
+}
+
+TEST(PositionObjectTest,GetPosition){
+
+	Position position = {}; 
+	unsigned int xPosition = position.getX();
+	unsigned int yPosition = position.getY();
+	EXPECT_EQ(0,xPosition); 
+	EXPECT_EQ(0,yPosition); 
+
+}
+
+TEST(PositionObjectTest,SetPosition){
+
+	Position position = {}; 
+	unsigned int xPosition = 1; 
+	unsigned int yPosition = 2; 
+	position.setX(xPosition);
+	position.setY(yPosition); 
+	unsigned int xResult = position.getX();
+	unsigned int yResult = position.getY(); 
+	EXPECT_EQ(xResult,xPosition);
+	EXPECT_EQ(yResult,yPosition);
+}
+
+TEST(PositionObjectTest,EqualityOperatorTrue){
+
+	Position position = {}; 
+	Position otherPosition = {}; 
+	EXPECT_TRUE((position == otherPosition));
+
+}
+
+TEST(PositionObjectTest,EqualityOperatorFalse){
+
+	Position position = {}; 
+	Position otherPosition = {}; 
+	otherPosition.setX(1); 
+	EXPECT_FALSE((position == otherPosition));
+}
+
+TEST(PositionObjectTest,NonEqualityOperatorFalse){
+
+	Position position = {}; 
+	Position otherPosition = {}; 
+	EXPECT_FALSE((position != otherPosition));
+
+}
+
+TEST(PositionObjectTest,NonEqualityOperatorTrue){
+	
+	Position position = {}; 
+	position.setX(1); 
+	Position otherPosition = {}; 
+	EXPECT_TRUE((position != otherPosition));
+}
+
+TEST(PositionObjectTest,NonNullConstruct){
+
+	Position position = {1,2}; 
+	EXPECT_EQ(1,position.getX());
+	EXPECT_EQ(2,position.getY());
 }
