@@ -5,6 +5,7 @@ class Position{
 
 	public:
 		Position(); 
+		Position(unsigned int xPosition,unsigned int yPosition); 
 		unsigned int getX()const;
 		unsigned int getY()const; 
 		void setX(unsigned int newX);

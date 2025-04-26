@@ -6,6 +6,11 @@ Position::Position(){
 	this->yPosition = 0; 
 }
 
+Position::Position(unsigned int xPosition, unsigned int yPosition){
+	this->xPosition = xPosition; 
+	this->yPosition = yPosition; 
+}
+
 unsigned int Position::getX()const{
 	
 	return this->xPosition; 

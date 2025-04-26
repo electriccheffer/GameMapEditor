@@ -214,3 +214,10 @@ TEST(PositionObjectTest,NonEqualityOperatorTrue){
 	Position otherPosition = {}; 
 	EXPECT_TRUE((position != otherPosition));
 }
+
+TEST(PositionObjectTest,NonNullConstruct){
+
+	Position position = {1,2}; 
+	EXPECT_EQ(1,position.getX());
+	EXPECT_EQ(2,position.getY());
+}
