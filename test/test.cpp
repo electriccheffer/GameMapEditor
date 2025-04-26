@@ -4,6 +4,7 @@
 #include "../include/NCursesView.hpp"
 #include "../include/NCursesController.hpp"
 #include "../include/NCursesContext.hpp"
+#include "../include/Position.hpp"
 
 TEST(TrivialTest,AlwaysPasses){
 
@@ -113,6 +114,7 @@ TEST(OptionsModelTest,TestConstructorSubclasses){
 	EXPECT_EQ(cursorYPosition,1); 
 }
 
+
 TEST(DetailsModelTest,TestConstructorSubclasses){
 
 	DescriptionModel model = {}; 
@@ -155,5 +157,15 @@ TEST(ContextControllerTest,TestGetControllerContext){
 	
 	EXPECT_EQ(typeid(*editorControlleResult),typeid(EditorController));
 
+
+}
+
+TEST(PositionObjectTest,GetPosition){
+
+	Position position = {}; 
+	unsigned int xPosition = position.getX();
+	unsigned int yPosition = position.getY();
+	EXPECT_EQ(0,xPosition); 
+	EXPECT_EQ(0,yPosition); 
 
 }
