@@ -6,12 +6,12 @@ Position::Position(){
 	this->yPosition = 0; 
 }
 
-unsigned int Position::getX(){
+unsigned int Position::getX()const{
 	
 	return this->xPosition; 
 }
 
-unsigned int Position::getY(){
+unsigned int Position::getY()const{
 
 	return this->yPosition; 
 }
@@ -24,4 +24,12 @@ void Position::setX(unsigned int newX){
 void Position::setY(unsigned int newY){
 
 	this->yPosition = newY; 
+} 
+
+
+bool Position::operator==(const Position& otherPosition){
+
+	unsigned int otherX = otherPosition.getX(); 
+	unsigned int otherY = otherPosition.getY();
+	return (otherX == this->getX() && otherY == this->getY()) ? true : false; 	
 }

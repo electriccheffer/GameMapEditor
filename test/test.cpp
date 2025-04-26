@@ -182,3 +182,11 @@ TEST(PositionObjectTest,SetPosition){
 	EXPECT_EQ(xResult,xPosition);
 	EXPECT_EQ(yResult,yPosition);
 }
+
+TEST(PositionObjectTest,EqualityOperatorTrue){
+
+	Position position = {}; 
+	Position otherPosition = {}; 
+	EXPECT_TRUE((position == otherPosition));
+
+}

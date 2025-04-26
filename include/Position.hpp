@@ -5,10 +5,11 @@ class Position{
 
 	public:
 		Position(); 
-		unsigned int getX();
-		unsigned int getY(); 
+		unsigned int getX()const;
+		unsigned int getY()const; 
 		void setX(unsigned int newX);
-		void setY(unsigned int newY); 
+		void setY(unsigned int newY);
+		bool operator==(const Position& otherPosition); 
 	protected:
 		unsigned int xPosition; 
 		unsigned int yPosition; 
