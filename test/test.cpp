@@ -5,6 +5,8 @@
 #include "../include/NCursesController.hpp"
 #include "../include/NCursesContext.hpp"
 #include "../include/Position.hpp"
+#include "../include/TextObject.hpp"
+#include <string>
 
 TEST(TrivialTest,AlwaysPasses){
 
@@ -220,4 +222,83 @@ TEST(PositionObjectTest,NonNullConstruct){
 	Position position = {1,2}; 
 	EXPECT_EQ(1,position.getX());
 	EXPECT_EQ(2,position.getY());
+}
+
+TEST(TextObjectTest,GetTextTestEmptyString){
+
+	TextObject textObject = {}; 
+	std::string text = textObject.getText(); 
+	EXPECT_EQ("",text);
+	
+}
+
+TEST(TextObjectTest,GetPositionTest){
+
+	TextObject textObject = {}; 
+	Position expectedPosition = {}; 
+	Position positionResult = textObject.getPosition(); 
+	EXPECT_TRUE((expectedPosition == positionResult));
+}
+
+TEST(TextObjectTest,SetTextTest){
+	
+	std::string newText = "New Text"; 
+	TextObject textObject = {}; 
+	textObject.setText(newText);
+	std::string textResult = textObject.getText(); 
+	EXPECT_EQ(newText,textResult);
+
+}
+
+TEST(TextObjectTest,SetPositionTest){
+
+	Position newPosition = {1,2}; 
+	TextObject textObject = {};
+        textObject.setPosition(newPosition);	
+	Position positionResult = textObject.getPosition(); 
+	EXPECT_TRUE((newPosition == positionResult));	
+
+}
+
+
+TEST(TextObjectTest,EqualityOperatorTestTrue){
+
+	TextObject textObject = {}; 
+	TextObject otherTextObject = {}; 
+	EXPECT_TRUE((textObject == otherTextObject));
+}
+
+TEST(TextObjectTest,EqualityOperatorTestFalse){
+
+	std::string newText = "NewText"; 
+	TextObject textObject = {}; 
+	textObject.setText(newText);
+	TextObject otherTextObject = {}; 
+	EXPECT_FALSE((textObject == otherTextObject));
+}
+
+
+TEST(TextObjectTest,NonNullConstructorTest){
+
+	Position position = {1,2};
+	std::string text = "SomeText"; 
+	TextObject textObject = {text,position}; 
+	EXPECT_TRUE((position == textObject.getPosition() ));
+	EXPECT_TRUE((text == textObject.getText()));
+}
+
+TEST(TextObjectTest,NonEqualityOperatorNotEqual){
+	
+	std::string text = "SomeText";	
+	Position position = {1,2}; 
+	TextObject textObject = {text,position}; 
+	TextObject otherTextObject = {}; 
+	EXPECT_TRUE((textObject != otherTextObject)); 
+}
+
+TEST(TextObjectTest,NonEqualityOperatorEqual){
+	
+	TextObject textObject = {}; 
+	TextObject otherTextObject = {}; 
+	EXPECT_FALSE((textObject != otherTextObject)); 
 }

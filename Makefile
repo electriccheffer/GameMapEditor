@@ -9,10 +9,11 @@ srcDir =./src
 buildObjectFiles =$(buildDirectory)/NCursesModel.o $(buildDirectory)/NCursesView.o\
 		   $(buildDirectory)/window_functions.o $(buildDirectory)/NCursesContext.o\
 		   $(buildDirectory)/NCursesController.o $(buildDirectory)/Position.o \
+		   $(buildDirectory)/TextObject.o 		
 
 libraryFiles = $(libraryDirectory)/NCursesModel.cpp $(libraryDirectory)/NCursesView.cpp\
 		$(libraryDirectory)/NCursesController.cpp $(libraryDirectory)/NCursesContext.cpp\
-		$(libraryDirectory)/Position.cpp
+		$(libraryDirectory)/Position.cpp $(libraryDirectory)/TextObject.cpp
 
 gtestLink = -lgtest -lgtest_main -lncurses
 
@@ -44,3 +45,4 @@ $(buildObjectFiles): $(libraryFiles)
 	g++ -c $(libraryDirectory)/NCursesContext.cpp -o $(buildDirectory)/NCursesContext.o
 	g++ -c $(libraryDirectory)/NCursesController.cpp -o $(buildDirectory)/NCursesController.o
 	g++ -c $(libraryDirectory)/Position.cpp -o $(buildDirectory)/Position.o 
+	g++ -c $(libraryDirectory)/TextObject.cpp -o $(buildDirectory)/TextObject.o
