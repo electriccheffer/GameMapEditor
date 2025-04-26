@@ -249,3 +249,13 @@ TEST(TextObjectTest,SetTextTest){
 	EXPECT_EQ(newText,textResult);
 
 }
+
+TEST(TextObjectTest,SetPositionTest){
+
+	Position newPosition = {1,2}; 
+	TextObject textObject = {};
+        textObject.setPosition(newPosition);	
+	Position positionResult = textObject.getPosition(); 
+	EXPECT_TRUE((newPosition == positionResult));	
+
+}

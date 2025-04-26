@@ -8,6 +8,11 @@ TextObject::TextObject(){
 
 }
 
+void TextObject::setPosition(Position& newPosition){
+	
+	this->position = newPosition; 
+}
+
 void TextObject::setText(std::string& newText){
 
 	this->text = newText; 

@@ -7,6 +7,7 @@ class TextObject{
 	
 	public:
 		TextObject(); 
+		void setPosition(Position& newPosition);
 		void setText(std::string& newText); 
 		const std::string getText()const; 	
 		const Position& getPosition()const; 
