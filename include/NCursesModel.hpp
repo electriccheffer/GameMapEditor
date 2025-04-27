@@ -2,6 +2,8 @@
 #define NCURSESMODEL_HPP
 #include <ncurses.h>
 #include <string>
+#include <vector>
+#include "TextObject.hpp"
 
 class NCursesModel{
 
@@ -38,7 +40,11 @@ class OptionsModel : public NCursesModel{
 	
 	public: 
 		OptionsModel(); 
- 
+		OptionsModel(std::vector<TextObject>& text); 
+		std::vector<TextObject>& getText(); 
+ 	protected: 
+		std::vector<TextObject> text; 
+
 };
 
 class DescriptionModel : public NCursesModel{

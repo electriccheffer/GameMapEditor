@@ -1,7 +1,9 @@
 #include <ncurses.h>
-#include "../include/NCursesModel.hpp"
 #include <string>
- 
+#include <vector>
+#include "../include/NCursesModel.hpp"
+#include "../include/TextObject.hpp"
+
 NCursesModel::NCursesModel(){
 	this->cursorXStartPosition = 0;
 	this->cursorYStartPosition = 0;
@@ -82,6 +84,18 @@ OptionsModel::OptionsModel(){
 	this->cursorYStartPosition = 0; 
 	this->cursorXPosition = 1; 
 	this->cursorYPosition = 1;
+}
+
+OptionsModel::OptionsModel(std::vector<TextObject>& textList){
+
+	this->text = textList; 
+
+}
+
+std::vector<TextObject>& OptionsModel::getText(){
+
+	return this->text; 
+	
 }
 
 DescriptionModel::DescriptionModel(){

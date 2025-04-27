@@ -116,6 +116,50 @@ TEST(OptionsModelTest,TestConstructorSubclasses){
 	EXPECT_EQ(cursorYPosition,1); 
 }
 
+TEST(OptionsModelTest,TextObjectText){
+
+	std::string text = "Options Box Window"; 
+	Position position = {};
+	TextObject textObject = {text,position};
+	std::vector<TextObject> textList = {textObject};
+        OptionsModel optionsModel = {textList}; 	
+	std::vector<TextObject> textListResult = optionsModel.getText();  		
+	EXPECT_TRUE((textListResult[0] == textList[0]));
+	
+}
+
+TEST(OptionsModelTest,TextObjectMultipleTextObjects){
+	
+	std::string textTitle = "Options Box Window"; 
+	std::string saveText = "SAVE"; 
+	std::string loadText = "LOAD";
+	std::string renderText = "RENDER";
+	std::string quitText = "QUIT";
+	
+	Position titlePosition = {0,0};
+	Position savePosition = {1,1};
+	Position loadPosition = {2,1};
+	Position renderPosition = {3,1};
+	Position quitPosition = {4,1};
+
+	TextObject titleObject = {textTitle,titlePosition}; 
+	TextObject saveObject = {saveText,savePosition};
+	TextObject loadObject = {loadText,loadPosition};
+	TextObject renderObject = {renderText,renderPosition}; 
+	TextObject quitObject = {quitText,quitPosition}; 
+	
+	std::vector<TextObject> textObjectList = {}; 
+	textObjectList.push_back(titleObject);
+	textObjectList.push_back(saveObject);
+	textObjectList.push_back(loadObject);
+	textObjectList.push_back(renderObject);
+	textObjectList.push_back(quitObject);
+	
+        OptionsModel optionsModel = {textObjectList}; 	
+	
+	std::vector<TextObject> textListResult = optionsModel.getText();  		
+	EXPECT_TRUE((textListResult[3] == textObjectList[3]));
+}
 
 TEST(DetailsModelTest,TestConstructorSubclasses){
 
@@ -302,3 +346,4 @@ TEST(TextObjectTest,NonEqualityOperatorEqual){
 	TextObject otherTextObject = {}; 
 	EXPECT_FALSE((textObject != otherTextObject)); 
 }
+

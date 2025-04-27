@@ -23,6 +23,9 @@ void NCursesView::updateModel(NCursesModel& model){
 
 }
 
+
+// abstract method that does rendering
+
 OptionsView::OptionsView(OptionsModel* model):NCursesView(model){
 
 	this->renderModel(*model); 
@@ -33,6 +36,13 @@ void OptionsView::renderModel(NCursesModel& model){
 	
 	auto castModel = dynamic_cast<OptionsModel*>(&model);
 	box(this->window,0,0); 
+
+	//for text in static  text
+		// mvprintw with window ref , position, text
+		
+	//for text in dynamic text 
+		// mvprintw ....
+
 	mvwprintw(this->window,0,0,"%s",castModel->getWindowDescription().c_str());
 	wmove(this->window,castModel->getCursorXPosition(),
 			    castModel->getCursorYPosition()); 
