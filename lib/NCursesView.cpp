@@ -2,10 +2,13 @@
 #include "../include/NCursesModel.hpp"
 #include "../include/NCursesView.hpp"
 #include "../include/window_functions.hpp"
+#include "../include/Position.hpp"
+#include "../include/TextObject.hpp"
 #include <string>
 #include <chrono>
 #include <thread>
 #include <iostream>
+#include <vector>
 
 NCursesView::NCursesView(NCursesModel* model):model(model){
 	
@@ -36,14 +39,18 @@ void OptionsView::renderModel(NCursesModel& model){
 	
 	auto castModel = dynamic_cast<OptionsModel*>(&model);
 	box(this->window,0,0); 
-
+	std::vector<TextObject> textList = castModel->getText(); 
 	//for text in static  text
-		// mvprintw with window ref , position, text
+	for(auto textObject : textList ){
 		
-	//for text in dynamic text 
-		// mvprintw ....
-
-	mvwprintw(this->window,0,0,"%s",castModel->getWindowDescription().c_str());
+		std::string text = textObject.getText();
+		Position textPosition = textObject.getPosition(); 
+			
+		mvwprintw(this->window,textPosition.getX() ,
+				textPosition.getY() 
+				,"%s",text.c_str());
+	}
+		
 	wmove(this->window,castModel->getCursorXPosition(),
 			    castModel->getCursorYPosition()); 
 	wrefresh(this->window);
