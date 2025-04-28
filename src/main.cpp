@@ -22,6 +22,10 @@ int main(int argc, char** argv){
 	
 	EditorModel editorModel = {}; 
 
+
+
+	DescriptionModel descriptionModel = {}; 
+
 	std::string textTitle = "Options Box Window"; 
 	std::string saveText = "SAVE"; 
 	std::string loadText = "LOAD";
@@ -49,9 +53,6 @@ int main(int argc, char** argv){
 	
         OptionsModel optionsModel = {textObjectList}; 	
 	
-
-	DescriptionModel descriptionModel = {}; 
-
 	EditorView editorView(&editorModel); 
 	DescriptionView descriptionView(&descriptionModel); 
 	OptionsView optionsView(&optionsModel); 

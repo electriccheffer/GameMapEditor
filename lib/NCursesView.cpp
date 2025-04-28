@@ -11,7 +11,7 @@
 #include <vector>
 
 NCursesView::NCursesView(NCursesModel* model):model(model){
-	
+
 	this->window = create_new_window(model->getWindowHeight(),
 					model->getWindowWidth(),
 					 model->getCursorYStartPosition(),
@@ -36,24 +36,24 @@ OptionsView::OptionsView(OptionsModel* model):NCursesView(model){
 }
 
 void OptionsView::renderModel(NCursesModel& model){
-	
+		
 	auto castModel = dynamic_cast<OptionsModel*>(&model);
-	box(this->window,0,0); 
+	box(this->window,0, 0); 
 	std::vector<TextObject> textList = castModel->getText(); 
-	//for text in static  text
 	for(auto textObject : textList ){
 		
 		std::string text = textObject.getText();
 		Position textPosition = textObject.getPosition(); 
-			
-		mvwprintw(this->window,textPosition.getX() ,
+				mvwprintw(this->window,textPosition.getX() ,
 				textPosition.getY() 
 				,"%s",text.c_str());
+
+
 	}
-		
 	wmove(this->window,castModel->getCursorXPosition(),
-			    castModel->getCursorYPosition()); 
+		castModel->getCursorYPosition());
 	wrefresh(this->window);
+	 
 }
 
 DescriptionView::DescriptionView(DescriptionModel* model):NCursesView(model){

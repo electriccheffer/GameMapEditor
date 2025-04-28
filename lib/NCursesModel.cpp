@@ -89,7 +89,13 @@ OptionsModel::OptionsModel(){
 OptionsModel::OptionsModel(std::vector<TextObject>& textList){
 
 	this->text = textList; 
-
+	this->windowWidth = COLS/2; 
+	this->windowHeight = LINES / 2; 
+	this->description = "Options Box Window";
+	this->cursorXStartPosition = COLS/2; 
+	this->cursorYStartPosition = 0; 
+	this->cursorXPosition = 1; 
+	this->cursorYPosition = 1;
 }
 
 std::vector<TextObject>& OptionsModel::getText(){
