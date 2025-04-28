@@ -24,7 +24,34 @@ OptionsController::OptionsController(OptionsModel& model, OptionsView& view):NCu
 }
 
 void OptionsController::takeInput(int character){
+	
+	unsigned int moveVariable; 
 
+	switch(character){
+	
+		case KEY_UP:
+			moveVariable = this->model.getCursorXPosition(); 
+			moveVariable -= 1; 
+			moveVariable %= 5; 
+			if(moveVariable == 0){
+				
+				moveVariable += 1; 
+			}
+			this->model.setCursorXPosition(moveVariable); 
+			break;
+		case KEY_DOWN:
+			moveVariable = this->model.getCursorXPosition(); 
+			moveVariable += 1; 
+			moveVariable %= 5; 
+			if(moveVariable == 0){
+				
+				moveVariable += 1; 
+			}
+			this->model.setCursorXPosition(moveVariable);
+			break; 
+	
+	
+	}
 	this->view.updateModel(this->model); 	
 
 }
@@ -36,9 +63,52 @@ EditorController::EditorController(EditorModel& model, EditorView& view):NCurses
 }
 void EditorController::takeInput(int character){
 
+	unsigned int moveVariable; 
+	switch(character){
+	
+		case KEY_UP:
+			moveVariable = this->model.getCursorXPosition(); 
+			moveVariable -= 1; 
+			if(moveVariable == 0){
+				
+				moveVariable += 1; 
+			}
+			this->model.setCursorXPosition(moveVariable); 
+			break;
 
+		case KEY_DOWN:
+			moveVariable = this->model.getCursorXPosition(); 
+			moveVariable += 1; 
+			if(moveVariable == this->model.getWindowHeight()){
+				
+				moveVariable -= 1; 
+			}
+			this->model.setCursorXPosition(moveVariable);
+			break; 
+
+		case KEY_RIGHT: 
+			 moveVariable = this->model.getCursorYPosition(); 	
+			 moveVariable += 1; 
+			 if(moveVariable == this->model.getWindowWidth()){
+			 	
+			 	moveVariable -= 1; 
+			 }
+			 this->model.setCursorYPosition(moveVariable); 
+			 break;
+
+		case KEY_LEFT: 
+			 moveVariable = this->model.getCursorYPosition(); 	
+			 moveVariable -= 1; 
+			 if(moveVariable == 0){
+			 	
+			 	moveVariable += 1; 
+			 }
+			 this->model.setCursorYPosition(moveVariable); 
+			 break;
+	
+
+	}
 	this->view.updateModel(this->model); 	
-
 }
 
 DescriptionController::DescriptionController(DescriptionModel& model, DescriptionView& view)
@@ -46,7 +116,7 @@ DescriptionController::DescriptionController(DescriptionModel& model, Descriptio
 }
 void DescriptionController::takeInput(int character){
 
-
+	
 	this->view.updateModel(this->model); 	
 
 }
