@@ -1,6 +1,6 @@
 #include "../include/NCursesContext.hpp"
 #include "../include/NCursesController.hpp"
-
+#include <iostream>
 ControllerContext::ControllerContext(OptionsController* options, EditorController* editor,
 				  DescriptionController* description) {
 
@@ -19,6 +19,7 @@ int ControllerContext::getControllerContext(){
 
 NCursesController* ControllerContext::takeInput(int character){
 
+	
 	switch(character){
 	
 		case KEY_PPAGE:
@@ -30,8 +31,10 @@ NCursesController* ControllerContext::takeInput(int character){
 			this->currentControllerContext = (this->currentControllerContext - 1
 				       			  + MAX_WINDOWS) % MAX_WINDOWS; 
 			break; 
-
+		
 	}	
-	
+	if(character == KEY_ENTER && this->currentControllerContext == 1 || character == 10){
+		this->currentControllerContext = 0;
+	}	
        return controllers[this->currentControllerContext]; 	
 }

@@ -79,7 +79,7 @@ void EditorController::takeInput(int character){
 		case KEY_DOWN:
 			moveVariable = this->model.getCursorXPosition(); 
 			moveVariable += 1; 
-			if(moveVariable == this->model.getWindowHeight()){
+			if(moveVariable == this->model.getWindowHeight() - 1){
 				
 				moveVariable -= 1; 
 			}
@@ -89,7 +89,7 @@ void EditorController::takeInput(int character){
 		case KEY_RIGHT: 
 			 moveVariable = this->model.getCursorYPosition(); 	
 			 moveVariable += 1; 
-			 if(moveVariable == this->model.getWindowWidth()){
+			 if(moveVariable == this->model.getWindowWidth() - 1){
 			 	
 			 	moveVariable -= 1; 
 			 }
