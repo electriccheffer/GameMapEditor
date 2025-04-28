@@ -58,9 +58,9 @@ int main(int argc, char** argv){
 	OptionsView optionsView(&optionsModel); 
 	
 	EditorController editorController(editorModel,editorView); 
-	OptionsController optionsController(optionsModel,optionsView);
 	DescriptionController descriptionController(descriptionModel,descriptionView); 
-
+	OptionsController optionsController(optionsModel,optionsView);
+	
 	ControllerContext context(&optionsController,&editorController,
 				&descriptionController); 
 		
