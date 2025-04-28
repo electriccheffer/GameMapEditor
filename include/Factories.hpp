@@ -12,10 +12,16 @@ class OptionsModelFactory{
 	protected: 
 		void setStaticText(); 	
 		OptionsModel model; 
-
 };
 
-class DescriptionModelFactory{};
+class DescriptionModelFactory{
+	public:
+		DescriptionModelFactory();
+		DescriptionModel& getModel(); 
+	protected: 
+		void setStaticText(); 
+		DescriptionModel model; 
+};
 
 class EditorModelFactory{};
 #endif

@@ -40,3 +40,24 @@ void OptionsModelFactory::setStaticText(){
 	this->model = {textObjectList}; 
 }
 
+DescriptionModelFactory::DescriptionModelFactory(){
+
+	this->setStaticText(); 
+}
+
+DescriptionModel& DescriptionModelFactory::getModel(){
+	
+	return this->model; 
+
+}
+
+void DescriptionModelFactory::setStaticText(){
+
+	std::string descriptionTitle = "Description Box Window"; 
+	Position descriptionPosition = {}; 
+	TextObject descriptionTextObject = {descriptionTitle,descriptionPosition}; 
+	std::vector<TextObject> descriptionTextList = {};
+	descriptionTextList.push_back(descriptionTextObject);
+	this->model = {descriptionTextList}; 
+}
+

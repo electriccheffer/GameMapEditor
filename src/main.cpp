@@ -29,12 +29,8 @@ int main(int argc, char** argv){
 	EditorModel editorModel = {editorTextList}; 
 
 
-	std::string descriptionTitle = "Description Box Window"; 
-	Position descriptionPosition = {}; 
-	TextObject descriptionTextObject = {descriptionTitle,descriptionPosition}; 
-	std::vector<TextObject> descriptionTextList = {};
-	descriptionTextList.push_back(descriptionTextObject);
-	DescriptionModel descriptionModel = {descriptionTextList}; 
+	DescriptionModelFactory descriptionFactory = {}; 	
+	DescriptionModel descriptionModel = descriptionFactory.getModel(); 
 	
 	OptionsModelFactory optionsFactory = {}; 
 	OptionsModel optionsModel = optionsFactory.getModel(); 	
