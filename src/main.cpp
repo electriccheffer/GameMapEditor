@@ -8,6 +8,7 @@
 #include "../include/NCursesModel.hpp"
 #include "../include/Position.hpp"
 #include "../include/TextObject.hpp"
+#include "../include/Factories.hpp"
 #include <vector>
 
 int main(int argc, char** argv){
@@ -34,33 +35,9 @@ int main(int argc, char** argv){
 	std::vector<TextObject> descriptionTextList = {};
 	descriptionTextList.push_back(descriptionTextObject);
 	DescriptionModel descriptionModel = {descriptionTextList}; 
-
-	std::string textTitle = "Options Box Window"; 
-	std::string saveText = "SAVE"; 
-	std::string loadText = "LOAD";
-	std::string renderText = "RENDER";
-	std::string quitText = "QUIT";
 	
-	Position titlePosition = {0,0};
-	Position savePosition = {1,1};
-	Position loadPosition = {2,1};
-	Position renderPosition = {3,1};
-	Position quitPosition = {4,1};
-
-	TextObject titleObject = {textTitle,titlePosition}; 
-	TextObject saveObject = {saveText,savePosition};
-	TextObject loadObject = {loadText,loadPosition};
-	TextObject renderObject = {renderText,renderPosition}; 
-	TextObject quitObject = {quitText,quitPosition}; 
-	
-	std::vector<TextObject> textObjectList = {}; 
-	textObjectList.push_back(titleObject);
-	textObjectList.push_back(saveObject);
-	textObjectList.push_back(loadObject);
-	textObjectList.push_back(renderObject);
-	textObjectList.push_back(quitObject);
-	
-        OptionsModel optionsModel = {textObjectList}; 	
+	OptionsModelFactory optionsFactory = {}; 
+	OptionsModel optionsModel = optionsFactory.getModel(); 	
 	
 	EditorView editorView(&editorModel); 
 	DescriptionView descriptionView(&descriptionModel); 
