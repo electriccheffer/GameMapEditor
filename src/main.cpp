@@ -20,11 +20,20 @@ int main(int argc, char** argv){
 	int typedCharacter; 
 	refresh(); 
 	
-	EditorModel editorModel = {}; 
+	std::string editorTitle = "Editor Box Window"; 
+	Position editorPosition = {}; 
+	TextObject editorTextObject = {editorTitle,editorPosition}; 
+	std::vector<TextObject> editorTextList = {};
+	editorTextList.push_back(editorTextObject);
+	EditorModel editorModel = {editorTextList}; 
 
 
-
-	DescriptionModel descriptionModel = {}; 
+	std::string descriptionTitle = "Description Box Window"; 
+	Position descriptionPosition = {}; 
+	TextObject descriptionTextObject = {descriptionTitle,descriptionPosition}; 
+	std::vector<TextObject> descriptionTextList = {};
+	descriptionTextList.push_back(descriptionTextObject);
+	DescriptionModel descriptionModel = {descriptionTextList}; 
 
 	std::string textTitle = "Options Box Window"; 
 	std::string saveText = "SAVE"; 

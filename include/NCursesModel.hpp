@@ -34,6 +34,10 @@ class EditorModel : public NCursesModel{
 	
 	public: 
 		EditorModel();  
+		EditorModel(std::vector<TextObject>& text);
+		std::vector<TextObject>& getText();
+	protected: 
+		std::vector<TextObject> text;
 };
 
 class OptionsModel : public NCursesModel{
@@ -44,11 +48,14 @@ class OptionsModel : public NCursesModel{
 		std::vector<TextObject>& getText(); 
  	protected: 
 		std::vector<TextObject> text; 
-
 };
 
 class DescriptionModel : public NCursesModel{
 	public: 
 	       	DescriptionModel(); 	
+		DescriptionModel(std::vector<TextObject>& text);	
+		std::vector<TextObject>& getText();
+	protected: 
+		std::vector<TextObject> text; 
 };
 #endif 

@@ -27,7 +27,6 @@ void NCursesView::updateModel(NCursesModel& model){
 }
 
 
-// abstract method that does rendering
 
 OptionsView::OptionsView(OptionsModel* model):NCursesView(model){
 
@@ -63,11 +62,22 @@ DescriptionView::DescriptionView(DescriptionModel* model):NCursesView(model){
 
 void DescriptionView::renderModel(NCursesModel& model){
 	auto castModel = dynamic_cast<DescriptionModel*>(&model); 
-	box(this->window,0,0); 
-	mvwprintw(this->window,0,0,"%s",castModel->getWindowDescription().c_str());
+	box(this->window,0, 0); 
+	std::vector<TextObject> textList = castModel->getText(); 
+	for(auto textObject : textList ){
+		
+		std::string text = textObject.getText();
+		Position textPosition = textObject.getPosition(); 
+				mvwprintw(this->window,textPosition.getX() ,
+				textPosition.getY() 
+				,"%s",text.c_str());
+
+
+	}
 	wmove(this->window,castModel->getCursorXPosition(),
-			    castModel->getCursorYPosition()); 
+		castModel->getCursorYPosition());
 	wrefresh(this->window);
+	 
 }
 
 EditorView::EditorView(EditorModel* model):NCursesView(model){
@@ -81,9 +91,20 @@ EditorView::EditorView(EditorModel* model):NCursesView(model){
 void EditorView::renderModel(NCursesModel& model){
 
 	auto castModel = dynamic_cast<EditorModel*>(&model);
-	box(this->window,0,0); 
-	mvwprintw(this->window,0,0,"%s",castModel->getWindowDescription().c_str());
+	box(this->window,0, 0); 
+	std::vector<TextObject> textList = castModel->getText(); 
+	for(auto textObject : textList ){
+		
+		std::string text = textObject.getText();
+		Position textPosition = textObject.getPosition(); 
+				mvwprintw(this->window,textPosition.getX() ,
+				textPosition.getY() 
+				,"%s",text.c_str());
+
+
+	}
 	wmove(this->window,castModel->getCursorXPosition(),
-			    castModel->getCursorYPosition()); 
+		castModel->getCursorYPosition());
 	wrefresh(this->window);
+	 
 }

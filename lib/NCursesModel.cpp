@@ -75,6 +75,23 @@ EditorModel::EditorModel(){
 	this->cursorYPosition = 1;
 }
 
+EditorModel::EditorModel(std::vector<TextObject>& text){
+
+	this->windowWidth = COLS/2; 
+	this->windowHeight = LINES / 2; 
+	this->description = "Map Editor Box Window";
+	this->cursorXStartPosition = 0; 
+	this->cursorYStartPosition = 0; 
+	this->cursorXPosition = 1; 
+	this->cursorYPosition = 1;
+	this->text = text; 
+}
+
+std::vector<TextObject>& EditorModel::getText(){
+	
+	return this->text; 
+}
+
 OptionsModel::OptionsModel(){
 
 	this->windowWidth = COLS/2; 
@@ -113,4 +130,23 @@ DescriptionModel::DescriptionModel(){
 	this->cursorYStartPosition = LINES/2; 
 	this->cursorXPosition = 1; 
 	this->cursorYPosition = 1;
+}
+
+DescriptionModel::DescriptionModel(std::vector<TextObject>& textList) {
+
+
+	this->windowWidth = COLS; 
+	this->windowHeight = LINES/2 ; 
+	this->description = "Description Box Window";
+	this->cursorXStartPosition = 0 ; 
+	this->cursorYStartPosition = LINES/2; 
+	this->cursorXPosition = 1; 
+	this->cursorYPosition = 1;
+	this->text = textList; 
+}
+
+std::vector<TextObject>& DescriptionModel::getText(){
+
+	return this->text; 
+
 }
