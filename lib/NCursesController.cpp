@@ -10,6 +10,7 @@ NCursesController::NCursesController(NCursesModel& model, NCursesView& view)
 	:model(model),view(view){
 	this->view = view; 
 	this->model = model;	
+	this->view.updateModel(model); 
 }
 
 void NCursesController::updateView(){
