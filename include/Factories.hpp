@@ -23,5 +23,13 @@ class DescriptionModelFactory{
 		DescriptionModel model; 
 };
 
-class EditorModelFactory{};
+class EditorModelFactory{
+
+	public:
+		EditorModelFactory(); 
+		EditorModel& getModel(); 
+	protected:
+		void setStaticText(); 
+		EditorModel model; 
+};
 #endif

@@ -61,3 +61,23 @@ void DescriptionModelFactory::setStaticText(){
 	this->model = {descriptionTextList}; 
 }
 
+EditorModelFactory::EditorModelFactory(){
+
+	this->setStaticText(); 
+
+}
+
+EditorModel& EditorModelFactory::getModel(){
+
+	return this->model; 
+}
+
+void EditorModelFactory::setStaticText(){
+
+	std::string editorTitle = "Editor Box Window"; 
+	Position editorPosition = {}; 
+	TextObject editorTextObject = {editorTitle,editorPosition}; 
+	std::vector<TextObject> editorTextList = {};
+	editorTextList.push_back(editorTextObject);
+	this->model = {editorTextList}; 
+}

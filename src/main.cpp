@@ -21,13 +21,8 @@ int main(int argc, char** argv){
 	int typedCharacter; 
 	refresh(); 
 	
-	std::string editorTitle = "Editor Box Window"; 
-	Position editorPosition = {}; 
-	TextObject editorTextObject = {editorTitle,editorPosition}; 
-	std::vector<TextObject> editorTextList = {};
-	editorTextList.push_back(editorTextObject);
-	EditorModel editorModel = {editorTextList}; 
-
+	EditorModelFactory editorFactory = {}; 	
+	EditorModel editorModel = editorFactory.getModel(); 
 
 	DescriptionModelFactory descriptionFactory = {}; 	
 	DescriptionModel descriptionModel = descriptionFactory.getModel(); 
