@@ -2,6 +2,8 @@ buildDirectory = ./build
 
 libraryDirectory = ./lib
 
+ObjectLibrary=$(libraryDirectory)/ObjectEditor
+
 testDirectory = ./test
 
 srcDir =./src
