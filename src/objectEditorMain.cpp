@@ -33,7 +33,12 @@ int main(int argc, char** argv){
 	ObjectOptionsModelFactory optionsModelFactory = {}; 
 	ObjectEditorOptionsModel optionsModel = optionsModelFactory.getModel(); 
 	ObjectEditorOptionsView optionsView(&optionsModel); 
-		
+	
+
+	ObjectPaletteFactory paletteFactory = {}; 
+	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
+	ObjectEditorPaletteView paletteView(&paletteModel); 
+
 	while(((typedCharacter = getch()) != KEY_F(1))){
 	}
 	endwin();

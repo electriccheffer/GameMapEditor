@@ -38,4 +38,14 @@ class ObjectEditorOptionsModel : public ObjectEditorModel{
 
 };
 
+class ObjectEditorPaletteModel : public ObjectEditorModel{
+
+	public: 
+		ObjectEditorPaletteModel(); 
+		ObjectEditorPaletteModel(std::vector<TextObject>& text); 
+		std::vector<TextObject>& getText();
+			
+	protected: 
+		std::vector<TextObject> text; 
+}; 
 #endif

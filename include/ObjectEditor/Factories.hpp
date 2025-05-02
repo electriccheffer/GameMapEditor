@@ -19,7 +19,6 @@ class ObjectRenderModelFactory : public ObjectFactory{
 		ObjectEditorRenderModel model;		
 }; 
 
-
 class ObjectOptionsModelFactory : public ObjectFactory{
 
 	public:
@@ -28,7 +27,16 @@ class ObjectOptionsModelFactory : public ObjectFactory{
 	protected: 
 		void setStaticText(); 
 		ObjectEditorOptionsModel model; 
-
 }; 
 
+class ObjectPaletteFactory : public ObjectFactory{
+
+
+	public: 
+		ObjectPaletteFactory(); 
+		ObjectEditorPaletteModel& getModel(); 
+	protected: 
+		void setStaticText();
+		ObjectEditorPaletteModel model; 
+}; 
 #endif

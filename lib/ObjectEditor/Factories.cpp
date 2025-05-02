@@ -70,3 +70,24 @@ void ObjectOptionsModelFactory::setStaticText(){
 	textObjectList.push_back(quit);
 	this->model = {textObjectList};
 }
+
+
+ObjectPaletteFactory::ObjectPaletteFactory(){
+
+	this->setStaticText(); 
+
+}
+
+ObjectEditorPaletteModel& ObjectPaletteFactory::getModel(){
+
+	return this->model; 
+}
+
+void ObjectPaletteFactory::setStaticText(){
+	std::string windowTitle = "Palette"; 
+	Position position = {}; 
+	TextObject title = {windowTitle,position};	
+	std::vector<TextObject> textList = {}; 
+	textList.push_back(title);
+	this->model = {textList}; 
+}
