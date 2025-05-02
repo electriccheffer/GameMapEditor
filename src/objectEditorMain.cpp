@@ -29,7 +29,7 @@ int main(int argc, char** argv){
 	ObjectRenderModelFactory factory = {}; 
 	ObjectEditorRenderModel renderModel = factory.getModel(); 
 	ObjectEditorRenderView renderView(&renderModel); 
-	
+		
 	// make view 
 	// make controller
 	// make context 	
