@@ -1,12 +1,12 @@
 #ifndef OBJECTMODEL_HPP
 #define OBJECTMODEL_HPP
-#include <ncurses>
+#include <ncurses.h>
 #include <string>
 #include <vector>
 #include "../NCursesModel.hpp"
 
 
-class ObjectEditorModel : NCursesModel{
+class ObjectEditorModel : public NCursesModel{
 
 	
 		
@@ -14,7 +14,7 @@ class ObjectEditorModel : NCursesModel{
 
 
 
-class ObjectEditorRenderModel : ObjectEditorModel{
+class ObjectEditorRenderModel : public ObjectEditorModel{
 
 	public: 
 		ObjectEditorRenderModel();
@@ -22,6 +22,6 @@ class ObjectEditorRenderModel : ObjectEditorModel{
 		std::vector<TextObject>& getText(); 
 	protected: 	
 		std::vector<TextObject> text; 
-}
+}; 
 
 #endif

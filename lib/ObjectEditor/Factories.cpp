@@ -1,9 +1,9 @@
 #include <string>
 #include <vector> 
-#include "../NCursesModel.hpp"
-#include "../Factories.hpp"
-#include "../TextObject.hpp"
-#include "../Position.hpp"
+#include "../../include/NCursesModel.hpp"
+#include "../../include/ObjectEditor/Factories.hpp"
+#include "../../include/TextObject.hpp"
+#include "../../include/Position.hpp"
 
 ObjectRenderModelFactory::ObjectRenderModelFactory(){
 
@@ -17,7 +17,7 @@ ObjectEditorRenderModel& ObjectRenderModelFactory::getModel(){
 
 }
 
-void ObjectRenderModelFactory;:setStaticText(){
+void ObjectRenderModelFactory::setStaticText(){
 	
 	std::string windowTitle = "Object Render";
 	Position position = {}; 

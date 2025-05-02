@@ -1,6 +1,6 @@
 #ifndef OBJECTFACTORIES_HPP
 #define OBJECTFACTORIES_HPP
-#include "./OptionsModel.hpp"
+#include "./ObjectModel.hpp"
 #include "../NCursesModel.hpp"
 #include "../Factories.hpp"
 #include "../TextObject.hpp"
@@ -17,6 +17,6 @@ class ObjectRenderModelFactory : public ObjectFactory{
 	protected: 
 		void setStaticText(); 
 		ObjectEditorRenderModel model;		
-} 
+}; 
 
 #endif

@@ -1,11 +1,11 @@
-#include <ncurses>
+#include <ncurses.h>
 #include <string>
 #include <vector>
-#include "../Position.hpp"
-#include "../TextObject.hpp"
-#include "./ObjectEditorModel.hpp"
+#include "../../include/Position.hpp"
+#include "../../include/TextObject.hpp"
+#include "../../include/ObjectEditor/ObjectModel.hpp"
 
-ObjectEditorRenderModel::ObjectEditorModel(){
+ObjectEditorRenderModel::ObjectEditorRenderModel(){
 
 	this->windowWidth = COLS/2; 
 	this->windowHeight = LINES;
@@ -18,7 +18,7 @@ ObjectEditorRenderModel::ObjectEditorModel(){
 }
 
 
-ObjectEditorRenderModel::ObjectEditorRenderModel(std::vector<TextObject> text){
+ObjectEditorRenderModel::ObjectEditorRenderModel(std::vector<TextObject>& text){
 	
 	this->windowWidth = COLS/2; 
 	this->windowHeight = LINES;
