@@ -19,7 +19,8 @@ libraryFiles = $(libraryDirectory)/NCursesModel.cpp $(libraryDirectory)/NCursesV
 		$(libraryDirectory)/Factories.cpp
 
 objectEditorLibraryFiles =$(ObjectLibrary)/Factories.cpp $(ObjectLibrary)/ObjectModel.cpp\
-			  $(ObjectLibrary)/ObjectView.cpp $(ObjectLibrary)/ObjectController.cpp  
+			  $(ObjectLibrary)/ObjectView.cpp $(ObjectLibrary)/ObjectController.cpp
+			  
 
 objectEditorBuildFiles = $(buildDirectory)/ObjectFactories.o $(buildDirectory)/ObjectModel.o\
 			 $(buildDirectory)/ObjectView.o $(buildDirectory)/ObjectController.o

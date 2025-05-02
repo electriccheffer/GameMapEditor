@@ -9,6 +9,10 @@
 #include "../include/Position.hpp"
 #include "../include/TextObject.hpp"
 #include "../include/Factories.hpp"
+#include "../include/ObjectEditor/ObjectModel.hpp"
+#include "../include/ObjectEditor/Factories.hpp"
+#include "../include/ObjectEditor/ObjectView.hpp"
+
 #include <vector>
 
 int main(int argc, char** argv){
@@ -22,6 +26,10 @@ int main(int argc, char** argv){
 	refresh(); 
 
 	// make model 
+	ObjectRenderModelFactory factory = {}; 
+	ObjectEditorRenderModel renderModel = factory.getModel(); 
+	ObjectEditorRenderView renderView(&renderModel); 
+	
 	// make view 
 	// make controller
 	// make context 	
