@@ -24,4 +24,18 @@ class ObjectEditorRenderModel : public ObjectEditorModel{
 		std::vector<TextObject> text; 
 }; 
 
+class ObjectEditorOptionsModel : public ObjectEditorModel{
+
+	public: 
+		ObjectEditorOptionsModel(); 
+		ObjectEditorOptionsModel(std::vector<TextObject>& text);
+	        std::vector<TextObject>& getText(); 
+
+	protected: 
+		std::vector<TextObject> text; 	
+
+
+
+};
+
 #endif

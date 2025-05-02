@@ -15,4 +15,13 @@ class ObjectEditorRenderView : public NCursesView{
 
 };
 
+
+class ObjectEditorOptionsView : public NCursesView{
+
+	public:
+		ObjectEditorOptionsView(ObjectEditorOptionsModel* model);
+	protected: 
+		void renderModel(NCursesModel& model) override; 	
+
+}; 
 #endif

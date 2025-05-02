@@ -24,16 +24,16 @@ int main(int argc, char** argv){
 	keypad(stdscr,true); 
 	int typedCharacter; 
 	refresh(); 
-
-	// make model 
+	
+	// Make render window
 	ObjectRenderModelFactory factory = {}; 
 	ObjectEditorRenderModel renderModel = factory.getModel(); 
 	ObjectEditorRenderView renderView(&renderModel); 
-		
-	// make view 
-	// make controller
-	// make context 	
 	
+	ObjectOptionsModelFactory optionsModelFactory = {}; 
+	ObjectEditorOptionsModel optionsModel = optionsModelFactory.getModel(); 
+	ObjectEditorOptionsView optionsView(&optionsModel); 
+		
 	while(((typedCharacter = getch()) != KEY_F(1))){
 	}
 	endwin();

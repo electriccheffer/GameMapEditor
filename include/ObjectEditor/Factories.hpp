@@ -19,4 +19,16 @@ class ObjectRenderModelFactory : public ObjectFactory{
 		ObjectEditorRenderModel model;		
 }; 
 
+
+class ObjectOptionsModelFactory : public ObjectFactory{
+
+	public:
+		ObjectOptionsModelFactory();
+		ObjectEditorOptionsModel& getModel(); 
+	protected: 
+		void setStaticText(); 
+		ObjectEditorOptionsModel model; 
+
+}; 
+
 #endif
