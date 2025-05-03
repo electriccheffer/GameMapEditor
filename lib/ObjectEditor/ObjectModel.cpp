@@ -80,7 +80,7 @@ ObjectEditorPaletteModel::ObjectEditorPaletteModel(){
 ObjectEditorPaletteModel::ObjectEditorPaletteModel(std::vector<TextObject>& text){
 
 	this->windowWidth = COLS/2; 
-	this->windowHeight = 15;
+	this->windowHeight = 14;
 	this->description = "Palette Model"; 
 	this->cursorXStartPosition = this->windowWidth; 
 	this->cursorYStartPosition = 7; 
@@ -97,10 +97,10 @@ std::vector<TextObject>& ObjectEditorPaletteModel::getText(){
 ObjectEditorDescriptionModel::ObjectEditorDescriptionModel(){
 
 	this->windowWidth = COLS/2; 
-	this->windowHeight = 15;
+	this->windowHeight = 16;
 	this->description = "Palette Model"; 
 	this->cursorXStartPosition = LINES/2; 
-	this->cursorYStartPosition = 20; 
+	this->cursorYStartPosition = 19; 
 	this->cursorXPosition = 1; 
 	this->cursorYPosition = 1;
 
@@ -110,10 +110,10 @@ ObjectEditorDescriptionModel::ObjectEditorDescriptionModel(){
 ObjectEditorDescriptionModel::ObjectEditorDescriptionModel(std::vector<TextObject>& text){
 
 	this->windowWidth = COLS/2; 
-	this->windowHeight = 15;
+	this->windowHeight = 16;
 	this->description = "Palette Model"; 
 	this->cursorXStartPosition = COLS/2; 
-	this->cursorYStartPosition = 20; 
+	this->cursorYStartPosition = 21; 
 	this->cursorXPosition = 1; 
 	this->cursorYPosition = 6;
 	this->text = text;

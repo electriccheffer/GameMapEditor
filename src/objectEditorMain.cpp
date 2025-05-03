@@ -31,11 +31,6 @@ int main(int argc, char** argv){
 	ObjectEditorRenderView renderView(&renderModel); 
 	
 	
-	ObjectPaletteFactory paletteFactory = {}; 
-	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
-	ObjectEditorPaletteView paletteView(&paletteModel); 
-
-
 	ObjectDescriptionModelFactory descriptionFactory = {}; 
 	ObjectEditorDescriptionModel descriptionModel = descriptionFactory.getModel(); 
 	ObjectEditorDescriptionView descriptionView(&descriptionModel);
@@ -43,10 +38,15 @@ int main(int argc, char** argv){
 	ObjectOptionsModelFactory optionsModelFactory = {}; 
 	ObjectEditorOptionsModel optionsModel = optionsModelFactory.getModel(); 
 	ObjectEditorOptionsView optionsView(&optionsModel); 
-	
 	ObjectEditorOptionsController optionsController = {optionsModel,optionsView}; 
+
+	ObjectPaletteFactory paletteFactory = {}; 
+	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
+	ObjectEditorPaletteView paletteView(&paletteModel); 
+	ObjectEditorPaletteController paletteController = {paletteModel,paletteView}; 
+
 	while(((typedCharacter = getch()) != KEY_F(1))){
-		optionsController.takeInput(typedCharacter);
+		paletteController.takeInput(typedCharacter); 
 	}
 	endwin();
 	return 0; 
