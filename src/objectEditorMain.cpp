@@ -12,7 +12,7 @@
 #include "../include/ObjectEditor/ObjectModel.hpp"
 #include "../include/ObjectEditor/Factories.hpp"
 #include "../include/ObjectEditor/ObjectView.hpp"
-
+#include "../include/ObjectEditor/ObjectController.hpp"
 #include <vector>
 
 int main(int argc, char** argv){
@@ -30,11 +30,7 @@ int main(int argc, char** argv){
 	ObjectEditorRenderModel renderModel = factory.getModel(); 
 	ObjectEditorRenderView renderView(&renderModel); 
 	
-	ObjectOptionsModelFactory optionsModelFactory = {}; 
-	ObjectEditorOptionsModel optionsModel = optionsModelFactory.getModel(); 
-	ObjectEditorOptionsView optionsView(&optionsModel); 
 	
-
 	ObjectPaletteFactory paletteFactory = {}; 
 	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
 	ObjectEditorPaletteView paletteView(&paletteModel); 
@@ -43,7 +39,14 @@ int main(int argc, char** argv){
 	ObjectDescriptionModelFactory descriptionFactory = {}; 
 	ObjectEditorDescriptionModel descriptionModel = descriptionFactory.getModel(); 
 	ObjectEditorDescriptionView descriptionView(&descriptionModel);
+	
+	ObjectOptionsModelFactory optionsModelFactory = {}; 
+	ObjectEditorOptionsModel optionsModel = optionsModelFactory.getModel(); 
+	ObjectEditorOptionsView optionsView(&optionsModel); 
+	
+	ObjectEditorOptionsController optionsController = {optionsModel,optionsView}; 
 	while(((typedCharacter = getch()) != KEY_F(1))){
+		optionsController.takeInput(typedCharacter);
 	}
 	endwin();
 	return 0; 
