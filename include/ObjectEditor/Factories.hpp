@@ -39,4 +39,16 @@ class ObjectPaletteFactory : public ObjectFactory{
 		void setStaticText();
 		ObjectEditorPaletteModel model; 
 }; 
+
+class ObjectDescriptionModelFactory : public ObjectFactory{
+
+
+	public: 
+		ObjectDescriptionModelFactory(); 
+		ObjectEditorDescriptionModel& getModel(); 
+	protected: 
+		void setStaticText(); 
+		ObjectEditorDescriptionModel model; 
+
+};
 #endif

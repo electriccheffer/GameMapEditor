@@ -26,8 +26,6 @@ void NCursesView::updateModel(NCursesModel& model){
 
 }
 
-
-
 OptionsView::OptionsView(OptionsModel* model):NCursesView(model){
 
 	this->renderModel(*model); 

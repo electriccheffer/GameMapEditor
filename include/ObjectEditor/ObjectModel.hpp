@@ -48,4 +48,16 @@ class ObjectEditorPaletteModel : public ObjectEditorModel{
 	protected: 
 		std::vector<TextObject> text; 
 }; 
+
+class ObjectEditorDescriptionModel : public ObjectEditorModel{
+
+	public: 
+		ObjectEditorDescriptionModel(); 
+		ObjectEditorDescriptionModel(std::vector<TextObject>& text);
+		std::vector<TextObject>& getText(); 
+
+	protected: 
+		std::vector<TextObject> text; 
+
+}; 
 #endif

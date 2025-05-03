@@ -39,6 +39,10 @@ int main(int argc, char** argv){
 	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
 	ObjectEditorPaletteView paletteView(&paletteModel); 
 
+
+	ObjectDescriptionModelFactory descriptionFactory = {}; 
+	ObjectEditorDescriptionModel descriptionModel = descriptionFactory.getModel(); 
+	ObjectEditorDescriptionView descriptionView(&descriptionModel);
 	while(((typedCharacter = getch()) != KEY_F(1))){
 	}
 	endwin();

@@ -33,4 +33,13 @@ class ObjectEditorPaletteView : public NCursesView{
 		void renderModel(NCursesModel& model) override;
 
 }; 
+
+class ObjectEditorDescriptionView : public NCursesView{
+
+	public: 
+		ObjectEditorDescriptionView(ObjectEditorDescriptionModel* model);
+	protected:
+		void renderModel(NCursesModel& model) override; 
+
+}; 
 #endif

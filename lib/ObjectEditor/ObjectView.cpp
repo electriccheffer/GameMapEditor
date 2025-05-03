@@ -83,3 +83,31 @@ void ObjectEditorPaletteView::renderModel(NCursesModel& model){
 	wrefresh(this->window);
 	
 }
+
+ObjectEditorDescriptionView::ObjectEditorDescriptionView(ObjectEditorDescriptionModel* model): NCursesView(model){
+
+	this->renderModel(*model);
+	
+}
+
+void ObjectEditorDescriptionView::renderModel(NCursesModel& model){
+
+	auto castModel = dynamic_cast<ObjectEditorDescriptionModel*>(&model); 
+	box(this->window,0, 0); 
+	std::vector<TextObject> textList = castModel->getText(); 
+	for(auto textObject : textList ){
+		
+		std::string text = textObject.getText();
+		Position textPosition = textObject.getPosition(); 
+				mvwprintw(this->window,textPosition.getX() ,
+				textPosition.getY() 
+				,"%s",text.c_str());
+
+
+	}
+	wmove(this->window,castModel->getCursorXPosition(),
+		castModel->getCursorYPosition());
+	wrefresh(this->window);
+	
+
+}

@@ -94,4 +94,34 @@ std::vector<TextObject>& ObjectEditorPaletteModel::getText(){
 	return this->text;
 }
 
+ObjectEditorDescriptionModel::ObjectEditorDescriptionModel(){
 
+	this->windowWidth = COLS/2; 
+	this->windowHeight = 15;
+	this->description = "Palette Model"; 
+	this->cursorXStartPosition = LINES/2; 
+	this->cursorYStartPosition = 20; 
+	this->cursorXPosition = 1; 
+	this->cursorYPosition = 1;
+
+}
+
+
+ObjectEditorDescriptionModel::ObjectEditorDescriptionModel(std::vector<TextObject>& text){
+
+	this->windowWidth = COLS/2; 
+	this->windowHeight = 15;
+	this->description = "Palette Model"; 
+	this->cursorXStartPosition = COLS/2; 
+	this->cursorYStartPosition = 20; 
+	this->cursorXPosition = 1; 
+	this->cursorYPosition = 6;
+	this->text = text;
+
+}
+
+std::vector<TextObject>& ObjectEditorDescriptionModel::getText(){
+
+	return this->text; 
+
+}
