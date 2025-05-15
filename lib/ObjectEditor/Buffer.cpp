@@ -13,11 +13,14 @@ std::vector<int>& InputBuffer::getBuffer(){
 void InputBuffer::setBuffer(std::vector<int>& newBuffer){
 
 	this->rawBuffer = newBuffer; 
-
 }
 
 void InputBuffer::addCharacter(int newCharacter){
 
 	this->rawBuffer.push_back(newCharacter); 
+}
 
+void InputBuffer::addCharacter(unsigned int location, int newCharacter){
+
+	this->rawBuffer[location] = newCharacter; 
 }

@@ -45,3 +45,16 @@ TEST(InputBufferTest,AddCharacterTest){
 	std::vector<int> rawBuffer = buffer.getBuffer(); 
 	EXPECT_EQ(newCharacter,rawBuffer[0]);
 };
+
+
+TEST(InputBufferTest,AddCharacterAtLocationTest){
+
+	int newCharacter = 33; 
+	unsigned int location = 0; 
+	InputBuffer buffer = {}; 
+	buffer.addCharacter(22);
+        buffer.addCharacter(44);
+	buffer.addCharacter(location,newCharacter);
+	std::vector<int> rawBuffer = buffer.getBuffer();
+	EXPECT_EQ(newCharacter,rawBuffer[location]);	
+};
