@@ -23,7 +23,15 @@ void InputBuffer::addCharacter(int newCharacter){
 
 void InputBuffer::addCharacter(unsigned int location, int newCharacter){
 	if(location >= this->rawBuffer.size()){
-		throw InputBufferException("InputBufferError: index out of bounds");
+		throw InputBufferException(
+				"InputBufferError: index out of bounds for adding character"
+				);
 	}
 	this->rawBuffer[location] = newCharacter; 
+}
+
+void InputBuffer::removeCharacter(unsigned int location){
+
+	this->rawBuffer.erase(this->rawBuffer.begin() + location);
+
 }

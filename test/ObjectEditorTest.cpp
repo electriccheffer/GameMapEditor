@@ -69,3 +69,16 @@ TEST(InputBufferTest,AddCharacterAtInvalidLocation){
 	EXPECT_THROW(buffer.addCharacter(location,character),InputBufferException); 
 
 }; 
+
+
+TEST(InputBufferTest,RemoveCharacter){
+	unsigned int location = 1;
+	int character = 1; 
+	InputBuffer buffer = {}; 
+	buffer.addCharacter(0);
+	buffer.addCharacter(character);
+	buffer.removeCharacter(location);
+	std::vector<int> rawBuffer = buffer.getBuffer(); 
+	EXPECT_EQ(1,rawBuffer.size());
+	EXPECT_EQ(0,rawBuffer[0]);
+}

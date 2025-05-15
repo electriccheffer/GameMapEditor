@@ -9,7 +9,8 @@ class InputBuffer{
 		std::vector<int>& getBuffer(); 
 		void setBuffer(std::vector<int>& newBuffer); 
 		void addCharacter(int newCharacter);
-		void addCharacter(unsigned int location,int newCharacter); 
+		void addCharacter(unsigned int location,int newCharacter);
+	        void removeCharacter(unsigned int location); 	
 	protected: 
 		std::vector<int> rawBuffer; 
 
