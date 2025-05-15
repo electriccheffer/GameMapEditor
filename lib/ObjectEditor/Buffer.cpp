@@ -31,7 +31,10 @@ void InputBuffer::addCharacter(unsigned int location, int newCharacter){
 }
 
 void InputBuffer::removeCharacter(unsigned int location){
-
+	if(location >= this->rawBuffer.size()){
+		throw InputBufferException(
+			"InputBufferError: index out of bounds for removing character");
+	}
 	this->rawBuffer.erase(this->rawBuffer.begin() + location);
 
 }

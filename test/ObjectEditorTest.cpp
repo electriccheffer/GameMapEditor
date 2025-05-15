@@ -81,4 +81,14 @@ TEST(InputBufferTest,RemoveCharacter){
 	std::vector<int> rawBuffer = buffer.getBuffer(); 
 	EXPECT_EQ(1,rawBuffer.size());
 	EXPECT_EQ(0,rawBuffer[0]);
-}
+}; 
+
+TEST(InputBufferTest,RemoveCharacterErrorCase){
+
+	unsigned int location = 2;
+	int character = 1; 
+	InputBuffer buffer = {}; 
+	buffer.addCharacter(0);
+	buffer.addCharacter(character);
+	EXPECT_THROW(buffer.removeCharacter(location),InputBufferException);
+};
