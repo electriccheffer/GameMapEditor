@@ -79,8 +79,23 @@ void ObjectEditorPaletteController::takeInput(int character){
 	
 	}
 	this->view.updateModel(this->model); 	
+}
 
 
-	
+ObjectEditorDescriptionController::ObjectEditorDescriptionController(
+					NCursesModel& model,NCursesView& view)
+				:	NCursesController(dynamic_cast<NCursesModel&>(model),
+				    		 dynamic_cast<NCursesView&>(view)){
+				
+				
+}
+
+void ObjectEditorDescriptionController::takeInput(int character){
+
+
+	// if printable print it 
+	// if enter skip to next field 
+	// else ignore
+
 
 }

@@ -35,6 +35,11 @@ test :  $(buildObjectFiles)
 	$(testDirectory)/test
 	make clean
 
+character_test: $(testDirectory)/ObjectEditorTest.cpp
+	g++ $(testDirectory)/ObjectEditorTest.cpp -o $(testDirectory)/test $(gtestLink)
+	$(testDirectory)/test
+	make clean
+
 build: $(buildObjectFiles) 
 	g++ -c $(srcDir)/main.cpp  -o $(buildDirectory)/main.o
 	g++ $(buildObjectFiles) $(buildDirectory)/main.o -o $(buildDirectory)/main $(ncurseLink)

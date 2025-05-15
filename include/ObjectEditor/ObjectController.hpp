@@ -22,4 +22,12 @@ class ObjectEditorPaletteController : public NCursesController{
 						NCursesModel& model, NCursesView& view);
 			void takeInput(int character)override; 
 };
+
+class ObjectEditorDescriptionController : public NCursesController{
+
+		public: 
+			ObjectEditorDescriptionController(
+					NCursesModel& model, NCursesView& view);
+			void takeInput(int character)override; 
+};
 #endif
