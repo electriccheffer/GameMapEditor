@@ -1,5 +1,6 @@
 #include "../../include/ObjectEditor/Buffer.hpp"
 #include <vector>
+#include "../../lib/ObjectEditor/Errors.cpp"
 
 InputBuffer::InputBuffer(){}
 
@@ -21,6 +22,8 @@ void InputBuffer::addCharacter(int newCharacter){
 }
 
 void InputBuffer::addCharacter(unsigned int location, int newCharacter){
-
+	if(location >= this->rawBuffer.size()){
+		throw InputBufferException("InputBufferError: index out of bounds");
+	}
 	this->rawBuffer[location] = newCharacter; 
 }

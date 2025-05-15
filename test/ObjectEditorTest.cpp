@@ -2,6 +2,7 @@
 #include <ncurses.h>
 #include <vector>
 #include "../include/ObjectEditor/Buffer.hpp"
+#include "../lib/ObjectEditor/Errors.cpp"
 
 TEST(TrivialTest,AlwaysPasses){
 
@@ -58,3 +59,13 @@ TEST(InputBufferTest,AddCharacterAtLocationTest){
 	std::vector<int> rawBuffer = buffer.getBuffer();
 	EXPECT_EQ(newCharacter,rawBuffer[location]);	
 };
+
+TEST(InputBufferTest,AddCharacterAtInvalidLocation){
+
+	unsigned int location = 1;
+        int character = 22; 	
+	InputBuffer buffer = {}; 
+	buffer.addCharacter(33); 
+	EXPECT_THROW(buffer.addCharacter(location,character),InputBufferException); 
+
+}; 

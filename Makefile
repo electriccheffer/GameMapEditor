@@ -20,11 +20,11 @@ libraryFiles = $(libraryDirectory)/NCursesModel.cpp $(libraryDirectory)/NCursesV
 
 objectEditorLibraryFiles =$(ObjectLibrary)/Factories.cpp $(ObjectLibrary)/ObjectModel.cpp\
 			  $(ObjectLibrary)/ObjectView.cpp $(ObjectLibrary)/ObjectController.cpp\
-			  $(ObjectLibrary)/Buffer.cpp 
+			  $(ObjectLibrary)/Buffer.cpp $(ObjectLibrary)/Errors.cpp 
 
 objectEditorBuildFiles = $(buildDirectory)/ObjectFactories.o $(buildDirectory)/ObjectModel.o\
 			 $(buildDirectory)/ObjectView.o $(buildDirectory)/ObjectController.o\
-			 $(buildDirectory)/Buffer.o
+			 $(buildDirectory)/Buffer.o $(buildDirectory)/Errors.o
 
 gtestLink = -lgtest -lgtest_main -lncurses
 
@@ -59,7 +59,7 @@ $(objectEditorBuildFiles): $(objectEditorLibraryFiles)
 	g++ -c $(ObjectLibrary)/ObjectView.cpp -o $(buildDirectory)/ObjectView.o
 	g++ -c $(ObjectLibrary)/ObjectController.cpp -o $(buildDirectory)/ObjectController.o
 	g++ -c $(ObjectLibrary)/Buffer.cpp -o $(buildDirectory)/Buffer.o
-
+	g++ -c $(ObjectLibrary)/Errors.cpp -o $(buildDirectory)/Errors.o
 clean: 
 	rm -f $(buildObjectFiles)
 	rm -f build/main.o
