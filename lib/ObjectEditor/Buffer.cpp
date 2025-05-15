@@ -15,3 +15,9 @@ void InputBuffer::setBuffer(std::vector<int>& newBuffer){
 	this->rawBuffer = newBuffer; 
 
 }
+
+void InputBuffer::addCharacter(int newCharacter){
+
+	this->rawBuffer.push_back(newCharacter); 
+
+}

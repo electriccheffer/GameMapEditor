@@ -36,3 +36,12 @@ TEST(InputBufferTest,SetInputBufferTest){
 	std::vector<int> rawBuffer = buffer.getBuffer(); 
 	EXPECT_EQ(number,rawBuffer[0]);
 };
+
+TEST(InputBufferTest,AddCharacterTest){
+
+	int newCharacter = 33; 
+	InputBuffer buffer = {}; 
+	buffer.addCharacter(newCharacter);
+	std::vector<int> rawBuffer = buffer.getBuffer(); 
+	EXPECT_EQ(newCharacter,rawBuffer[0]);
+};
