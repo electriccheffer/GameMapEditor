@@ -4,7 +4,8 @@
 class InputBuffer{
 
 	public:
-		InputBuffer(); 
+		InputBuffer();
+	        InputBuffer(std::vector<int>& rawBuffer); 
 		std::vector<int>& getBuffer(); 
 
 	protected: 

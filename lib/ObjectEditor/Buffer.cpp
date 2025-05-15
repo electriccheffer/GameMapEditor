@@ -3,6 +3,8 @@
 
 InputBuffer::InputBuffer(){}
 
+InputBuffer::InputBuffer(std::vector<int>& rawBuffer):rawBuffer(rawBuffer){}
+
 std::vector<int>& InputBuffer::getBuffer(){
 	
 	return this->rawBuffer; 

@@ -15,3 +15,13 @@ TEST(InputBufferTest,ContructorTest){
 	std::vector<int> rawBuffer = buffer.getBuffer(); 
 	EXPECT_EQ(0,rawBuffer.size());
 };
+
+TEST(InputBufferTest,NonNullConstructorTest){
+
+	std::vector<int> integerBuffer = {}; 
+	int number = 22; 
+	integerBuffer.push_back(number);
+	InputBuffer buffer = {integerBuffer}; 
+	std::vector<int> rawBuffer = buffer.getBuffer(); 
+	EXPECT_EQ(number,rawBuffer[0]);
+}; 
