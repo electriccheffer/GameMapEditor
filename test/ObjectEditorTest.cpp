@@ -24,4 +24,15 @@ TEST(InputBufferTest,NonNullConstructorTest){
 	InputBuffer buffer = {integerBuffer}; 
 	std::vector<int> rawBuffer = buffer.getBuffer(); 
 	EXPECT_EQ(number,rawBuffer[0]);
-}; 
+};
+
+TEST(InputBufferTest,SetInputBufferTest){
+
+	std::vector<int> integerBuffer = {}; 
+	int number = 22; 
+	integerBuffer.push_back(number);
+	InputBuffer buffer = {}; 
+	buffer.setBuffer(integerBuffer); 
+	std::vector<int> rawBuffer = buffer.getBuffer(); 
+	EXPECT_EQ(number,rawBuffer[0]);
+};

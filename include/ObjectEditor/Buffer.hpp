@@ -7,6 +7,7 @@ class InputBuffer{
 		InputBuffer();
 	        InputBuffer(std::vector<int>& rawBuffer); 
 		std::vector<int>& getBuffer(); 
+		void setBuffer(std::vector<int>& newBuffer); 
 
 	protected: 
 		std::vector<int> rawBuffer; 
