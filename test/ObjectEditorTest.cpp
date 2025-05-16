@@ -3,6 +3,7 @@
 #include <vector>
 #include "../include/ObjectEditor/Buffer.hpp"
 #include "../lib/ObjectEditor/Errors.cpp"
+#include "./TestSubclasses.hpp"
 
 TEST(TrivialTest,AlwaysPasses){
 
@@ -92,3 +93,18 @@ TEST(InputBufferTest,RemoveCharacterErrorCase){
 	buffer.addCharacter(character);
 	EXPECT_THROW(buffer.removeCharacter(location),InputBufferException);
 };
+
+TEST(ObjectEditorDescriptionModelTest,AddCharacterInputBuffer){
+
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel model = factory.getModel(); 
+	std::vector<TextObject> text = model.getText();
+	TestDescriptionModel testModel = {text};
+       	int character = 33; 	
+	testModel.addText(character);
+	InputBuffer buffer = testModel.getBuffer(); 
+	std::vector<int> rawBuffer = buffer.getBuffer(); 
+        EXPECT_EQ(character,rawBuffer[0]);	
+}
+
+

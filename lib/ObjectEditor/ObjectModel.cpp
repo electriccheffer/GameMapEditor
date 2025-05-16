@@ -4,6 +4,7 @@
 #include "../../include/Position.hpp"
 #include "../../include/TextObject.hpp"
 #include "../../include/ObjectEditor/ObjectModel.hpp"
+#include "../../include/ObjectEditor/Buffer.hpp"
 
 ObjectEditorRenderModel::ObjectEditorRenderModel(){
 
@@ -124,4 +125,9 @@ std::vector<TextObject>& ObjectEditorDescriptionModel::getText(){
 
 	return this->text; 
 
+}
+
+void ObjectEditorDescriptionModel::addText(int character){
+
+	this->buffer.addCharacter(character); 
 }

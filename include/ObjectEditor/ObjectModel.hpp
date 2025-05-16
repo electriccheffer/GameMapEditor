@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 #include "../NCursesModel.hpp"
-
+#include "./Buffer.hpp"
 
 class ObjectEditorModel : public NCursesModel{
 
@@ -54,10 +54,10 @@ class ObjectEditorDescriptionModel : public ObjectEditorModel{
 	public: 
 		ObjectEditorDescriptionModel(); 
 		ObjectEditorDescriptionModel(std::vector<TextObject>& text);
-		std::vector<TextObject>& getText(); 
-
+		std::vector<TextObject>& getText();	
+		void addText(int character);	
 	protected: 
 		std::vector<TextObject> text; 
-
+		InputBuffer buffer; 
 }; 
 #endif
