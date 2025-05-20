@@ -58,6 +58,5 @@ class ObjectEditorDescriptionModel : public ObjectEditorModel{
 		void addText(int character);	
 	protected: 
 		std::vector<TextObject> text; 
-		InputBuffer buffer; 
 }; 
 #endif

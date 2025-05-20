@@ -1,6 +1,9 @@
 #include <gtest/gtest.h>
 #include <ncurses.h>
 #include <vector>
+#include "../include/ObjectEditor/ObjectModel.hpp"
+#include "../include/ObjectEditor/ObjectView.hpp"
+#include "../include/ObjectEditor/ObjectController.hpp"
 #include "../include/ObjectEditor/Buffer.hpp"
 #include "../lib/ObjectEditor/Errors.cpp"
 #include "./TestSubclasses.hpp"
@@ -97,14 +100,25 @@ TEST(InputBufferTest,RemoveCharacterErrorCase){
 TEST(ObjectEditorDescriptionModelTest,AddCharacterInputBuffer){
 
 	ObjectDescriptionModelFactory factory = {}; 
-	ObjectEditorDescriptionModel model = factory.getModel(); 
-	std::vector<TextObject> text = model.getText();
-	TestDescriptionModel testModel = {text};
-       	int character = 33; 	
-	testModel.addText(character);
-	InputBuffer buffer = testModel.getBuffer(); 
-	std::vector<int> rawBuffer = buffer.getBuffer(); 
-        EXPECT_EQ(character,rawBuffer[0]);	
+	ObjectEditorDescriptionModel model = factory.getModel();
+       	int character = 84; 	
+	model.addText(character);
+	std::vector<TextObject> text = model.getText(); 
+	std::string rawText = text[1].getText(); 
+	std::cout << "RAW TEXT:" << rawText << std::endl; 
+	EXPECT_EQ(character,rawText[rawText.size() - 1]);	
 }
 
+TEST(ModelViewControllerTest,CallingFromController){
 
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel model = factory.getModel();
+       	int character = 84; 	
+	ObjectEditorDescriptionView view(&model);
+	ObjectEditorDescriptionController controller(model,view); 
+	controller.takeInput(character);
+	std::vector<TextObject> text = model.getText(); 
+	std::string rawText = text[1].getText(); 
+	std::cout << "RAW TEXT:" << rawText << std::endl; 
+
+}

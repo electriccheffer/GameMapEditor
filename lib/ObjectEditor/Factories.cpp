@@ -112,19 +112,19 @@ void ObjectDescriptionModelFactory::setStaticText(){
 	Position position = {}; 
 	TextObject title = {windowText,position}; 
 
-	std::string nameText = "Name: ";
+	std::string nameText = "Name:";
 	Position namePosition = {1,0}; 
 	TextObject name = {nameText,namePosition}; 
 
-	std::string characterText = "Render Character: ";
+	std::string characterText = "Render Character:";
 	Position characterPosition = {3,0}; 
 	TextObject character = {characterText,characterPosition}; 
 	
-	std::string backgroundText = "Background Color";
+	std::string backgroundText = "Background Color:";
 	Position backgroundPosition = {5,0}; 	
 	TextObject background = {backgroundText,backgroundPosition}; 
 
-	std::string foregroundText = "Foreground Color";
+	std::string foregroundText = "Foreground Color:";
 	Position foregroundPosition = {7,0}; 
 	TextObject foreground = {foregroundText,foregroundPosition}; 
 

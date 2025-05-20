@@ -1,6 +1,7 @@
 #include <ncurses.h>
 #include <string>
 #include <vector>
+#include <iostream>
 #include "../../include/Position.hpp"
 #include "../../include/TextObject.hpp"
 #include "../../include/ObjectEditor/ObjectModel.hpp"
@@ -116,7 +117,7 @@ ObjectEditorDescriptionModel::ObjectEditorDescriptionModel(std::vector<TextObjec
 	this->cursorXStartPosition = COLS/2; 
 	this->cursorYStartPosition = 21; 
 	this->cursorXPosition = 1; 
-	this->cursorYPosition = 6;
+	this->cursorYPosition = 5;
 	this->text = text;
 
 }
@@ -129,5 +130,20 @@ std::vector<TextObject>& ObjectEditorDescriptionModel::getText(){
 
 void ObjectEditorDescriptionModel::addText(int character){
 
-	this->buffer.addCharacter(character); 
+	char asCharacter = static_cast<char>(character);
+	std::string currentText = this->text[this->cursorXPosition].getText(); 
+	int stringLength = currentText.size(); 
+	size_t startPosition = currentText.find(':');	
+	if(this->cursorYPosition < startPosition){
+		return; 
+	}
+	if(this->cursorYPosition == stringLength){
+		currentText += asCharacter;
+	}
+	else{
+		currentText.insert(asCharacter,1,this->cursorYPosition);
+	}
+	this->cursorYPosition++; 
+	this->text[this->cursorXPosition].setText(currentText); 
 }
+

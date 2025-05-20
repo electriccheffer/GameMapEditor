@@ -27,7 +27,11 @@ class ObjectEditorDescriptionController : public NCursesController{
 
 		public: 
 			ObjectEditorDescriptionController(
-					NCursesModel& model, NCursesView& view);
+					ObjectEditorDescriptionModel& model,
+				       	ObjectEditorDescriptionView& view);
 			void takeInput(int character)override; 
+		protected:
+			ObjectEditorDescriptionModel& model; 
+			ObjectEditorDescriptionView& view; 
 };
 #endif

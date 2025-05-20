@@ -5,7 +5,4 @@
 #include <memory>
 
 
-InputBuffer& TestDescriptionModel::getBuffer(){
-	
-	return this->buffer; 
-}
+

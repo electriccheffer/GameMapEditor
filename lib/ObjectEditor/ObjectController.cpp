@@ -1,6 +1,7 @@
 #include "../../include/ObjectEditor/ObjectController.hpp"
 #include "../../include/ObjectEditor/ObjectView.hpp"
 #include "../../include/ObjectEditor/ObjectModel.hpp"
+#include <iostream>
 
 ObjectEditorOptionsController::ObjectEditorOptionsController
 				(NCursesModel& model,NCursesView& view)
@@ -83,19 +84,21 @@ void ObjectEditorPaletteController::takeInput(int character){
 
 
 ObjectEditorDescriptionController::ObjectEditorDescriptionController(
-					NCursesModel& model,NCursesView& view)
-				:	NCursesController(dynamic_cast<NCursesModel&>(model),
-				    		 dynamic_cast<NCursesView&>(view)){
+					ObjectEditorDescriptionModel& model,
+					ObjectEditorDescriptionView& view):	
+					NCursesController(
+						 model,view),model(model),view(view){
 				
 				
 }
 
 void ObjectEditorDescriptionController::takeInput(int character){
 
-
+	
 	// if printable print it 
-	// if enter skip to next field 
-	// else ignore
-
+	if(character >= 32 && character <= 126){
+		this->model.addText(character);
+	}
+	this->updateView(); 	
 
 }
