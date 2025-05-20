@@ -151,7 +151,7 @@ void ObjectEditorDescriptionModel::removeText(){
 	std::string currentText = this->text[this->cursorXPosition].getText(); 
 	int stringLength = currentText.size(); 
 	size_t startPosition = currentText.find(':');
-	if(this->cursorYPosition < startPosition){
+	if(this->cursorYPosition-1 <= startPosition){
 		return; 
 	}
 	currentText.erase(this->cursorYPosition-1);
