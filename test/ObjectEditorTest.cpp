@@ -119,6 +119,26 @@ TEST(ModelViewControllerTest,CallingFromController){
 	controller.takeInput(character);
 	std::vector<TextObject> text = model.getText(); 
 	std::string rawText = text[1].getText(); 
-	std::cout << "RAW TEXT:" << rawText << std::endl; 
+
+}
+
+TEST(ModelViewControllerTest,DeleteFromController){
+
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel model = factory.getModel();
+       	int character = 116;
+	int character2 = 114; 
+	int character3 = 101; 
+	int character4 = 101; 	
+	ObjectEditorDescriptionView view(&model);
+	ObjectEditorDescriptionController controller(model,view); 
+	controller.takeInput(character);
+	controller.takeInput(character2);
+	controller.takeInput(character3);
+	controller.takeInput(character4);
+	controller.takeInput(KEY_BACKSPACE);
+	std::vector<TextObject> text = model.getText(); 
+	std::string rawText = text[1].getText(); 
+	std::cout << rawText << std::endl; 
 
 }

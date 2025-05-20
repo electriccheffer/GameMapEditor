@@ -99,6 +99,9 @@ void ObjectEditorDescriptionController::takeInput(int character){
 	if(character >= 32 && character <= 126){
 		this->model.addText(character);
 	}
+	if(character == KEY_BACKSPACE){
+		this->model.removeText(); 
+	}
 	this->updateView(); 	
 
 }

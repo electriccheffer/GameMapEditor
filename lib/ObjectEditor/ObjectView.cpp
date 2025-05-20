@@ -99,9 +99,11 @@ void ObjectEditorDescriptionView::renderModel(NCursesModel& model){
 		
 		std::string text = textObject.getText();
 		Position textPosition = textObject.getPosition(); 
-				mvwprintw(this->window,textPosition.getX() ,
-				textPosition.getY() 
-				,"%s",text.c_str());
+		wmove(this->window, textPosition.getX(),0);
+		wclrtoeol(this->window);
+		mvwprintw(this->window,textPosition.getX() ,
+			   textPosition.getY() 
+			   ,"%s",text.c_str());
 
 
 	}

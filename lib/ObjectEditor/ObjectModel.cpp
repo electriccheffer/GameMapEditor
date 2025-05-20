@@ -147,3 +147,14 @@ void ObjectEditorDescriptionModel::addText(int character){
 	this->text[this->cursorXPosition].setText(currentText); 
 }
 
+void ObjectEditorDescriptionModel::removeText(){
+	std::string currentText = this->text[this->cursorXPosition].getText(); 
+	int stringLength = currentText.size(); 
+	size_t startPosition = currentText.find(':');
+	if(this->cursorYPosition < startPosition){
+		return; 
+	}
+	currentText.erase(this->cursorYPosition-1);
+	this->cursorYPosition--; 
+	this->text[this->cursorXPosition].setText(currentText);
+}

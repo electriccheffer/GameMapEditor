@@ -56,6 +56,7 @@ class ObjectEditorDescriptionModel : public ObjectEditorModel{
 		ObjectEditorDescriptionModel(std::vector<TextObject>& text);
 		std::vector<TextObject>& getText();	
 		void addText(int character);	
+		void removeText(); 
 	protected: 
 		std::vector<TextObject> text; 
 }; 
