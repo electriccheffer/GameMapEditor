@@ -110,6 +110,4 @@ void ObjectEditorDescriptionView::renderModel(NCursesModel& model){
 	wmove(this->window,castModel->getCursorXPosition(),
 		castModel->getCursorYPosition());
 	wrefresh(this->window);
-	
-
 }

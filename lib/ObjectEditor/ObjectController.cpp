@@ -97,10 +97,20 @@ void ObjectEditorDescriptionController::takeInput(int character){
 	
 	// if printable print it 
 	if(character >= 32 && character <= 126){
+
 		this->model.addText(character);
 	}
 	if(character == KEY_BACKSPACE){
+
 		this->model.removeText(); 
+	}
+	if(character == KEY_DOWN){
+		
+		this->model.cursorDown(); 	
+	}
+	if(character == KEY_UP){
+	
+		this->model.cursorUp(); 	
 	}
 	this->updateView(); 	
 

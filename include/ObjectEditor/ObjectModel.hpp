@@ -4,7 +4,6 @@
 #include <string>
 #include <vector>
 #include "../NCursesModel.hpp"
-#include "./Buffer.hpp"
 
 class ObjectEditorModel : public NCursesModel{
 
@@ -56,8 +55,11 @@ class ObjectEditorDescriptionModel : public ObjectEditorModel{
 		ObjectEditorDescriptionModel(std::vector<TextObject>& text);
 		std::vector<TextObject>& getText();	
 		void addText(int character);	
-		void removeText(); 
+		void removeText();
+	        void cursorUp(); 
+		void cursorDown(); 	
 	protected: 
 		std::vector<TextObject> text; 
+		unsigned int textPosition = 1; 
 }; 
 #endif

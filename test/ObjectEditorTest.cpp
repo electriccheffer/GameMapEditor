@@ -6,8 +6,7 @@
 #include "../include/ObjectEditor/ObjectController.hpp"
 #include "../include/ObjectEditor/Buffer.hpp"
 #include "../lib/ObjectEditor/Errors.cpp"
-#include "./TestSubclasses.hpp"
-
+#include "../include/ObjectEditor/Factories.hpp"
 TEST(TrivialTest,AlwaysPasses){
 
 	EXPECT_TRUE(true);
@@ -105,7 +104,6 @@ TEST(ObjectEditorDescriptionModelTest,AddCharacterInputBuffer){
 	model.addText(character);
 	std::vector<TextObject> text = model.getText(); 
 	std::string rawText = text[1].getText(); 
-	std::cout << "RAW TEXT:" << rawText << std::endl; 
 	EXPECT_EQ(character,rawText[rawText.size() - 1]);	
 }
 
@@ -139,6 +137,79 @@ TEST(ModelViewControllerTest,DeleteFromController){
 	controller.takeInput(KEY_BACKSPACE);
 	std::vector<TextObject> text = model.getText(); 
 	std::string rawText = text[1].getText(); 
+	EXPECT_EQ(rawText[5],'t');
+}
+
+TEST(ModelViewControllerTest,CursorDownTest){
+
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel model = factory.getModel(); 
+	ObjectEditorDescriptionView view(&model); 
+	ObjectEditorDescriptionController controller(model,view);
+	controller.takeInput(KEY_DOWN);
+	EXPECT_EQ(3,model.getCursorXPosition());
+	EXPECT_EQ(17,model.getCursorYPosition());	
+
+}
+
+TEST(ModelViewControllerTest,CursorDownTestTwo){
+
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel model = factory.getModel(); 
+	ObjectEditorDescriptionView view(&model); 
+	ObjectEditorDescriptionController controller(model,view);
+	controller.takeInput(KEY_DOWN);
+	controller.takeInput(KEY_DOWN);
+	EXPECT_EQ(5,model.getCursorXPosition());
+	EXPECT_EQ(17,model.getCursorYPosition());	
+
+}
+
+TEST(ModelViewControllerTest,CursorDownTestThree){
+
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel model = factory.getModel(); 
+	ObjectEditorDescriptionView view(&model); 
+	ObjectEditorDescriptionController controller(model,view);
+	controller.takeInput(KEY_DOWN);
+	controller.takeInput(KEY_DOWN);
+	controller.takeInput(KEY_DOWN); 
+	EXPECT_EQ(7,model.getCursorXPosition());
+	EXPECT_EQ(17,model.getCursorYPosition());	
+
+}
+
+TEST(ModelViewControllerTest,InputAndMoveTest){
+
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel model = factory.getModel(); 
+	ObjectEditorDescriptionView view(&model); 
+	ObjectEditorDescriptionController controller(model,view);
+	int character = 116; 
+	controller.takeInput(character);
+	controller.takeInput(KEY_DOWN); 
+	controller.takeInput(character); 
+	EXPECT_EQ(3,model.getCursorXPosition());
+	EXPECT_EQ(18,model.getCursorYPosition());	
+
+}
+
+TEST(ModelViewControllerTest,InputAndMoveTestViewText){
+
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel model = factory.getModel(); 
+	ObjectEditorDescriptionView view(&model); 
+	ObjectEditorDescriptionController controller(model,view);
+	int character = 116; 
+	controller.takeInput(character);
+	controller.takeInput(KEY_DOWN); 
+	controller.takeInput(character); 
+	std::vector<TextObject> text = model.getText();
+	std::string rawText = text[1].getText(); 
 	std::cout << rawText << std::endl; 
+        rawText = text[2].getText(); 
+	std::cout << rawText << std::endl;
+	rawText = text[3].getText(); 
+	std::cout << rawText << std::endl; 	
 
 }

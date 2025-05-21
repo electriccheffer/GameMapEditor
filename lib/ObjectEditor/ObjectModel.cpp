@@ -5,7 +5,6 @@
 #include "../../include/Position.hpp"
 #include "../../include/TextObject.hpp"
 #include "../../include/ObjectEditor/ObjectModel.hpp"
-#include "../../include/ObjectEditor/Buffer.hpp"
 
 ObjectEditorRenderModel::ObjectEditorRenderModel(){
 
@@ -131,10 +130,10 @@ std::vector<TextObject>& ObjectEditorDescriptionModel::getText(){
 void ObjectEditorDescriptionModel::addText(int character){
 
 	char asCharacter = static_cast<char>(character);
-	std::string currentText = this->text[this->cursorXPosition].getText(); 
+	std::string currentText = this->text[this->textPosition].getText(); 
 	int stringLength = currentText.size(); 
 	size_t startPosition = currentText.find(':');	
-	if(this->cursorYPosition < startPosition){
+	if(this->cursorYPosition-1 < startPosition){
 		return; 
 	}
 	if(this->cursorYPosition == stringLength){
@@ -144,11 +143,11 @@ void ObjectEditorDescriptionModel::addText(int character){
 		currentText.insert(asCharacter,1,this->cursorYPosition);
 	}
 	this->cursorYPosition++; 
-	this->text[this->cursorXPosition].setText(currentText); 
+	this->text[this->textPosition].setText(currentText); 
 }
 
 void ObjectEditorDescriptionModel::removeText(){
-	std::string currentText = this->text[this->cursorXPosition].getText(); 
+	std::string currentText = this->text[this->textPosition].getText(); 
 	int stringLength = currentText.size(); 
 	size_t startPosition = currentText.find(':');
 	if(this->cursorYPosition-1 <= startPosition){
@@ -156,5 +155,38 @@ void ObjectEditorDescriptionModel::removeText(){
 	}
 	currentText.erase(this->cursorYPosition-1);
 	this->cursorYPosition--; 
-	this->text[this->cursorXPosition].setText(currentText);
+	this->text[this->textPosition].setText(currentText);
+}
+
+void ObjectEditorDescriptionModel::cursorUp(){
+
+	this->textPosition -= 1; 
+	this->textPosition %= 5; 
+	if(this->textPosition == 0 ){
+	
+		this->textPosition++; 
+	}
+	std::string localText = this->text[this->textPosition].getText();
+        Position position = this->text[this->textPosition].getPosition(); 
+	unsigned int newXPosition = position.getX(); 
+	unsigned int newYPosition = localText.size();
+	this->setCursorYPosition(newYPosition);	
+	this->setCursorXPosition(newXPosition);
+}
+
+void ObjectEditorDescriptionModel::cursorDown(){
+	
+	this->textPosition += 1; 
+	this->textPosition %= 5; 
+	if(this->textPosition == 0 ){
+	
+		this->textPosition++; 
+	}
+	
+	std::string localText = this->text[this->textPosition].getText();
+        Position position = this->text[this->textPosition].getPosition(); 
+	unsigned int newXPosition = position.getX(); 
+	unsigned int newYPosition = localText.size();
+	this->setCursorYPosition(newYPosition);
+	this->setCursorXPosition(newXPosition);
 }

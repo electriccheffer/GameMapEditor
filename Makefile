@@ -26,7 +26,6 @@ objectEditorLibraryFiles =$(ObjectLibrary)/Factories.cpp $(ObjectLibrary)/Object
 objectEditorBuildFiles = $(buildDirectory)/ObjectFactories.o $(buildDirectory)/ObjectModel.o\
 			 $(buildDirectory)/ObjectView.o $(buildDirectory)/ObjectController.o\
 			 $(buildDirectory)/Buffer.o $(buildDirectory)/Errors.o\
-			 $(buildDirectory)/TestSubclasses.o
 
 gtestLink = -lgtest -lgtest_main -lncurses
 
@@ -62,7 +61,6 @@ $(objectEditorBuildFiles): $(objectEditorLibraryFiles)
 	g++ -c $(ObjectLibrary)/ObjectController.cpp -o $(buildDirectory)/ObjectController.o
 	g++ -c $(ObjectLibrary)/Buffer.cpp -o $(buildDirectory)/Buffer.o
 	g++ -c $(ObjectLibrary)/Errors.cpp -o $(buildDirectory)/Errors.o
-	g++ -c $(testDirectory)/TestSubclasses.cpp -o $(buildDirectory)/TestSubclasses.o
 
 clean: 
 	rm -f $(buildObjectFiles)
