@@ -112,6 +112,10 @@ void ObjectEditorDescriptionController::takeInput(int character){
 	
 		this->model.cursorUp(); 	
 	}
+	if(character == '\n' || character == '\r'){
+	
+		this->model.cursorDown(); 
+	}
 	this->updateView(); 	
 
 }
