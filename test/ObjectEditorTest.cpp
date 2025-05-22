@@ -7,6 +7,8 @@
 #include "../include/ObjectEditor/Buffer.hpp"
 #include "../lib/ObjectEditor/Errors.cpp"
 #include "../include/ObjectEditor/Factories.hpp"
+#include "../include/ObjectEditor/ControllerContext.hpp"
+
 TEST(TrivialTest,AlwaysPasses){
 
 	EXPECT_TRUE(true);
@@ -206,10 +208,6 @@ TEST(ModelViewControllerTest,InputAndMoveTestViewText){
 	controller.takeInput(character); 
 	std::vector<TextObject> text = model.getText();
 	std::string rawText = text[1].getText(); 
-	std::cout << rawText << std::endl; 
-        rawText = text[2].getText(); 
-	std::cout << rawText << std::endl;
-	rawText = text[3].getText(); 
-	std::cout << rawText << std::endl; 	
-
 }
+
+
