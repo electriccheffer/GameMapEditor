@@ -267,3 +267,31 @@ TEST(ControllerContextTest,ChangeController){
 	NCursesController* controllerContext = context.takeInput(KEY_PPAGE);
 	EXPECT_EQ(typeid(*controllerContext),typeid(ObjectEditorPaletteController)); 
 }
+
+TEST(ControllerContextTest,ChangeControllerDown){
+	
+	ObjectRenderModelFactory factory = {}; 
+	ObjectEditorRenderModel renderModel = factory.getModel(); 
+	ObjectEditorRenderView renderView(&renderModel); 
+	
+	ObjectOptionsModelFactory optionsModelFactory = {}; 
+	ObjectEditorOptionsModel optionsModel = optionsModelFactory.getModel(); 
+	ObjectEditorOptionsView optionsView(&optionsModel); 
+	ObjectEditorOptionsController optionsController = {optionsModel,optionsView}; 
+
+	ObjectPaletteFactory paletteFactory = {}; 
+	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
+	ObjectEditorPaletteView paletteView(&paletteModel); 
+	ObjectEditorPaletteController paletteController = {paletteModel,paletteView}; 
+	
+	ObjectDescriptionModelFactory descriptionFactory = {}; 
+	ObjectEditorDescriptionModel descriptionModel = descriptionFactory.getModel(); 
+	ObjectEditorDescriptionView descriptionView(&descriptionModel);
+	ObjectEditorDescriptionController descriptionController = {descriptionModel,
+								   descriptionView}; 
+
+	ObjectEditorControllerContext context(&optionsController,&descriptionController,
+						&paletteController);
+	NCursesController* controllerContext = context.takeInput(KEY_NPAGE);
+	EXPECT_EQ(typeid(*controllerContext),typeid(ObjectEditorOptionsController)); 
+}
