@@ -295,3 +295,6 @@ TEST(ControllerContextTest,ChangeControllerDown){
 	NCursesController* controllerContext = context.takeInput(KEY_NPAGE);
 	EXPECT_EQ(typeid(*controllerContext),typeid(ObjectEditorOptionsController)); 
 }
+
+
+

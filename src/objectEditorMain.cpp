@@ -13,6 +13,7 @@
 #include "../include/ObjectEditor/Factories.hpp"
 #include "../include/ObjectEditor/ObjectView.hpp"
 #include "../include/ObjectEditor/ObjectController.hpp"
+#include "../include/ObjectEditor/ControllerContext.hpp"
 #include <vector>
 
 int main(int argc, char** argv){
@@ -25,7 +26,6 @@ int main(int argc, char** argv){
 	int typedCharacter; 
 	refresh(); 
 	
-	// Make render window
 	ObjectRenderModelFactory factory = {}; 
 	ObjectEditorRenderModel renderModel = factory.getModel(); 
 	ObjectEditorRenderView renderView(&renderModel); 
@@ -46,8 +46,11 @@ int main(int argc, char** argv){
 	ObjectEditorDescriptionController descriptionController = {descriptionModel,
 								   descriptionView}; 
 
+	ObjectEditorControllerContext context(&optionsController,&descriptionController,
+						&paletteController);
 	while(((typedCharacter = getch()) != KEY_F(1))){
-		descriptionController.takeInput(typedCharacter); 
+		NCursesController* controller = context.takeInput(typedCharacter);
+		controller->takeInput(typedCharacter); 
 	}
 	endwin();
 	return 0; 
