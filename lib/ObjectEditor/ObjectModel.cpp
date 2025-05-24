@@ -29,13 +29,48 @@ ObjectEditorRenderModel::ObjectEditorRenderModel(std::vector<TextObject>& text){
 	this->cursorXPosition = 1; 
 	this->cursorYPosition = 1; 
 	this->text = text; 
-}
+	this->character = '^';
+	this->foreground = COLOR_GREEN;
+	this->background = COLOR_MAGENTA;
+} 
 
 std::vector<TextObject>& ObjectEditorRenderModel::getText(){
 
 	return this->text; 
 }
 
+short ObjectEditorRenderModel::getBackground(){
+
+	return this->background; 
+}
+
+short ObjectEditorRenderModel::getForeground(){
+	
+	return this->foreground;
+}
+
+char ObjectEditorRenderModel::getCharacter(){
+
+	return this->character; 
+}
+
+
+void ObjectEditorRenderModel::setBackground(short background){
+	
+	this->background = background; 
+}
+
+
+void ObjectEditorRenderModel::setForeground(short foreground){
+
+	this->foreground = foreground; 
+}
+
+
+void ObjectEditorRenderModel::setCharacter(char character){
+	
+	this->character = character; 
+}
 
 ObjectEditorOptionsModel::ObjectEditorOptionsModel(){
 

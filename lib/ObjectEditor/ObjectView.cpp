@@ -1,10 +1,11 @@
 #include "../../include/ObjectEditor/ObjectView.hpp"
 #include "../../include/ObjectEditor/ObjectModel.hpp"
+#include <ncurses.h>
 
 ObjectEditorRenderView::ObjectEditorRenderView(ObjectEditorRenderModel* model):NCursesView(model){
 	
 	this->renderModel(*model);
-
+	
 }
 
 
@@ -23,11 +24,16 @@ void ObjectEditorRenderView::renderModel(NCursesModel& model){
 
 
 	}
+	int height,width; 
+	getmaxyx(this->window,height,width);
+	init_pair(1,castModel->getForeground(),castModel->getBackground());
+	wattron(this->window,COLOR_PAIR(1));
+	mvwaddch(this->window,height/2,width/2,castModel->getCharacter()); 
 	wmove(this->window,castModel->getCursorXPosition(),
 		castModel->getCursorYPosition());
-	wrefresh(this->window);
-	
-
+	wrefresh(this->window);	
+	wattroff (this->window,COLOR_PAIR(1)); 
+	wattrset(this->window,A_NORMAL);
 }
 
 ObjectEditorOptionsView::ObjectEditorOptionsView(ObjectEditorOptionsModel* model):NCursesView(model){

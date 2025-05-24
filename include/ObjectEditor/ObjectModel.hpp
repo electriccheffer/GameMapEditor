@@ -19,8 +19,17 @@ class ObjectEditorRenderModel : public ObjectEditorModel{
 		ObjectEditorRenderModel();
 		ObjectEditorRenderModel(std::vector<TextObject>& text); 
 		std::vector<TextObject>& getText(); 
+		short getBackground(); 
+		short getForeground(); 
+		char getCharacter();
+	        void setBackground(short background);
+		void setForeground(short foreground); 
+		void setCharacter(char character); 	
 	protected: 	
 		std::vector<TextObject> text; 
+		short foreground; 
+		short background;
+		char character; 
 }; 
 
 class ObjectEditorOptionsModel : public ObjectEditorModel{

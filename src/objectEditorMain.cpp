@@ -18,7 +18,9 @@
 
 int main(int argc, char** argv){
 
-	initscr(); 
+	initscr();
+        start_color();
+	use_default_colors(); 	
 	cbreak();
         noecho();
 	curs_set(2);	
