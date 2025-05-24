@@ -28,6 +28,7 @@ void ObjectEditorRenderView::renderModel(NCursesModel& model){
 	getmaxyx(this->window,height,width);
 	init_pair(1,castModel->getForeground(),castModel->getBackground());
 	wattron(this->window,COLOR_PAIR(1));
+	wattron(this->window,A_BOLD);
 	mvwaddch(this->window,height/2,width/2,castModel->getCharacter()); 
 	wmove(this->window,castModel->getCursorXPosition(),
 		castModel->getCursorYPosition());
