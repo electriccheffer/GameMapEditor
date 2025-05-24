@@ -12,6 +12,7 @@ class NCursesController{
 		virtual ~NCursesController() = default; 
 		NCursesController(NCursesModel& model, NCursesView& view);
        	      	virtual void takeInput(int character) = 0;	       
+		void setModel(NCursesModel& model); 
 	protected: 
 		void updateView(); 
 		NCursesModel& model;

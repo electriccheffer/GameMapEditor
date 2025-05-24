@@ -42,6 +42,20 @@ void ObjectEditorOptionsController::takeInput(int character){
 
 }
 
+
+ObjectEditorRenderController::ObjectEditorRenderController
+				(NCursesModel& model,NCursesView& view)
+				:NCursesController(dynamic_cast<NCursesModel&>(model),
+				    		   dynamic_cast<NCursesView&>(view)){
+
+
+
+}
+
+
+void ObjectEditorRenderController::takeInput(int character){}
+
+
 ObjectEditorPaletteController::ObjectEditorPaletteController
 				(NCursesModel& model,NCursesView& view)
 				:NCursesController(dynamic_cast<NCursesModel&>(model),

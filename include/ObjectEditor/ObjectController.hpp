@@ -7,12 +7,22 @@
 
 class ObjectEditorOptionsController : public NCursesController{
 
-		public: 
-			ObjectEditorOptionsController(
-					NCursesModel& model, NCursesView& view); 
-			void takeInput(int character)override; 
-		protected: 
+	public: 
+		ObjectEditorOptionsController(NCursesModel& model, NCursesView& view); 
+		void takeInput(int character)override; 
+	protected: 
 };
+
+
+class ObjectEditorRenderController : public NCursesController{
+
+	public: 
+		ObjectEditorRenderController(NCursesModel& model, NCursesView& view);
+	       void takeInput(int character)override; 	
+	protected: 	
+
+}; 
+
 
 class ObjectEditorPaletteController : public NCursesController{
 
