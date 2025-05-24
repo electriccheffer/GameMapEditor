@@ -31,7 +31,8 @@ ObjectEditorRenderModel::ObjectEditorRenderModel(std::vector<TextObject>& text){
 	this->text = text; 
 	this->character = '^';
 	this->foreground = COLOR_GREEN;
-	this->background = COLOR_MAGENTA;
+	this->background = COLOR_YELLOW;
+	
 } 
 
 std::vector<TextObject>& ObjectEditorRenderModel::getText(){
