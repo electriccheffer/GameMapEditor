@@ -2,6 +2,8 @@
 #include <ncurses.h>
 #include <vector>
 #include <typeinfo>
+#include <string>
+#include <iostream>
 #include "../include/ObjectEditor/ObjectModel.hpp"
 #include "../include/ObjectEditor/ObjectView.hpp"
 #include "../include/ObjectEditor/ObjectController.hpp"
@@ -296,5 +298,47 @@ TEST(ControllerContextTest,ChangeControllerDown){
 	EXPECT_EQ(typeid(*controllerContext),typeid(ObjectEditorOptionsController)); 
 }
 
+TEST(ObjectRenderModelFactory,ChangeModels){
 
+	// Create a Description Model
+	std::string titleText = "Palette Description";
+	Position titlePosition = {};
+        TextObject title = {titleText,titlePosition}; 
 
+	std::string nameText = "Name:whirlpool";
+	Position namePosition = {1,0}; 
+	TextObject name = {nameText,namePosition}; 
+
+	std::string characterText = "Render Character:@";
+	Position characterPosition = {3,0};	
+	TextObject character = {characterText,characterPosition}; 
+
+	std::string backgroundText = "Background Color:green";
+        Position backgroundPosition = {5,0};	
+	TextObject background = {backgroundText,backgroundPosition};
+
+	std::string foregroundText = "Foreground Color:yellow";
+        Position foregroundPosition = {7,0};	
+	TextObject foreground = {foregroundText,foregroundPosition};
+		
+	std::vector<TextObject> textData = {};
+	textData.push_back(title);
+	textData.push_back(name);
+	textData.push_back(character);
+	textData.push_back(background);
+	textData.push_back(foreground);
+	ObjectEditorDescriptionModel descriptionModel = {textData}; 	
+	
+	// Create a Render model expected result
+	ObjectRenderModelFactory expectedModelFactory = {}; 
+	ObjectEditorRenderModel expectedRenderModel = expectedModelFactory.getModel(); 
+	expectedRenderModel.setCharacter('@');
+	expectedRenderModel.setBackground(COLOR_GREEN);
+	expectedRenderModel.setForeground(COLOR_YELLOW);
+	// Create a Render Model from factory with description model 
+	ObjectRenderModelFactory renderFactory = {descriptionModel};
+        ObjectEditorRenderModel renderModel = renderFactory.getModel();
+	EXPECT_EQ(renderModel.getCharacter(),expectedRenderModel.getCharacter());
+	EXPECT_EQ(renderModel.getBackground(),expectedRenderModel.getBackground());
+	EXPECT_EQ(renderModel.getForeground(),expectedRenderModel.getForeground());
+}

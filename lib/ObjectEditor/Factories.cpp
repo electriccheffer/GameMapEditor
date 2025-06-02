@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 #include <vector> 
 #include "../../include/NCursesModel.hpp"
@@ -9,6 +10,54 @@ ObjectRenderModelFactory::ObjectRenderModelFactory(){
 
 	this->setStaticText(); 
 
+}
+
+ObjectRenderModelFactory::ObjectRenderModelFactory(ObjectEditorDescriptionModel& model){
+
+	std::vector<TextObject> text = model.getText();
+	char character = this->returnCharacter(text[2].getText());
+	short background = this->returnColor(text[3].getText());
+	short foreground = this->returnColor(text[4].getText());
+
+	ObjectRenderModelFactory factory = {}; 
+	this->model = factory.getModel(); 
+	this->model.setCharacter(character);
+	this->model.setBackground(background);
+	this->model.setForeground(foreground);
+}
+
+char ObjectRenderModelFactory::returnCharacter(std::string text){
+	
+	std::string field = this->parseLine(text); 
+	return field[0]; 
+}
+
+short ObjectRenderModelFactory::returnColor(std::string text){
+	std::string field = this->parseLine(text);
+	//remove spaces 
+	std::string trimmed; 
+	for(unsigned char character : field){
+	
+		if(!std::isspace(character)){
+		
+			trimmed.push_back(std::toupper(character));
+		}	
+	}
+	if(trimmed.find("GREEN") != std::string::npos ){
+	
+		return COLOR_GREEN; 
+	}		
+	if(trimmed.find("YELLOW") != std::string::npos){
+		return COLOR_YELLOW; 
+	}
+	return COLOR_MAGENTA; 
+}
+
+std::string ObjectRenderModelFactory::parseLine(std::string text){
+	
+	size_t position = text.find(':');
+	std::string field = text.substr(position+1,text.size()-1); 
+	return field; 
 }
 
 ObjectEditorRenderModel& ObjectRenderModelFactory::getModel(){

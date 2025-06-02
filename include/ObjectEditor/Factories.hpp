@@ -13,9 +13,13 @@ class ObjectRenderModelFactory : public ObjectFactory{
 
 	public: 
 		ObjectRenderModelFactory();
+		ObjectRenderModelFactory(ObjectEditorDescriptionModel& model);
 		ObjectEditorRenderModel& getModel(); 		
 	protected: 
 		void setStaticText(); 
+		char returnCharacter(std::string text);
+		short returnColor(std::string text);
+		std::string parseLine(std::string text); 
 		ObjectEditorRenderModel model;		
 }; 
 
