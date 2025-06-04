@@ -218,13 +218,12 @@ TEST(ControllerContextTest,InitialState){
 	ObjectRenderModelFactory factory = {}; 
 	ObjectEditorRenderModel renderModel = factory.getModel(); 
 	ObjectEditorRenderView renderView(&renderModel); 
+	ObjectEditorRenderController renderController = {renderModel,renderView};	
 	
 	ObjectOptionsModelFactory optionsModelFactory = {}; 
 	ObjectEditorOptionsModel optionsModel = optionsModelFactory.getModel(); 
 	ObjectEditorOptionsView optionsView(&optionsModel); 
-	ObjectEditorOptionsController optionsController = {optionsModel,optionsView}; 
-
-	ObjectPaletteFactory paletteFactory = {}; 
+		ObjectPaletteFactory paletteFactory = {}; 
 	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
 	ObjectEditorPaletteView paletteView(&paletteModel); 
 	ObjectEditorPaletteController paletteController = {paletteModel,paletteView}; 
@@ -234,6 +233,10 @@ TEST(ControllerContextTest,InitialState){
 	ObjectEditorDescriptionView descriptionView(&descriptionModel);
 	ObjectEditorDescriptionController descriptionController = {descriptionModel,
 								   descriptionView}; 
+	
+	RenderDescriptionMediator mediator(descriptionModel,renderController,renderModel);
+	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator); 
+
 
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);
@@ -247,13 +250,12 @@ TEST(ControllerContextTest,ChangeController){
 	ObjectRenderModelFactory factory = {}; 
 	ObjectEditorRenderModel renderModel = factory.getModel(); 
 	ObjectEditorRenderView renderView(&renderModel); 
+	ObjectEditorRenderController renderController = {renderModel,renderView};	
 	
 	ObjectOptionsModelFactory optionsModelFactory = {}; 
 	ObjectEditorOptionsModel optionsModel = optionsModelFactory.getModel(); 
 	ObjectEditorOptionsView optionsView(&optionsModel); 
-	ObjectEditorOptionsController optionsController = {optionsModel,optionsView}; 
-
-	ObjectPaletteFactory paletteFactory = {}; 
+		ObjectPaletteFactory paletteFactory = {}; 
 	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
 	ObjectEditorPaletteView paletteView(&paletteModel); 
 	ObjectEditorPaletteController paletteController = {paletteModel,paletteView}; 
@@ -263,6 +265,10 @@ TEST(ControllerContextTest,ChangeController){
 	ObjectEditorDescriptionView descriptionView(&descriptionModel);
 	ObjectEditorDescriptionController descriptionController = {descriptionModel,
 								   descriptionView}; 
+	
+	RenderDescriptionMediator mediator(descriptionModel,renderController,renderModel);
+	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator); 
+
 
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);
@@ -275,13 +281,12 @@ TEST(ControllerContextTest,ChangeControllerDown){
 	ObjectRenderModelFactory factory = {}; 
 	ObjectEditorRenderModel renderModel = factory.getModel(); 
 	ObjectEditorRenderView renderView(&renderModel); 
+	ObjectEditorRenderController renderController = {renderModel,renderView};	
 	
 	ObjectOptionsModelFactory optionsModelFactory = {}; 
 	ObjectEditorOptionsModel optionsModel = optionsModelFactory.getModel(); 
 	ObjectEditorOptionsView optionsView(&optionsModel); 
-	ObjectEditorOptionsController optionsController = {optionsModel,optionsView}; 
-
-	ObjectPaletteFactory paletteFactory = {}; 
+		ObjectPaletteFactory paletteFactory = {}; 
 	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
 	ObjectEditorPaletteView paletteView(&paletteModel); 
 	ObjectEditorPaletteController paletteController = {paletteModel,paletteView}; 
@@ -291,6 +296,10 @@ TEST(ControllerContextTest,ChangeControllerDown){
 	ObjectEditorDescriptionView descriptionView(&descriptionModel);
 	ObjectEditorDescriptionController descriptionController = {descriptionModel,
 								   descriptionView}; 
+	
+	RenderDescriptionMediator mediator(descriptionModel,renderController,renderModel);
+	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator); 
+
 
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);
