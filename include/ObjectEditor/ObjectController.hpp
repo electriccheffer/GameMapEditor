@@ -21,7 +21,6 @@ class ObjectEditorRenderController : public NCursesController{
 
 	public: 
 		ObjectEditorRenderController(NCursesModel& model, NCursesView& view);
-		void setModel(ObjectEditorRenderModel model); 
 	        void takeInput(int character)override; 	
 	protected: 
        		ObjectEditorRenderModel& model; 

@@ -48,7 +48,7 @@ int main(int argc, char** argv){
 	ObjectEditorDescriptionView descriptionView(&descriptionModel);
 	ObjectEditorDescriptionController descriptionController = {descriptionModel,
 								   descriptionView}; 
-	RenderDescriptionMediator mediator(descriptionModel,renderController);	
+	RenderDescriptionMediator mediator(descriptionModel,renderController,renderModel);	
 	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator); 
 	
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,

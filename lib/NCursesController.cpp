@@ -19,7 +19,7 @@ void NCursesController::updateView(){
 }
 
 
-void NCursesController::setModel(NCursesModel localModel){
+void NCursesController::setModel(NCursesModel& localModel){
 	this->model = localModel;
 	this->updateView();	
 }

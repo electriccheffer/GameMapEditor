@@ -63,13 +63,6 @@ ObjectEditorRenderController::ObjectEditorRenderController
 
 void ObjectEditorRenderController::takeInput(int character){}
 
-void ObjectEditorRenderController::setModel(ObjectEditorRenderModel model){
-
-	this->model = model;
-	this->updateView();
-
-}
-
 ObjectEditorPaletteController::ObjectEditorPaletteController
 				(NCursesModel& model,NCursesView& view)
 				:NCursesController(dynamic_cast<NCursesModel&>(model),

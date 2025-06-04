@@ -8,10 +8,12 @@ class RenderDescriptionMediator{
 
 	public:
 		RenderDescriptionMediator(ObjectEditorDescriptionModel& model,
-					  ObjectEditorRenderController& controller);
+					  ObjectEditorRenderController& controller,
+					  ObjectEditorRenderModel& renderModel);
 		void toColleague(); 
 	protected:
 		ObjectEditorDescriptionModel& descriptionModel; 
 		ObjectEditorRenderController& renderController; 
+		ObjectEditorRenderModel& renderModel; 
 }; 
 #endif

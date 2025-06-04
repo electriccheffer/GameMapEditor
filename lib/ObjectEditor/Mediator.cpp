@@ -3,18 +3,19 @@
 #include "../../include/ObjectEditor/ObjectController.hpp"
 #include "../../include/ObjectEditor/Factories.hpp"
 #include <iostream>
-
 RenderDescriptionMediator::RenderDescriptionMediator(ObjectEditorDescriptionModel& model,
-						  ObjectEditorRenderController& controller):
+						  ObjectEditorRenderController& controller,
+						  ObjectEditorRenderModel& renderModel):
 						  descriptionModel(model),
-						  renderController(controller){
+						  renderController(controller),
+						  renderModel(renderModel){
 
 
 }
 
 void RenderDescriptionMediator::toColleague(){
 	ObjectRenderModelFactory factory = {this->descriptionModel};
-	ObjectEditorRenderModel renderModel = factory.getModel(); 
-	this->renderController.setModel(renderModel); 
+	this->renderModel = factory.getModel(); 
+	this->renderController.setModel(this->renderModel); 
 
 }
