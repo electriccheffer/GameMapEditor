@@ -5,6 +5,7 @@
 #include "../include/NCursesView.hpp"
 #include <utility>
 #include <iostream>
+#include <typeinfo>
 
 NCursesController::NCursesController(NCursesModel& model, NCursesView& view)
 	:model(model),view(view){
@@ -14,15 +15,13 @@ NCursesController::NCursesController(NCursesModel& model, NCursesView& view)
 }
 
 void NCursesController::updateView(){
-	
 	this->view.updateModel(this->model); 
 }
 
 
-void NCursesController::setModel(NCursesModel& model){
-
-	this->model = model;
-        this->updateView();	
+void NCursesController::setModel(NCursesModel localModel){
+	this->model = localModel;
+	this->updateView();	
 }
 
 OptionsController::OptionsController(OptionsModel& model, OptionsView& view):NCursesController(dynamic_cast<NCursesModel&>(model),dynamic_cast<NCursesView&>(view)){

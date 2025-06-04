@@ -14,6 +14,7 @@
 #include "../include/ObjectEditor/ObjectView.hpp"
 #include "../include/ObjectEditor/ObjectController.hpp"
 #include "../include/ObjectEditor/ControllerContext.hpp"
+#include "../include/ObjectEditor/Mediator.hpp"
 #include <vector>
 
 int main(int argc, char** argv){
@@ -31,11 +32,11 @@ int main(int argc, char** argv){
 	ObjectRenderModelFactory factory = {}; 
 	ObjectEditorRenderModel renderModel = factory.getModel(); 
 	ObjectEditorRenderView renderView(&renderModel); 
+	ObjectEditorRenderController renderController = {renderModel,renderView}; 
 	
 	ObjectOptionsModelFactory optionsModelFactory = {}; 
 	ObjectEditorOptionsModel optionsModel = optionsModelFactory.getModel(); 
 	ObjectEditorOptionsView optionsView(&optionsModel); 
-	ObjectEditorOptionsController optionsController = {optionsModel,optionsView}; 
 
 	ObjectPaletteFactory paletteFactory = {}; 
 	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
@@ -47,9 +48,12 @@ int main(int argc, char** argv){
 	ObjectEditorDescriptionView descriptionView(&descriptionModel);
 	ObjectEditorDescriptionController descriptionController = {descriptionModel,
 								   descriptionView}; 
-
+	RenderDescriptionMediator mediator(descriptionModel,renderController);	
+	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator); 
+	
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);
+
 	while(((typedCharacter = getch()) != KEY_F(1))){
 		NCursesController* controller = context.takeInput(typedCharacter);
 		controller->takeInput(typedCharacter); 

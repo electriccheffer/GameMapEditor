@@ -1,12 +1,15 @@
 #include "../../include/ObjectEditor/ObjectController.hpp"
 #include "../../include/ObjectEditor/ObjectView.hpp"
 #include "../../include/ObjectEditor/ObjectModel.hpp"
+#include "../../include/ObjectEditor/Mediator.hpp"
 #include <iostream>
 
 ObjectEditorOptionsController::ObjectEditorOptionsController
-				(NCursesModel& model,NCursesView& view)
+				(NCursesModel& model,NCursesView& view,
+				 RenderDescriptionMediator& renderMediator)
 				   :NCursesController(dynamic_cast<NCursesModel&>(model),
-				    			dynamic_cast<NCursesView&>(view)){				
+						   dynamic_cast<NCursesView&>(view)),
+				 mediator(renderMediator){
 }
 
 void ObjectEditorOptionsController::takeInput(int character){
@@ -35,8 +38,11 @@ void ObjectEditorOptionsController::takeInput(int character){
 			}
 			this->model.setCursorXPosition(moveVariable);
 			break; 
-	
-	
+		case '\n': 
+			if(this->model.getCursorXPosition() == 2){
+				this->mediator.toColleague(); 
+			}
+			break; 	
 	}
 	this->view.updateModel(this->model); 	
 
@@ -45,7 +51,9 @@ void ObjectEditorOptionsController::takeInput(int character){
 
 ObjectEditorRenderController::ObjectEditorRenderController
 				(NCursesModel& model,NCursesView& view)
-				:NCursesController(dynamic_cast<NCursesModel&>(model),
+				:model(dynamic_cast<ObjectEditorRenderModel&>(model)),
+				 view(dynamic_cast<ObjectEditorRenderView&>(view)),
+				 NCursesController(dynamic_cast<NCursesModel&>(model),
 				    		   dynamic_cast<NCursesView&>(view)){
 
 
@@ -55,6 +63,12 @@ ObjectEditorRenderController::ObjectEditorRenderController
 
 void ObjectEditorRenderController::takeInput(int character){}
 
+void ObjectEditorRenderController::setModel(ObjectEditorRenderModel model){
+
+	this->model = model;
+	this->updateView();
+
+}
 
 ObjectEditorPaletteController::ObjectEditorPaletteController
 				(NCursesModel& model,NCursesView& view)
@@ -109,7 +123,6 @@ ObjectEditorDescriptionController::ObjectEditorDescriptionController(
 void ObjectEditorDescriptionController::takeInput(int character){
 
 	
-	// if printable print it 
 	if(character >= 32 && character <= 126){
 
 		this->model.addText(character);
@@ -133,3 +146,4 @@ void ObjectEditorDescriptionController::takeInput(int character){
 	this->updateView(); 	
 
 }
+

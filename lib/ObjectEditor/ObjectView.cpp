@@ -1,6 +1,7 @@
 #include "../../include/ObjectEditor/ObjectView.hpp"
 #include "../../include/ObjectEditor/ObjectModel.hpp"
 #include <ncurses.h>
+#include <iostream>
 
 ObjectEditorRenderView::ObjectEditorRenderView(ObjectEditorRenderModel* model):NCursesView(model){
 	
@@ -9,9 +10,8 @@ ObjectEditorRenderView::ObjectEditorRenderView(ObjectEditorRenderModel* model):N
 }
 
 
-void ObjectEditorRenderView::renderModel(NCursesModel& model){
-
-	auto castModel = dynamic_cast<ObjectEditorRenderModel*>(&model); 
+void ObjectEditorRenderView::renderModel(NCursesModel& localModel){
+	auto castModel = dynamic_cast<ObjectEditorRenderModel*>(this->model); 
 	box(this->window,0, 0); 
 	std::vector<TextObject> textList = castModel->getText(); 
 	for(auto textObject : textList ){

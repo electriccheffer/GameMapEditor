@@ -342,3 +342,5 @@ TEST(ObjectRenderModelFactory,ChangeModels){
 	EXPECT_EQ(renderModel.getBackground(),expectedRenderModel.getBackground());
 	EXPECT_EQ(renderModel.getForeground(),expectedRenderModel.getForeground());
 }
+
+

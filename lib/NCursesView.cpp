@@ -19,10 +19,10 @@ NCursesView::NCursesView(NCursesModel* model):model(model){
 	
 }
 
-void NCursesView::updateModel(NCursesModel& model){
+void NCursesView::updateModel(NCursesModel& localModel){
 	
-	this->model = &model; 
-	this->renderModel(model);
+	this->model = &localModel; 
+	this->renderModel(*this->model);
 
 }
 
@@ -87,7 +87,6 @@ EditorView::EditorView(EditorModel* model):NCursesView(model){
 }
 
 void EditorView::renderModel(NCursesModel& model){
-
 	auto castModel = dynamic_cast<EditorModel*>(&model);
 	box(this->window,0, 0); 
 	std::vector<TextObject> textList = castModel->getText(); 
