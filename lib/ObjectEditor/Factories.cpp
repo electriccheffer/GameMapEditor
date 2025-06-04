@@ -50,6 +50,22 @@ short ObjectRenderModelFactory::returnColor(std::string text){
 	if(trimmed.find("YELLOW") != std::string::npos){
 		return COLOR_YELLOW; 
 	}
+	if(trimmed.find("BLUE") != std::string::npos){
+	
+		return COLOR_BLUE;
+	}
+	if(trimmed.find("RED") != std::string::npos){
+	
+		return COLOR_RED;
+	}
+	if(trimmed.find("BLACK") != std::string::npos){
+	
+		return COLOR_BLACK;
+	}
+	if(trimmed.find("CYAN") != std::string::npos){
+	
+		return COLOR_CYAN;
+	}
 	return COLOR_MAGENTA; 
 }
 

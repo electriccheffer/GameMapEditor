@@ -22,7 +22,7 @@ class ObjectEditorRenderController : public NCursesController{
 	public: 
 		ObjectEditorRenderController(NCursesModel& model, NCursesView& view);
 		void setModel(ObjectEditorRenderModel model); 
-	       void takeInput(int character)override; 	
+	        void takeInput(int character)override; 	
 	protected: 
        		ObjectEditorRenderModel& model; 
  		ObjectEditorRenderView& view; 		
@@ -32,21 +32,18 @@ class ObjectEditorRenderController : public NCursesController{
 class ObjectEditorPaletteController : public NCursesController{
 
 
-		public: 
-			ObjectEditorPaletteController(
-						NCursesModel& model, NCursesView& view);
-			void takeInput(int character)override; 
+	public: 
+		ObjectEditorPaletteController(NCursesModel& model, NCursesView& view);
+		void takeInput(int character)override; 
 };
 
 class ObjectEditorDescriptionController : public NCursesController{
 
-		public: 
-			ObjectEditorDescriptionController(
-					ObjectEditorDescriptionModel& model,
-				       	ObjectEditorDescriptionView& view);
-			void takeInput(int character)override; 
-		protected:
-			ObjectEditorDescriptionModel& model; 
-			ObjectEditorDescriptionView& view; 
+	public: 
+		ObjectEditorDescriptionController(ObjectEditorDescriptionModel& model,ObjectEditorDescriptionView& view);
+		void takeInput(int character)override; 
+	protected:
+		ObjectEditorDescriptionModel& model; 
+		ObjectEditorDescriptionView& view; 
 };
 #endif
