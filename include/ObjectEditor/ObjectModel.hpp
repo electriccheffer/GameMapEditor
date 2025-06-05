@@ -62,11 +62,12 @@ class ObjectEditorDescriptionModel : public ObjectEditorModel{
 	public: 
 		ObjectEditorDescriptionModel(); 
 		ObjectEditorDescriptionModel(std::vector<TextObject>& text);
-		std::vector<TextObject>& getText();	
+		const std::vector<TextObject>& getText()const;	
 		void addText(int character);	
 		void removeText();
 	        void cursorUp(); 
 		void cursorDown(); 	
+		bool operator==(const ObjectEditorDescriptionModel& otherModel) const; 
 	protected: 
 		std::vector<TextObject> text; 
 		unsigned int textPosition = 1; 

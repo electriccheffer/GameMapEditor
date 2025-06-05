@@ -113,6 +113,13 @@ TEST(ObjectEditorDescriptionModelTest,AddCharacterInputBuffer){
 	EXPECT_EQ(character,rawText[rawText.size() - 1]);	
 }
 
+TEST(ObjectEditorDescriptionModelTest,CompareModelEqual){
+
+	ObjectEditorDescriptionModel model = {}; 
+	ObjectEditorDescriptionModel otherModel = {};
+       	EXPECT_TRUE((model == otherModel));	
+}
+
 TEST(ModelViewControllerTest,CallingFromController){
 
 	ObjectDescriptionModelFactory factory = {}; 

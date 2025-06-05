@@ -157,7 +157,7 @@ ObjectEditorDescriptionModel::ObjectEditorDescriptionModel(std::vector<TextObjec
 
 }
 
-std::vector<TextObject>& ObjectEditorDescriptionModel::getText(){
+const std::vector<TextObject>& ObjectEditorDescriptionModel::getText()const{
 
 	return this->text; 
 
@@ -225,4 +225,19 @@ void ObjectEditorDescriptionModel::cursorDown(){
 	unsigned int newYPosition = localText.size();
 	this->setCursorYPosition(newYPosition);
 	this->setCursorXPosition(newXPosition);
+}
+
+bool ObjectEditorDescriptionModel::operator==(const ObjectEditorDescriptionModel& otherModel)											const{
+
+	std::vector<TextObject> otherText = otherModel.getText(); 
+	int sizeOfText = otherText.size(); 
+	for(int i = 0 ; i < sizeOfText ; i++){
+	
+		if(this->text[i].getText() != otherText[i].getText()){
+		
+			return false; 
+		}	
+	
+	}
+	return true; 
 }
