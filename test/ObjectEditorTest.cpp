@@ -377,7 +377,7 @@ TEST(PalletteListTest,MakeEmptyList){
 	EXPECT_EQ(0,list.size()); 
 }
 
-TEST(PaletteListTest,AddToListUnique){
+TEST(PaletteListTest,AddToListSingle){
 
 	PaletteList listObject = {}; 
 	ObjectDescriptionModelFactory factory = {}; 
@@ -385,4 +385,29 @@ TEST(PaletteListTest,AddToListUnique){
 	listObject.addModel(model);
 	std::vector<ObjectEditorDescriptionModel> list = listObject.getList(); 
 	EXPECT_TRUE((list[0] == model));
+}
+
+TEST(PaletteListTest,AddToListUnique){
+	
+	PaletteList listObject = {}; 
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel model = factory.getModel(); 
+	listObject.addModel(model);
+	ObjectEditorDescriptionModel otherModel = factory.getModel(); 
+	int character = 80; 
+	otherModel.addText(character);
+	listObject.addModel(otherModel);
+	std::vector<ObjectEditorDescriptionModel> list = listObject.getList();
+	EXPECT_FALSE(list[0]==list[1]);
+}
+
+TEST(PaletteListTest,AddToListNonUnique){
+
+	PaletteList listObject = {}; 
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel model = factory.getModel(); 
+	listObject.addModel(model);
+	ObjectEditorDescriptionModel otherModel = factory.getModel(); 
+	EXPECT_THROW(listObject.addModel(otherModel),PaletteListError);
+
 }
