@@ -114,10 +114,20 @@ TEST(ObjectEditorDescriptionModelTest,AddCharacterInputBuffer){
 }
 
 TEST(ObjectEditorDescriptionModelTest,CompareModelEqual){
-
-	ObjectEditorDescriptionModel model = {}; 
-	ObjectEditorDescriptionModel otherModel = {};
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel model = factory.getModel(); 
+	ObjectEditorDescriptionModel otherModel = factory.getModel();
        	EXPECT_TRUE((model == otherModel));	
+}
+
+TEST(ObjectEditorDescriptionModelTest,CompareModelNotEqual){
+	
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel model = factory.getModel(); 
+	ObjectEditorDescriptionModel otherModel = factory.getModel();
+	int character = 82; 
+	otherModel.addText(character);
+       	EXPECT_FALSE((model == otherModel));	
 }
 
 TEST(ModelViewControllerTest,CallingFromController){
