@@ -377,3 +377,12 @@ TEST(PalletteListTest,MakeEmptyList){
 	EXPECT_EQ(0,list.size()); 
 }
 
+TEST(PaletteListTest,AddToListUnique){
+
+	PaletteList listObject = {}; 
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel model = factory.getModel(); 
+	listObject.addModel(model);
+	std::vector<ObjectEditorDescriptionModel> list = listObject.getList(); 
+	EXPECT_TRUE((list[0] == model));
+}
