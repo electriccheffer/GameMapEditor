@@ -29,7 +29,7 @@ objectEditorBuildFiles = $(buildDirectory)/ObjectFactories.o $(buildDirectory)/O
 			 $(buildDirectory)/Buffer.o $(buildDirectory)/Errors.o\
 			 $(buildDirectory)/ControllerContext.o $(buildDirectory)/Mediator.o 
 
-gtestLink = -lgtest -lgtest_main -lncurses
+gtestLink = -lgtest -lgtest_main -lncurses -ljsoncpp
 
 ncurseLink = -lncurses
 
