@@ -98,7 +98,6 @@ void ObjectEditorPaletteController::takeInput(int character){
 			this->model.setCursorXPosition(moveVariable);
 			break; 
 		case '\n':
-			std::cout << "ENTER PRESSED" << std::endl;
 			break; 		
 	
 	}

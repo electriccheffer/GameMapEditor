@@ -22,12 +22,13 @@ objectEditorLibraryFiles =$(ObjectLibrary)/Factories.cpp $(ObjectLibrary)/Object
 			  $(ObjectLibrary)/ObjectView.cpp $(ObjectLibrary)/ObjectController.cpp\
 			  $(ObjectLibrary)/Buffer.cpp $(ObjectLibrary)/Errors.cpp\
 			  $(testDirectory)/TestSubclasses.cpp $(ObjectLibrary)/ControllerContext.cpp\
-			  $(ObjectLibrary)/Mediator.cpp
+			  $(ObjectLibrary)/Mediator.cpp $(ObjectLibrary)/DataStructures.cpp
 
 objectEditorBuildFiles = $(buildDirectory)/ObjectFactories.o $(buildDirectory)/ObjectModel.o\
 			 $(buildDirectory)/ObjectView.o $(buildDirectory)/ObjectController.o\
 			 $(buildDirectory)/Buffer.o $(buildDirectory)/Errors.o\
-			 $(buildDirectory)/ControllerContext.o $(buildDirectory)/Mediator.o 
+			 $(buildDirectory)/ControllerContext.o $(buildDirectory)/Mediator.o\
+			 $(buildDirectory)/DataStructures.o
 
 gtestLink = -lgtest -lgtest_main -lncurses -ljsoncpp
 
@@ -65,6 +66,7 @@ $(objectEditorBuildFiles): $(objectEditorLibraryFiles)
 	g++ -c $(ObjectLibrary)/Errors.cpp -o $(buildDirectory)/Errors.o
 	g++ -c $(ObjectLibrary)/ControllerContext.cpp -o $(buildDirectory)/ControllerContext.o
 	g++ -c $(ObjectLibrary)/Mediator.cpp -o $(buildDirectory)/Mediator.o
+	g++ -c $(ObjectLibrary)/DataStructures.cpp -o $(buildDirectory)/DataStructures.o 
 clean: 
 	rm -f $(buildObjectFiles)
 	rm -f build/main.o

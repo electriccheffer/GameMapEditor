@@ -11,6 +11,7 @@
 #include "../lib/ObjectEditor/Errors.cpp"
 #include "../include/ObjectEditor/Factories.hpp"
 #include "../include/ObjectEditor/ControllerContext.hpp"
+#include "../include/ObjectEditor/DataStructures.hpp"
 
 TEST(TrivialTest,AlwaysPasses){
 
@@ -352,4 +353,10 @@ TEST(ObjectRenderModelFactory,ChangeModels){
 	EXPECT_EQ(renderModel.getForeground(),expectedRenderModel.getForeground());
 }
 
+TEST(PalletteListTest,MakeEmptyList){
+
+	PaletteList listObject = {}; 
+	std::vector<ObjectEditorDescriptionModel> list = listObject.getList(); 
+	EXPECT_EQ(0,list.size()); 
+}
 
