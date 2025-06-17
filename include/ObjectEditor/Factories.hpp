@@ -5,6 +5,7 @@
 #include "../Factories.hpp"
 #include "../TextObject.hpp"
 #include "../Position.hpp"
+#include "DataStructures.hpp"
 
 class ObjectFactory:public ModelFactory{};
 

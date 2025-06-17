@@ -19,3 +19,15 @@ void RenderDescriptionMediator::toColleague(){
 	this->renderController.setModel(this->renderModel); 
 
 }
+
+SaveDescriptionMediator::SaveDescriptionMediator(PaletteList& paletteList,
+					ObjectEditorDescriptionModel& descriptionModel):
+					paletteList(paletteList),
+					descriptionModel(descriptionModel){
+										
+}
+
+void SaveDescriptionMediator::toColleague(){
+
+	this->paletteList.addModel(this->descriptionModel);
+}
