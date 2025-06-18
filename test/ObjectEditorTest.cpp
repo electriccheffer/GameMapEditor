@@ -488,3 +488,32 @@ TEST(PaletteModelFactoryTest,PaletteModelFromPaletteList){
 
 }
 
+
+TEST(PaletteModelTest,EqualityTestTrue){
+
+	ObjectEditorPaletteModel model = {}; 
+	ObjectEditorPaletteModel otherModel = {}; 
+	EXPECT_TRUE((model == otherModel));
+}
+
+TEST(PaletteModelTest,EqualityTestFalse){
+
+	std::string titleText = "Palette"
+	Position titlePosition = {}; 
+	TextObject title = {titleText,titlePosition}; 
+	std::string nameText = "pool"; 
+	Position poolPosition = {1,0}; 
+	TextObject pool = {nameText,poolPosition}; 
+	std::vector<TextObject> text = {}; 
+	text.push_back(name);
+	text.push_back(pool);
+	ObjectEditorPaletteModel model = {text}; 
+	
+	std::string otherTitleText = "Palette"
+	Position otherTitlePosition = {}; 
+	TextObject otherTitle = {titleText,titlePosition};
+	std::vetor<TextObject> otherText = {}; 
+	otherText.push_back(otherTitle);
+	ObjectEditorPaletteModel otherModel = {otherText};
+	EXPECT_FALSE((model == otherModel));
+}
