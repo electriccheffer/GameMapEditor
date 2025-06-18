@@ -482,8 +482,20 @@ TEST(PaletteModelFactoryTest,PaletteModelFromPaletteList){
 	paletteList.addModel(model);
 	ObjectPaletteModelFactory factory = {paletteList};
         ObjectEditorPaletteModel paletteModelResult = factory.getModel(); 
-	ObjectPaletteModelFactory testFactory = {}; 
-	ObjectEditorPaletteModel paletteModel = testFactory.getModel(); 
+	
+	std::string paletteTitleText = "Palette"; 
+	Position paletteTitlePosition = {}; 
+	TextObject paletteTitle = {paletteTitleText,paletteTitlePosition}; 
+
+	std::string paletteNameText = "Pool"; 
+	Position paletteNamePosition = {0,1}; 
+	TextObject palettePool = {paletteNameText,paletteNamePosition};
+
+	std::vector<TextObject> paletteModelText = {}; 
+	paletteModelText.push_back(paletteTitle);
+	paletteModelText.push_back(palettePool); 
+
+	ObjectEditorPaletteModel paletteModel = {paletteModelText}; 
 	EXPECT_TRUE((paletteModelResult == paletteModel));
 
 }

@@ -189,7 +189,7 @@ std::string ObjectPaletteModelFactory::extractTitle(std::string& text){
 	while(text[textStart] != ':'){
 		textStart += 1;
 	}
-	std::string name = text.substr(textStart,textEnd-1);
+	std::string name = text.substr(textStart+1,textEnd-1);
 	return name; 
 }
 
