@@ -126,9 +126,32 @@ ObjectEditorPaletteModel::ObjectEditorPaletteModel(std::vector<TextObject>& text
 	this->text = text; 
 }
 
-std::vector<TextObject>& ObjectEditorPaletteModel::getText(){
+std::vector<TextObject>& ObjectEditorPaletteModel::getText()const{
 
 	return this->text;
+}
+
+bool ObjectEditorPaletteModel::operator==(const ObjectEditorPaletteModel& otherModel)const{
+
+	std::vector<TextObject> otherText = otherModel.getText(); 
+	int otherTextSize = otherText.size(); 
+	int thisTextSize = this->text.size(); 
+	if(otherTextSize != thisTextSize){
+	
+		return false; 
+	}
+	else{
+	
+		for(int i = 0 ;i < thisTextSize ;i++){
+		
+			if(!(this->text[i] != otherText[i])){
+			
+				return false; 
+			}
+		
+		}
+	}
+	return true; 
 }
 
 ObjectEditorDescriptionModel::ObjectEditorDescriptionModel(){
