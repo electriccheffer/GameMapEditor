@@ -51,7 +51,7 @@ class ObjectEditorPaletteModel : public ObjectEditorModel{
 	public: 
 		ObjectEditorPaletteModel(); 
 		ObjectEditorPaletteModel(std::vector<TextObject>& text); 
-		std::vector<TextObject>& getText()const;
+		const std::vector<TextObject>& getText()const;
 		bool operator==(const ObjectEditorPaletteModel& otherModel)const;	
 	protected: 
 		std::vector<TextObject> text; 

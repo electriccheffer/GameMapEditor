@@ -126,7 +126,7 @@ ObjectEditorPaletteModel::ObjectEditorPaletteModel(std::vector<TextObject>& text
 	this->text = text; 
 }
 
-std::vector<TextObject>& ObjectEditorPaletteModel::getText()const{
+const std::vector<TextObject>& ObjectEditorPaletteModel::getText()const{
 
 	return this->text;
 }
@@ -144,7 +144,7 @@ bool ObjectEditorPaletteModel::operator==(const ObjectEditorPaletteModel& otherM
 	
 		for(int i = 0 ;i < thisTextSize ;i++){
 		
-			if(!(this->text[i] != otherText[i])){
+			if(this->text[i].getText() != otherText[i].getText()){
 			
 				return false; 
 			}

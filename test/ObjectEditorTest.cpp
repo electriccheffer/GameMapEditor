@@ -241,7 +241,7 @@ TEST(ControllerContextTest,InitialState){
 	ObjectOptionsModelFactory optionsModelFactory = {}; 
 	ObjectEditorOptionsModel optionsModel = optionsModelFactory.getModel(); 
 	ObjectEditorOptionsView optionsView(&optionsModel); 
-		ObjectPaletteFactory paletteFactory = {}; 
+		ObjectPaletteModelFactory paletteFactory = {}; 
 	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
 	ObjectEditorPaletteView paletteView(&paletteModel); 
 	ObjectEditorPaletteController paletteController = {paletteModel,paletteView}; 
@@ -273,7 +273,7 @@ TEST(ControllerContextTest,ChangeController){
 	ObjectOptionsModelFactory optionsModelFactory = {}; 
 	ObjectEditorOptionsModel optionsModel = optionsModelFactory.getModel(); 
 	ObjectEditorOptionsView optionsView(&optionsModel); 
-		ObjectPaletteFactory paletteFactory = {}; 
+		ObjectPaletteModelFactory paletteFactory = {}; 
 	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
 	ObjectEditorPaletteView paletteView(&paletteModel); 
 	ObjectEditorPaletteController paletteController = {paletteModel,paletteView}; 
@@ -304,7 +304,7 @@ TEST(ControllerContextTest,ChangeControllerDown){
 	ObjectOptionsModelFactory optionsModelFactory = {}; 
 	ObjectEditorOptionsModel optionsModel = optionsModelFactory.getModel(); 
 	ObjectEditorOptionsView optionsView(&optionsModel); 
-		ObjectPaletteFactory paletteFactory = {}; 
+	ObjectPaletteModelFactory paletteFactory = {}; 
 	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
 	ObjectEditorPaletteView paletteView(&paletteModel); 
 	ObjectEditorPaletteController paletteController = {paletteModel,paletteView}; 
@@ -480,9 +480,9 @@ TEST(PaletteModelFactoryTest,PaletteModelFromPaletteList){
 	ObjectEditorDescriptionModel model = {textList}; 
 	PaletteList paletteList = {};
 	paletteList.addModel(model);
-	PaletteModelFactory factory = {paletteList};
+	ObjectPaletteModelFactory factory = {paletteList};
         ObjectEditorPaletteModel paletteModelResult = factory.getModel(); 
-	PaletteModelFactory testFactory = {}; 
+	ObjectPaletteModelFactory testFactory = {}; 
 	ObjectEditorPaletteModel paletteModel = testFactory.getModel(); 
 	EXPECT_TRUE((paletteModelResult == paletteModel));
 
@@ -498,21 +498,21 @@ TEST(PaletteModelTest,EqualityTestTrue){
 
 TEST(PaletteModelTest,EqualityTestFalse){
 
-	std::string titleText = "Palette"
+	std::string titleText = "Palette"; 
 	Position titlePosition = {}; 
 	TextObject title = {titleText,titlePosition}; 
 	std::string nameText = "pool"; 
 	Position poolPosition = {1,0}; 
 	TextObject pool = {nameText,poolPosition}; 
 	std::vector<TextObject> text = {}; 
-	text.push_back(name);
+	text.push_back(title);
 	text.push_back(pool);
 	ObjectEditorPaletteModel model = {text}; 
 	
-	std::string otherTitleText = "Palette"
+	std::string otherTitleText = "Palette"; 
 	Position otherTitlePosition = {}; 
 	TextObject otherTitle = {titleText,titlePosition};
-	std::vetor<TextObject> otherText = {}; 
+	std::vector<TextObject> otherText = {}; 
 	otherText.push_back(otherTitle);
 	ObjectEditorPaletteModel otherModel = {otherText};
 	EXPECT_FALSE((model == otherModel));

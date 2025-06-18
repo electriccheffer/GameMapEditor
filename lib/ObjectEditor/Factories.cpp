@@ -5,6 +5,7 @@
 #include "../../include/ObjectEditor/Factories.hpp"
 #include "../../include/TextObject.hpp"
 #include "../../include/Position.hpp"
+#include "../../include/ObjectEditor/DataStructures.hpp"
 
 ObjectRenderModelFactory::ObjectRenderModelFactory(){
 
@@ -143,7 +144,7 @@ ObjectPaletteModelFactory::ObjectPaletteModelFactory(){
 
 }
 
-ObjectPaletteModelFactory(PaletteList& paletteList){
+ObjectPaletteModelFactory::ObjectPaletteModelFactory(PaletteList& paletteList){
 
 
 	this->processPaletteList(paletteList); 
@@ -158,22 +159,22 @@ void ObjectPaletteModelFactory::processPaletteList(PaletteList& paletteList){
 		return; 	
 	}
 	else{
-		int position = 1;
+		unsigned int palettePosition = 1;
 	        std::vector<TextObject> modelText = {}; 	
 		std::string windowTitle = "Palette"; 
 		Position position = {}; 
 		TextObject title = {windowTitle,position};	
 		modelText.push_back(title);
 
-		for(int i = 0 ; i < modelListLength ; i++){
+		for(unsigned int i = 0 ; i < modelListLength ; i++){
 				
 			ObjectEditorDescriptionModel descriptionModel = modelList[i]; 	
 			std::vector<TextObject> textList = descriptionModel.getText(); 
-			TextObject textObject = textList[position]; 
+			TextObject textObject = textList[palettePosition]; 
 			std::string text = textObject.getText();
 			std::string paletteText = this->extractTitle(text);
 			Position textPosition = {0,i+1};
-			TextObject paletteTextObject = {paletteText,textPosition};
+			TextObject paletteTextObject(paletteText,textPosition);
 			modelText.push_back(paletteTextObject);	
 		}
 		this->model = {modelText}; 	
