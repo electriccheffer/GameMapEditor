@@ -34,13 +34,16 @@ class ObjectOptionsModelFactory : public ObjectFactory{
 		ObjectEditorOptionsModel model; 
 }; 
 
-class ObjectPaletteFactory : public ObjectFactory{
+class ObjectPaletteModelFactory : public ObjectFactory{
 
 
 	public: 
-		ObjectPaletteFactory(); 
+		ObjectPaletteModelFactory(); 
+		ObjectPaletteModelFactory(PaletteList& paletteList);
 		ObjectEditorPaletteModel& getModel(); 
-	protected: 
+	protected:
+	      	void processPaletteList(PaletteList& paletteList);	
+		std::string extractTitle(std::string& text); 
 		void setStaticText();
 		ObjectEditorPaletteModel model; 
 }; 

@@ -52,7 +52,7 @@ class ObjectEditorPaletteModel : public ObjectEditorModel{
 		ObjectEditorPaletteModel(); 
 		ObjectEditorPaletteModel(std::vector<TextObject>& text); 
 		std::vector<TextObject>& getText();
-			
+	
 	protected: 
 		std::vector<TextObject> text; 
 }; 

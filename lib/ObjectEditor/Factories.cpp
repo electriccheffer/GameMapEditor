@@ -137,18 +137,68 @@ void ObjectOptionsModelFactory::setStaticText(){
 }
 
 
-ObjectPaletteFactory::ObjectPaletteFactory(){
+ObjectPaletteModelFactory::ObjectPaletteModelFactory(){
 
 	this->setStaticText(); 
 
 }
 
-ObjectEditorPaletteModel& ObjectPaletteFactory::getModel(){
+ObjectPaletteModelFactory(PaletteList& paletteList){
+
+
+	this->processPaletteList(paletteList); 
+}
+
+void ObjectPaletteModelFactory::processPaletteList(PaletteList& paletteList){
+	
+	std::vector<ObjectEditorDescriptionModel> modelList = paletteList.getList(); 
+	int modelListLength = modelList.size(); 
+	
+	if(modelListLength == 0){
+		return; 	
+	}
+	else{
+		int position = 1;
+	        std::vector<TextObject> modelText = {}; 	
+		std::string windowTitle = "Palette"; 
+		Position position = {}; 
+		TextObject title = {windowTitle,position};	
+		modelText.push_back(title);
+
+		for(int i = 0 ; i < modelListLength ; i++){
+				
+			ObjectEditorDescriptionModel descriptionModel = modelList[i]; 	
+			std::vector<TextObject> textList = descriptionModel.getText(); 
+			TextObject textObject = textList[position]; 
+			std::string text = textObject.getText();
+			std::string paletteText = this->extractTitle(text);
+			Position textPosition = {0,i+1};
+			TextObject paletteTextObject = {paletteText,textPosition};
+			modelText.push_back(paletteTextObject);	
+		}
+		this->model = {modelText}; 	
+	}
+
+}
+
+std::string ObjectPaletteModelFactory::extractTitle(std::string& text){
+
+	int textStart = 0; 
+	int textEnd = text.size(); 
+	while(text[textStart] != ':'){
+		textStart += 1;
+	}
+	std::string name = text.substr(textStart,textEnd-1);
+	return name; 
+}
+
+
+ObjectEditorPaletteModel& ObjectPaletteModelFactory::getModel(){
 
 	return this->model; 
 }
 
-void ObjectPaletteFactory::setStaticText(){
+void ObjectPaletteModelFactory::setStaticText(){
 	std::string windowTitle = "Palette"; 
 	Position position = {}; 
 	TextObject title = {windowTitle,position};	

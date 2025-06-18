@@ -447,3 +447,44 @@ TEST(SaveOptionTest,AddToPaletteList){
 	std::vector<ObjectEditorDescriptionModel> list = paletteList.getList(); 
 	EXPECT_TRUE((list[0] == model));	
 }
+
+TEST(PaletteModelFactoryTest,PaletteModelFromPaletteList){
+
+	std::string windowText = "Palette Description"; 
+	Position position = {}; 
+	TextObject title = {windowText,position}; 
+
+	std::string nameText = "Name:Pool";
+	Position namePosition = {1,0}; 
+	TextObject name = {nameText,namePosition}; 
+
+	std::string characterText = "Render Character:@";
+	Position characterPosition = {3,0}; 
+	TextObject character = {characterText,characterPosition}; 
+	
+	std::string backgroundText = "Background Color:blue";
+	Position backgroundPosition = {5,0}; 	
+	TextObject background = {backgroundText,backgroundPosition}; 
+
+	std::string foregroundText = "Foreground Color:cyan";
+	Position foregroundPosition = {7,0}; 
+	TextObject foreground = {foregroundText,foregroundPosition}; 
+
+	std::vector<TextObject> textList = {};
+	textList.push_back(title); 
+	textList.push_back(name); 
+	textList.push_back(character);
+	textList.push_back(background);
+	textList.push_back(foreground);
+	
+	ObjectEditorDescriptionModel model = {textList}; 
+	PaletteList paletteList = {};
+	paletteList.addModel(model);
+	PaletteModelFactory factory = {paletteList};
+        ObjectEditorPaletteModel paletteModelResult = factory.getModel(); 
+	PaletteModelFactory testFactory = {}; 
+	ObjectEditorPaletteModel paletteModel = testFactory.getModel(); 
+	EXPECT_TRUE((paletteModelResult == paletteModel));
+
+}
+
