@@ -52,10 +52,11 @@ int main(int argc, char** argv){
 	ObjectEditorDescriptionController descriptionController = {descriptionModel,
 								   descriptionView}; 
 	RenderDescriptionMediator mediator(descriptionModel,renderController,renderModel);	
-	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator); 
 	
 	SaveDescriptionMediator saveDescriptionMediator(paletteList,descriptionModel,paletteController,paletteModel);		
 
+	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,saveDescriptionMediator); 
+	
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);
 

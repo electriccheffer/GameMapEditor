@@ -156,6 +156,12 @@ void ObjectPaletteModelFactory::processPaletteList(PaletteList& paletteList){
 	int modelListLength = modelList.size(); 
 	
 	if(modelListLength == 0){
+		std::vector<TextObject> modelText = {}; 	
+		std::string windowTitle = "Palette"; 
+		Position position = {}; 
+		TextObject title = {windowTitle,position};	
+		modelText.push_back(title);
+		this->model = {modelText}; 
 		return; 	
 	}
 	else{
@@ -173,7 +179,7 @@ void ObjectPaletteModelFactory::processPaletteList(PaletteList& paletteList){
 			TextObject textObject = textList[palettePosition]; 
 			std::string text = textObject.getText();
 			std::string paletteText = this->extractTitle(text);
-			Position textPosition = {0,i+1};
+			Position textPosition = {i+1,1};
 			TextObject paletteTextObject(paletteText,textPosition);
 			modelText.push_back(paletteTextObject);	
 		}

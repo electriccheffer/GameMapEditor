@@ -10,10 +10,12 @@ class ObjectEditorOptionsController : public NCursesController{
 
 	public: 
 		ObjectEditorOptionsController(NCursesModel& model, NCursesView& view,
-				 		RenderDescriptionMediator& renderMediator); 
+				 		RenderDescriptionMediator& renderMediator,
+					SaveDescriptionMediator& saveDescriptionMediator); 
 		void takeInput(int character)override; 
 	protected: 
 		RenderDescriptionMediator& mediator; 
+		SaveDescriptionMediator& saveDescriptionMediator; 
 };
 
 
