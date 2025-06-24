@@ -65,7 +65,9 @@ void ObjectEditorRenderController::takeInput(int character){}
 
 ObjectEditorPaletteController::ObjectEditorPaletteController
 				(NCursesModel& model,NCursesView& view)
-				:NCursesController(dynamic_cast<NCursesModel&>(model),
+				:model(dynamic_cast<ObjectEditorPaletteModel&>(model)),
+				view(dynamic_cast<ObjectEditorPaletteView&>(view)),
+				NCursesController(dynamic_cast<NCursesModel&>(model),
 				    		   dynamic_cast<NCursesView&>(view)){
 				
 				
@@ -104,6 +106,11 @@ void ObjectEditorPaletteController::takeInput(int character){
 	this->view.updateModel(this->model); 	
 }
 
+void ObjectEditorPaletteController::setModel(ObjectEditorPaletteModel& model){
+	
+	this->model = model; 
+
+}
 
 ObjectEditorDescriptionController::ObjectEditorDescriptionController(
 					ObjectEditorDescriptionModel& model,

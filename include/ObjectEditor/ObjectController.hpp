@@ -33,7 +33,11 @@ class ObjectEditorPaletteController : public NCursesController{
 
 	public: 
 		ObjectEditorPaletteController(NCursesModel& model, NCursesView& view);
-		void takeInput(int character)override; 
+		void takeInput(int character)override;
+	        void setModel(ObjectEditorPaletteModel& model); 	
+	protected: 
+		ObjectEditorPaletteModel& model; 
+		ObjectEditorPaletteView& view; 
 };
 
 class ObjectEditorDescriptionController : public NCursesController{

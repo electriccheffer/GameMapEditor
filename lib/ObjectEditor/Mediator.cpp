@@ -21,13 +21,21 @@ void RenderDescriptionMediator::toColleague(){
 }
 
 SaveDescriptionMediator::SaveDescriptionMediator(PaletteList& paletteList,
-					ObjectEditorDescriptionModel& descriptionModel):
+					ObjectEditorDescriptionModel& descriptionModel,
+					ObjectEditorPaletteController& paletteController,
+					ObjectEditorPaletteModel& paletteModel):
 					paletteList(paletteList),
-					descriptionModel(descriptionModel){
+					descriptionModel(descriptionModel),
+					paletteController(paletteController),
+					paletteModel(paletteModel){
 										
 }
 
 void SaveDescriptionMediator::toColleague(){
 
 	this->paletteList.addModel(this->descriptionModel);
+	ObjectPaletteModelFactory factory = {this->paletteList}; 
+	this->paletteModel = factory.getModel(); 
+	this->paletteController.setModel(this->paletteModel);
+	
 }

@@ -15,6 +15,7 @@
 #include "../include/ObjectEditor/ObjectController.hpp"
 #include "../include/ObjectEditor/ControllerContext.hpp"
 #include "../include/ObjectEditor/Mediator.hpp"
+#include "../include/ObjectEditor/DataStructures.hpp"
 #include <vector>
 
 int main(int argc, char** argv){
@@ -37,8 +38,10 @@ int main(int argc, char** argv){
 	ObjectOptionsModelFactory optionsModelFactory = {}; 
 	ObjectEditorOptionsModel optionsModel = optionsModelFactory.getModel(); 
 	ObjectEditorOptionsView optionsView(&optionsModel); 
-
-	ObjectPaletteFactory paletteFactory = {}; 
+	
+	PaletteList paletteList = {}; 	
+	ObjectPaletteModelFactory paletteFactory = {paletteList}; 
+	
 	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
 	ObjectEditorPaletteView paletteView(&paletteModel); 
 	ObjectEditorPaletteController paletteController = {paletteModel,paletteView}; 
@@ -51,6 +54,8 @@ int main(int argc, char** argv){
 	RenderDescriptionMediator mediator(descriptionModel,renderController,renderModel);	
 	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator); 
 	
+	SaveDescriptionMediator saveDescriptionMediator(paletteList,descriptionModel,paletteController,paletteModel);		
+
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);
 

@@ -4,7 +4,7 @@
 #include "DataStructures.hpp"
 
 class ObjectEditorRenderController;
-
+class ObjectEditorPaletteController; 
 class RenderDescriptionMediator{
 
 	public:
@@ -22,10 +22,14 @@ class SaveDescriptionMediator{
 
 	public: 
 		SaveDescriptionMediator(PaletteList& paletteList,
-					ObjectEditorDescriptionModel& descriptionModel);
+					ObjectEditorDescriptionModel& descriptionModel,
+					ObjectEditorPaletteController& paletteController,
+					ObjectEditorPaletteModel& paletteModel);
 		void toColleague();
 	protected: 
 		PaletteList& paletteList; 
 		ObjectEditorDescriptionModel& descriptionModel; 	
+		ObjectEditorPaletteModel& paletteModel; 
+		ObjectEditorPaletteController& paletteController; 
 }; 
 #endif
