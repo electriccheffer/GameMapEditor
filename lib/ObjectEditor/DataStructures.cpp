@@ -13,6 +13,11 @@ const std::vector<ObjectEditorDescriptionModel>& PaletteList::getList()const{
 	return this->list; 
 }
 
+void PaletteList::setList(std::vector<ObjectEditorDescriptionModel>& list){
+
+	this->list =list; 
+}
+
 void PaletteList::addModel(ObjectEditorDescriptionModel& model){
 	
 	for(ObjectEditorDescriptionModel localModel : this->list){

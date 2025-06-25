@@ -20,4 +20,6 @@ void to_json(nlohmann::json& jsonObject,
 void from_json(const nlohmann::json& jsonObject,ObjectEditorDescriptionModel& model);
 
 void to_json(nlohmann::json& jsonObject,const PaletteList& paletteList); 
+
+void from_json(const nlohmann::json& jsonObject,PaletteList& paletteList);
 #endif

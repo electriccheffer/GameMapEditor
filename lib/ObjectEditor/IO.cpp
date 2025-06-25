@@ -51,3 +51,11 @@ void to_json(nlohmann::json& jsonObject,const PaletteList& paletteList){
 	
 	jsonObject = paletteList.getList(); 
 }
+
+void from_json(const nlohmann::json& jsonObject,PaletteList& palette){
+	
+	std::vector<ObjectEditorDescriptionModel> modelList = jsonObject.
+					get<std::vector<ObjectEditorDescriptionModel>>(); 
+	palette.setList(modelList);
+	
+}
