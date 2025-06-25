@@ -12,6 +12,8 @@ void from_json(const nlohmann::json& jsonObject,Position& position);
 
 void to_json(nlohmann::json& jsonObject, const TextObject& textObject);
 
+void from_json(const nlohmann::json& jsonObject,TextObject& textObject);
+
 void to_json(nlohmann::json& jsonObject, 
 		const ObjectEditorDescriptionModel& descriptionModel);
 

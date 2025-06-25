@@ -677,6 +677,22 @@ TEST(TestPositionDeserialization,NonDefaultDeserialization){
 	Position position; 
 	from_json(serializedPosition,position);
 	EXPECT_TRUE((positionResult == position));
+}
 
+TEST(TestTextObjectDeserialization,DeserializationTest){
 
+	nlohmann::json serializedTextObject = {
+					  {"text","Name:pool"},
+					  {"position",{
+						  {"xPosition",1},
+						  {"yPosition",2}
+						      }
+					  }
+					};
+	std::string rawText = "Name:pool"; 
+	Position textPosition = {1,2}; 
+	TextObject text = {rawText,textPosition}; 
+	TextObject textResult; 
+	from_json(serializedTextObject,textResult);
+	EXPECT_TRUE((textResult==text));
 }

@@ -24,6 +24,15 @@ void to_json(nlohmann::json& jsonObject, const TextObject& textObject){
 	}; 
 }
 
+void from_json(const nlohmann::json& jsonObject,TextObject& textObject){
+
+	Position position = jsonObject.at("position").get<Position>(); 
+	std::string text = jsonObject.at("text").get<std::string>();
+	textObject.setText(text);
+	textObject.setPosition(position);
+
+}
+
 void to_json(nlohmann::json& jsonObject, 
 		const ObjectEditorDescriptionModel& descriptionModel){
 
