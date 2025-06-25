@@ -253,9 +253,10 @@ TEST(ControllerContextTest,InitialState){
 								   descriptionView}; 
 	
 	RenderDescriptionMediator mediator(descriptionModel,renderController,renderModel);
-	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator); 
-
-
+	PaletteList paletteList = {}; 
+	SaveDescriptionMediator saveDescriptionMediator(paletteList,descriptionModel,paletteController,paletteModel); 
+	LoadDescriptionMediator loadDescriptionMediator(paletteModel,descriptionController,descriptionModel,paletteList);
+	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,saveDescriptionMediator,loadDescriptionMediator); 
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);
 	NCursesController* controllerContext = context.getContext();
@@ -285,9 +286,10 @@ TEST(ControllerContextTest,ChangeController){
 								   descriptionView}; 
 	
 	RenderDescriptionMediator mediator(descriptionModel,renderController,renderModel);
-	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator); 
-
-
+	PaletteList paletteList = {}; 
+	SaveDescriptionMediator saveDescriptionMediator(paletteList,descriptionModel,paletteController,paletteModel); 
+	LoadDescriptionMediator loadDescriptionMediator(paletteModel,descriptionController,descriptionModel,paletteList);
+	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,saveDescriptionMediator,loadDescriptionMediator);	
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);
 	NCursesController* controllerContext = context.takeInput(KEY_PPAGE);
@@ -316,9 +318,12 @@ TEST(ControllerContextTest,ChangeControllerDown){
 								   descriptionView}; 
 	
 	RenderDescriptionMediator mediator(descriptionModel,renderController,renderModel);
-	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator); 
-
-
+	
+	
+	PaletteList paletteList = {}; 
+	SaveDescriptionMediator saveDescriptionMediator(paletteList,descriptionModel,paletteController,paletteModel); 
+	LoadDescriptionMediator loadDescriptionMediator(paletteModel,descriptionController,descriptionModel,paletteList);
+	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,saveDescriptionMediator,loadDescriptionMediator);
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);
 	NCursesController* controllerContext = context.takeInput(KEY_NPAGE);
@@ -442,7 +447,15 @@ TEST(SaveOptionTest,AddToPaletteList){
 	textList.push_back(foreground);
 	PaletteList paletteList = {}; 
 	ObjectEditorDescriptionModel model = {textList}; 
-	SaveDescriptionMediator descriptionMediator = {paletteList,model};
+
+	ObjectPaletteModelFactory paletteFactory = {}; 
+	ObjectEditorPaletteModel paletteModel = paletteFactory.getModel(); 
+	ObjectEditorPaletteView paletteView(&paletteModel); 
+	ObjectEditorPaletteController paletteController = {paletteModel,paletteView}; 
+	
+
+	SaveDescriptionMediator descriptionMediator = {paletteList,model,paletteController,paletteModel};
+	
 	descriptionMediator.toColleague(); 
 	std::vector<ObjectEditorDescriptionModel> list = paletteList.getList(); 
 	EXPECT_TRUE((list[0] == model));	
