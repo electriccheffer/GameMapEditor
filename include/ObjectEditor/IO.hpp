@@ -8,6 +8,8 @@
 
 void to_json(nlohmann::json& jsonObject, const Position& position); 
 
+void from_json(const nlohmann::json& jsonObject,Position& position);
+
 void to_json(nlohmann::json& jsonObject, const TextObject& textObject);
 
 void to_json(nlohmann::json& jsonObject, 

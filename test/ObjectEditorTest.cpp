@@ -660,3 +660,13 @@ TEST(PaletteListSerializationTest,PaletteSerialization){
 
 	EXPECT_EQ(serializedResult,serializedPaletteList);	
 }
+
+TEST(TestPositionDeserialization,DefaultPositionTest){
+
+
+	nlohmann::json serializedPosition = {{"xPosition",0},{"yPosition",0}};
+	Position positionResult = {}; 
+	Position position; 
+	from_json(serializedPosition,position);
+	EXPECT_TRUE((positionResult == position));
+}
