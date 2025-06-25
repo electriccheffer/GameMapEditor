@@ -39,3 +39,22 @@ void SaveDescriptionMediator::toColleague(){
 	this->paletteController.setModel(this->paletteModel);
 	
 }
+
+LoadDescriptionMediator::LoadDescriptionMediator(ObjectEditorPaletteModel& paletteModel, 
+				ObjectEditorDescriptionController& descriptionController,
+				ObjectEditorDescriptionModel& descriptionModel,
+				PaletteList& paletteList):
+				paletteModel(paletteModel),
+				descriptionController(descriptionController),
+				descriptionModel(descriptionModel),
+				paletteList(paletteList){
+
+}
+
+void LoadDescriptionMediator::toColleague(){
+
+	std::vector<ObjectEditorDescriptionModel> modelList = this->paletteList.getList(); 
+	unsigned int paletteModelIndex = this->paletteModel.getCursorXPosition() - 1 ;
+	this->descriptionModel = modelList[paletteModelIndex]; 
+	this->descriptionController.setModel(this->descriptionModel);	
+}

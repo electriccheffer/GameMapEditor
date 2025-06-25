@@ -5,6 +5,8 @@
 
 class ObjectEditorRenderController;
 class ObjectEditorPaletteController; 
+class ObjectEditorDescriptionController; 
+
 class RenderDescriptionMediator{
 
 	public:
@@ -31,5 +33,21 @@ class SaveDescriptionMediator{
 		ObjectEditorDescriptionModel& descriptionModel; 	
 		ObjectEditorPaletteModel& paletteModel; 
 		ObjectEditorPaletteController& paletteController; 
+}; 
+
+class LoadDescriptionMediator{
+
+	public: 
+		LoadDescriptionMediator(ObjectEditorPaletteModel& paletteModel, 
+				ObjectEditorDescriptionController& descriptionController,
+				ObjectEditorDescriptionModel& descriptionModel,
+				PaletteList& paletteList); 
+		void toColleague(); 
+	protected:
+	        ObjectEditorPaletteModel& paletteModel; 	
+		ObjectEditorDescriptionController& descriptionController; 
+		PaletteList& paletteList; 
+		ObjectEditorDescriptionModel& descriptionModel; 
+
 }; 
 #endif

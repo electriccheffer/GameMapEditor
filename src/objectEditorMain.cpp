@@ -54,8 +54,10 @@ int main(int argc, char** argv){
 	RenderDescriptionMediator mediator(descriptionModel,renderController,renderModel);	
 	
 	SaveDescriptionMediator saveDescriptionMediator(paletteList,descriptionModel,paletteController,paletteModel);		
+	
+	LoadDescriptionMediator loadDescriptionMediator(paletteModel,descriptionController,descriptionModel,paletteList); 
 
-	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,saveDescriptionMediator); 
+	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,saveDescriptionMediator,loadDescriptionMediator); 
 	
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);

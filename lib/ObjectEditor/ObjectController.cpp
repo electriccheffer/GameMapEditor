@@ -7,11 +7,13 @@
 ObjectEditorOptionsController::ObjectEditorOptionsController
 				(NCursesModel& model,NCursesView& view,
 				 RenderDescriptionMediator& renderMediator,
-				 SaveDescriptionMediator& saveDescriptionMediator)
+				 SaveDescriptionMediator& saveDescriptionMediator,
+				 LoadDescriptionMediator& loadDescriptionMediator)
 				   :NCursesController(dynamic_cast<NCursesModel&>(model),
 						   dynamic_cast<NCursesView&>(view)),
 				 mediator(renderMediator),
-				 saveDescriptionMediator(saveDescriptionMediator){
+				 saveDescriptionMediator(saveDescriptionMediator),
+				 loadDescriptionMediator(loadDescriptionMediator){
 }
 
 void ObjectEditorOptionsController::takeInput(int character){
@@ -46,6 +48,9 @@ void ObjectEditorOptionsController::takeInput(int character){
 			}
 			if(this->model.getCursorXPosition() == 1){
 				this->saveDescriptionMediator.toColleague(); 
+			}
+			if(this->model.getCursorXPosition() == 4){
+				this->loadDescriptionMediator.toColleague(); 
 			}
 			break; 	
 	}

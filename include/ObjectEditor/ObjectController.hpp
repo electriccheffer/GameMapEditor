@@ -11,11 +11,13 @@ class ObjectEditorOptionsController : public NCursesController{
 	public: 
 		ObjectEditorOptionsController(NCursesModel& model, NCursesView& view,
 				 		RenderDescriptionMediator& renderMediator,
-					SaveDescriptionMediator& saveDescriptionMediator); 
+					SaveDescriptionMediator& saveDescriptionMediator,
+					LoadDescriptionMediator& loadDescriptionMediator); 
 		void takeInput(int character)override; 
 	protected: 
 		RenderDescriptionMediator& mediator; 
-		SaveDescriptionMediator& saveDescriptionMediator; 
+		SaveDescriptionMediator& saveDescriptionMediator;
+	        LoadDescriptionMediator& loadDescriptionMediator; 	
 };
 
 
