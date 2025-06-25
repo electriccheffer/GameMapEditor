@@ -14,6 +14,7 @@
 #include "../include/ObjectEditor/ControllerContext.hpp"
 #include "../include/ObjectEditor/DataStructures.hpp"
 #include "../include/ObjectEditor/IO.hpp"
+#include "../include/TextObject.hpp"
 
 TEST(TrivialTest,AlwaysPasses){
 
@@ -562,5 +563,22 @@ TEST(PositionSerializationTest,NonDefaultTest){
 	nlohmann::json serializedPosition = position; 
 	nlohmann::json serializedResult = {{"xPosition",xPosition},{"yPosition",yPosition}};
 	EXPECT_EQ(serializedResult,serializedPosition);
+}
 
+TEST(TextObjectSerialization,TestSerialization){
+	unsigned int xPosition = 1; 
+	unsigned int yPosition = 2; 
+	Position position = {xPosition,yPosition};
+	std::string rawText = "Name:pool"; 
+	TextObject text = {rawText,position};
+	nlohmann::json serializedTextObject = text; 
+	nlohmann::json serializedResult = {
+					  {"text","Name:pool"},
+					  {"position",{
+						  {"xPosition",1},
+						  {"yPosition",2}
+						      }
+					  }
+					}; 
+	EXPECT_EQ(serializedResult,serializedTextObject);
 }
