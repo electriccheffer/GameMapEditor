@@ -1,6 +1,7 @@
 #include "../../include/ObjectEditor/IO.hpp"
 #include "../../include/TextObject.hpp"
 #include "../../include/ObjectEditor/ObjectModel.hpp"
+#include "../../include/ObjectEditor/DataStructures.hpp"
 
 void to_json(nlohmann::json& jsonObject, const Position& position){
 
@@ -20,4 +21,9 @@ void to_json(nlohmann::json& jsonObject,
 		const ObjectEditorDescriptionModel& descriptionModel){
 
 	jsonObject = descriptionModel.getText(); 
+}
+
+void to_json(nlohmann::json& jsonObject,const PaletteList& paletteList){
+	
+	jsonObject = paletteList.getList(); 
 }

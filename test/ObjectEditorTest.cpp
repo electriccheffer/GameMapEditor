@@ -616,3 +616,47 @@ TEST(DescriptionModelSerialization,TestSerialization){
 	nlohmann::json serializedResult = textList; 
 	EXPECT_EQ(serializedResult,serializedDescriptionModel); 
 }
+
+TEST(PaletteListSerializationTest,PaletteSerialization){
+
+	PaletteList paletteList = {}; 
+	
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel model = factory.getModel(); 
+	
+	std::string windowText = "Palette Description"; 
+	Position position = {}; 
+	TextObject title = {windowText,position}; 
+	std::string nameText = "Name:pool";
+	Position namePosition = {1,0}; 
+	TextObject name = {nameText,namePosition}; 
+	std::string characterText = "Render Character:@";
+	Position characterPosition = {3,0}; 
+	TextObject character = {characterText,characterPosition}; 
+	std::string backgroundText = "Background Color:blue";
+	Position backgroundPosition = {5,0}; 	
+	TextObject background = {backgroundText,backgroundPosition}; 
+	std::string foregroundText = "Foreground Color:cyan";
+	Position foregroundPosition = {7,0}; 
+	TextObject foreground = {foregroundText,foregroundPosition}; 
+	std::vector<TextObject> textList = {};
+	textList.push_back(title); 
+	textList.push_back(name); 
+	textList.push_back(character);
+	textList.push_back(background);
+	textList.push_back(foreground);	
+	ObjectEditorDescriptionModel otherModel = {textList}; 
+
+	paletteList.addModel(model);
+	paletteList.addModel(otherModel);
+
+	nlohmann::json serializedPaletteList = paletteList; 
+	
+	std::vector<ObjectEditorDescriptionModel> rawList = {}; 
+	rawList.push_back(model);
+	rawList.push_back(otherModel);
+
+	nlohmann::json serializedResult = rawList; 
+
+	EXPECT_EQ(serializedResult,serializedPaletteList);	
+}

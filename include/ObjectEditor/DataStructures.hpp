@@ -7,7 +7,7 @@ class PaletteList{
 	
 	public:
 		PaletteList();
-		std::vector<ObjectEditorDescriptionModel>& getList(); 
+		const std::vector<ObjectEditorDescriptionModel>& getList()const; 
 		void addModel(ObjectEditorDescriptionModel& model);
 	protected: 
 		std::vector<ObjectEditorDescriptionModel> list; 

@@ -8,7 +8,7 @@ PaletteList::PaletteList(){
 	this->list = {}; 
 }
 
-std::vector<ObjectEditorDescriptionModel>& PaletteList::getList(){
+const std::vector<ObjectEditorDescriptionModel>& PaletteList::getList()const{
 
 	return this->list; 
 }
