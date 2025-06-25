@@ -4,6 +4,7 @@
 #include <typeinfo>
 #include <string>
 #include <iostream>
+#include <nlohmann/json.hpp>
 #include "../include/ObjectEditor/ObjectModel.hpp"
 #include "../include/ObjectEditor/ObjectView.hpp"
 #include "../include/ObjectEditor/ObjectController.hpp"
@@ -12,6 +13,7 @@
 #include "../include/ObjectEditor/Factories.hpp"
 #include "../include/ObjectEditor/ControllerContext.hpp"
 #include "../include/ObjectEditor/DataStructures.hpp"
+#include "../include/ObjectEditor/IO.hpp"
 
 TEST(TrivialTest,AlwaysPasses){
 
@@ -541,4 +543,24 @@ TEST(PaletteModelTest,EqualityTestFalse){
 	otherText.push_back(otherTitle);
 	ObjectEditorPaletteModel otherModel = {otherText};
 	EXPECT_FALSE((model == otherModel));
+}
+
+TEST(PositionSerializationTest,DefaultConstructorTest){
+	
+	Position position = {}; 
+	nlohmann::json serializedPosition = position; 
+	nlohmann::json serializedResult = {{"xPosition",0},{"yPosition",0}};
+	EXPECT_EQ(serializedResult,serializedPosition);
+
+}
+
+
+TEST(PositionSerializationTest,NonDefaultTest){
+	unsigned int xPosition = 1; 
+	unsigned int yPosition = 2; 
+	Position position = {xPosition,yPosition}; 
+	nlohmann::json serializedPosition = position; 
+	nlohmann::json serializedResult = {{"xPosition",xPosition},{"yPosition",yPosition}};
+	EXPECT_EQ(serializedResult,serializedPosition);
+
 }
