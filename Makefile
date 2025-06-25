@@ -76,6 +76,7 @@ clean:
 	rm -f test/test
 	rm -f $(buildDirectory)/main
 	rm -f $(buildDirectory)/*
+	rm -f jsonTest.json
 
 $(buildObjectFiles): $(libraryFiles) 
 	g++ -c $(libraryDirectory)/NCursesModel.cpp -o $(buildDirectory)/NCursesModel.o

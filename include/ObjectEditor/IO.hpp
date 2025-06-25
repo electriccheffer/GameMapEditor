@@ -5,6 +5,9 @@
 #include "ObjectModel.hpp"
 #include "DataStructures.hpp"
 #include <nlohmann/json.hpp>
+#include <filesystem>
+#include <string>
+#include <fstream>
 
 void to_json(nlohmann::json& jsonObject, const Position& position); 
 
@@ -22,4 +25,9 @@ void from_json(const nlohmann::json& jsonObject,ObjectEditorDescriptionModel& mo
 void to_json(nlohmann::json& jsonObject,const PaletteList& paletteList); 
 
 void from_json(const nlohmann::json& jsonObject,PaletteList& paletteList);
+
+void write_json_to_file(std::filesystem::path path,nlohmann::json jsonData);
+
+std::string read_json_from_file(std::filesystem::path path);
+
 #endif

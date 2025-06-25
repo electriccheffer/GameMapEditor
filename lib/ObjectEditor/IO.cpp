@@ -1,3 +1,8 @@
+#include <fstream>
+#include <string>
+#include <filesystem>
+#include <iostream>
+#include <sstream>
 #include "../../include/ObjectEditor/IO.hpp"
 #include "../../include/TextObject.hpp"
 #include "../../include/ObjectEditor/ObjectModel.hpp"
@@ -58,4 +63,23 @@ void from_json(const nlohmann::json& jsonObject,PaletteList& palette){
 					get<std::vector<ObjectEditorDescriptionModel>>(); 
 	palette.setList(modelList);
 	
+}
+
+
+void write_json_to_file(std::filesystem::path path, nlohmann::json jsonData){
+	
+	std::ofstream jsonFile(path); 
+	std::string jsonDump = jsonData.dump(); 
+	jsonFile << jsonDump; 
+	jsonFile.close(); 
+}
+
+std::string read_json_from_file(std::filesystem::path path){
+
+	std::ifstream jsonInFile(path);
+	std::ostringstream jsonStringStream; 
+	jsonStringStream << jsonInFile.rdbuf();
+	std::string jsonString; 
+	jsonString = jsonStringStream.str(); 
+	return jsonString; 
 }
