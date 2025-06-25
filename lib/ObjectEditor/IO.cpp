@@ -39,6 +39,14 @@ void to_json(nlohmann::json& jsonObject,
 	jsonObject = descriptionModel.getText(); 
 }
 
+
+void from_json(const nlohmann::json& jsonObject,
+		ObjectEditorDescriptionModel& descriptionModel){
+
+	std::vector<TextObject> textList = jsonObject.get<std::vector<TextObject>>(); 
+	descriptionModel.setText(textList);  
+}
+
 void to_json(nlohmann::json& jsonObject,const PaletteList& paletteList){
 	
 	jsonObject = paletteList.getList(); 

@@ -186,6 +186,12 @@ const std::vector<TextObject>& ObjectEditorDescriptionModel::getText()const{
 
 }
 
+void ObjectEditorDescriptionModel::setText(std::vector<TextObject> text){
+
+	this->text = text; 
+
+}
+
 void ObjectEditorDescriptionModel::addText(int character){
 
 	char asCharacter = static_cast<char>(character);

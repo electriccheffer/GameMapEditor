@@ -696,3 +696,39 @@ TEST(TestTextObjectDeserialization,DeserializationTest){
 	from_json(serializedTextObject,textResult);
 	EXPECT_TRUE((textResult==text));
 }
+
+TEST(TestDescriptionModelDeserialization,ModelDeserializationDefault){
+
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel modelResult = factory.getModel(); 
+	std::string windowText = "Palette Description"; 
+	Position position = {}; 
+	TextObject title = {windowText,position}; 
+
+	std::string nameText = "Name:";
+	Position namePosition = {1,0}; 
+	TextObject name = {nameText,namePosition}; 
+
+	std::string characterText = "Render Character:";
+	Position characterPosition = {3,0}; 
+	TextObject character = {characterText,characterPosition}; 
+	
+	std::string backgroundText = "Background Color:";
+	Position backgroundPosition = {5,0}; 	
+	TextObject background = {backgroundText,backgroundPosition}; 
+
+	std::string foregroundText = "Foreground Color:";
+	Position foregroundPosition = {7,0}; 
+	TextObject foreground = {foregroundText,foregroundPosition}; 
+
+	std::vector<TextObject> textList = {};
+	textList.push_back(title); 
+	textList.push_back(name); 
+	textList.push_back(character);
+	textList.push_back(background);
+	textList.push_back(foreground);
+	nlohmann::json jsonList = textList; 
+	ObjectEditorDescriptionModel model; 
+	from_json(jsonList,model);
+	EXPECT_TRUE((model == modelResult));
+}

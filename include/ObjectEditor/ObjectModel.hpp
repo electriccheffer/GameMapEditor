@@ -63,6 +63,7 @@ class ObjectEditorDescriptionModel : public ObjectEditorModel{
 		ObjectEditorDescriptionModel(); 
 		ObjectEditorDescriptionModel(std::vector<TextObject>& text);
 		const std::vector<TextObject>& getText()const;	
+		void setText(std::vector<TextObject> text);
 		void addText(int character);	
 		void removeText();
 	        void cursorUp(); 
