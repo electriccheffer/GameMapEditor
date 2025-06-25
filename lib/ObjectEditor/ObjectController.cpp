@@ -3,7 +3,8 @@
 #include "../../include/ObjectEditor/ObjectModel.hpp"
 #include "../../include/ObjectEditor/Mediator.hpp"
 #include <iostream>
-
+#include <cstdlib>
+#include <ncurses.h>
 ObjectEditorOptionsController::ObjectEditorOptionsController
 				(NCursesModel& model,NCursesView& view,
 				 RenderDescriptionMediator& renderMediator,
@@ -51,6 +52,11 @@ void ObjectEditorOptionsController::takeInput(int character){
 			}
 			if(this->model.getCursorXPosition() == 4){
 				this->loadDescriptionMediator.toColleague(); 
+			}
+			if(this->model.getCursorXPosition() == 5){
+				endwin(); 	
+				exit(0); 
+			
 			}
 			break; 	
 	}
