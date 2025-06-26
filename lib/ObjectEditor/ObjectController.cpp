@@ -12,13 +12,14 @@ ObjectEditorOptionsController::ObjectEditorOptionsController
 				 RenderDescriptionMediator& renderMediator,
 				 SaveDescriptionMediator& saveDescriptionMediator,
 				 LoadDescriptionMediator& loadDescriptionMediator,
-				 Writer& writer,PaletteList& paletteList)
+				 Writer& writer,PaletteList& paletteList, Reader& reader)
 				   :NCursesController(dynamic_cast<NCursesModel&>(model),
 						   dynamic_cast<NCursesView&>(view)),
 				 mediator(renderMediator),
 				 saveDescriptionMediator(saveDescriptionMediator),
 				 loadDescriptionMediator(loadDescriptionMediator),
-				 paletteList(paletteList),writer(writer){
+				 paletteList(paletteList),writer(writer),
+				 reader(reader){
 }
 
 void ObjectEditorOptionsController::takeInput(int character){
@@ -64,6 +65,15 @@ void ObjectEditorOptionsController::takeInput(int character){
 			if(this->model.getCursorXPosition() == 6){
 				writer.write(this->paletteList); 
 			}	
+			if(this->model.getCursorXPosition() == 7){
+			
+				this->paletteList = this->reader.read(); 
+				this->saveDescriptionMediator.setPaletteList(
+								this->paletteList);
+				this->loadDescriptionMediator.setPaletteList(
+								this->paletteList);
+			        this->saveDescriptionMediator.toColleague(); 	
+			}
 			break; 	
 	}
 	this->view.updateModel(this->model); 	

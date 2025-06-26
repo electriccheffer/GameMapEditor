@@ -14,13 +14,15 @@ class ObjectEditorOptionsController : public NCursesController{
 				 		RenderDescriptionMediator& renderMediator,
 					SaveDescriptionMediator& saveDescriptionMediator,
 					LoadDescriptionMediator& loadDescriptionMediator,
-					Writer& writer,PaletteList& paletteList); 
+					Writer& writer,PaletteList& paletteList,
+					Reader& reader); 
 		void takeInput(int character)override; 
 	protected: 
 		RenderDescriptionMediator& mediator; 
 		SaveDescriptionMediator& saveDescriptionMediator;
 	        LoadDescriptionMediator& loadDescriptionMediator; 	
 		Writer& writer; 
+		Reader& reader;
 		PaletteList& paletteList; 
 };
 

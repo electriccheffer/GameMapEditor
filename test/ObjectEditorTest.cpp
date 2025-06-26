@@ -260,7 +260,11 @@ TEST(ControllerContextTest,InitialState){
 	PaletteList paletteList = {}; 
 	SaveDescriptionMediator saveDescriptionMediator(paletteList,descriptionModel,paletteController,paletteModel); 
 	LoadDescriptionMediator loadDescriptionMediator(paletteModel,descriptionController,descriptionModel,paletteList);
-	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,saveDescriptionMediator,loadDescriptionMediator); 
+	std::filesystem::path filePath = "somePath"; 
+	Writer writer(filePath); 
+	Reader reader(filePath);
+	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,
+							saveDescriptionMediator,loadDescriptionMediator,writer,paletteList,reader); 
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);
 	NCursesController* controllerContext = context.getContext();
@@ -293,7 +297,11 @@ TEST(ControllerContextTest,ChangeController){
 	PaletteList paletteList = {}; 
 	SaveDescriptionMediator saveDescriptionMediator(paletteList,descriptionModel,paletteController,paletteModel); 
 	LoadDescriptionMediator loadDescriptionMediator(paletteModel,descriptionController,descriptionModel,paletteList);
-	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,saveDescriptionMediator,loadDescriptionMediator);	
+	std::filesystem::path filePath = "somePath"; 
+	Writer writer(filePath); 
+	Reader reader(filePath);
+	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,
+					saveDescriptionMediator,loadDescriptionMediator,writer,paletteList,reader);	
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);
 	NCursesController* controllerContext = context.takeInput(KEY_PPAGE);
@@ -327,7 +335,11 @@ TEST(ControllerContextTest,ChangeControllerDown){
 	PaletteList paletteList = {}; 
 	SaveDescriptionMediator saveDescriptionMediator(paletteList,descriptionModel,paletteController,paletteModel); 
 	LoadDescriptionMediator loadDescriptionMediator(paletteModel,descriptionController,descriptionModel,paletteList);
-	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,saveDescriptionMediator,loadDescriptionMediator);
+	std::filesystem::path filePath = "somePath";
+	Writer writer(filePath); 
+	Reader reader(filePath);
+	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,
+					saveDescriptionMediator,loadDescriptionMediator,writer,paletteList,reader);
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);
 	NCursesController* controllerContext = context.takeInput(KEY_NPAGE);
@@ -774,7 +786,7 @@ TEST(PaletteListDeserialization,DeserializationTest){
 	from_json(jsonPaletteList,listOutput); 
 
 	std::vector<ObjectEditorDescriptionModel> modelList = listOutput.getList(); 
-
+	std::cout << "Length of model list:" << modelList.size() << std::endl; 
 	EXPECT_TRUE((modelList[0] == model));
 	EXPECT_TRUE((modelList[1] == otherModel));
 }
@@ -821,6 +833,7 @@ TEST(TestJsonToFile,WritingAndReading){
 	nlohmann::json jsonPalette = nlohmann::json::parse(jsonData);
 	from_json(jsonPalette,paletteOutput);
         std::vector<ObjectEditorDescriptionModel> modelList = paletteOutput.getList(); 	
+	std::cout << "Model List Length: " << modelList.size() << std::endl; 
 	EXPECT_TRUE((modelList[0] == model));
 	EXPECT_TRUE((modelList[1] == otherModel));
 }

@@ -60,9 +60,11 @@ int main(int argc, char** argv){
 	
 	std::filesystem::path filePath = "./character.json"; 
 	Writer writer(filePath);
+	Reader reader(filePath);
 
 	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,
-				saveDescriptionMediator,loadDescriptionMediator,writer,paletteList); 
+				saveDescriptionMediator,loadDescriptionMediator,writer,
+				paletteList,reader); 
 	
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);

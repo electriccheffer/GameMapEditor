@@ -29,6 +29,6 @@ void PaletteList::addModel(ObjectEditorDescriptionModel& model){
 		 );
 
 		}
-	}
+	}	
 	this->list.push_back(model);
 }

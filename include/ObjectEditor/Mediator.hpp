@@ -28,6 +28,8 @@ class SaveDescriptionMediator{
 					ObjectEditorPaletteController& paletteController,
 					ObjectEditorPaletteModel& paletteModel);
 		void toColleague();
+		void setPaletteList(PaletteList& paletteList);
+
 	protected: 
 		PaletteList& paletteList; 
 		ObjectEditorDescriptionModel& descriptionModel; 	
@@ -43,6 +45,7 @@ class LoadDescriptionMediator{
 				ObjectEditorDescriptionModel& descriptionModel,
 				PaletteList& paletteList); 
 		void toColleague(); 
+		void setPaletteList(PaletteList& paletteList);
 	protected:
 	        ObjectEditorPaletteModel& paletteModel; 	
 		ObjectEditorDescriptionController& descriptionController; 

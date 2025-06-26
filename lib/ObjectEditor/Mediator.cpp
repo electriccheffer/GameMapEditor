@@ -2,6 +2,7 @@
 #include "../../include/ObjectEditor/ObjectModel.hpp"
 #include "../../include/ObjectEditor/ObjectController.hpp"
 #include "../../include/ObjectEditor/Factories.hpp"
+#include "../../lib/ObjectEditor/Errors.cpp"
 #include <iostream>
 RenderDescriptionMediator::RenderDescriptionMediator(ObjectEditorDescriptionModel& model,
 						  ObjectEditorRenderController& controller,
@@ -32,12 +33,25 @@ SaveDescriptionMediator::SaveDescriptionMediator(PaletteList& paletteList,
 }
 
 void SaveDescriptionMediator::toColleague(){
-
-	this->paletteList.addModel(this->descriptionModel);
+	try{
+	
+		this->paletteList.addModel(this->descriptionModel);
+	
+	}
+	catch(PaletteListError error){
+	
+	
+	}
 	ObjectPaletteModelFactory factory = {this->paletteList}; 
 	this->paletteModel = factory.getModel(); 
 	this->paletteController.setModel(this->paletteModel);
 	
+}
+
+void SaveDescriptionMediator::setPaletteList(PaletteList& paletteList){
+
+	this->paletteList = paletteList; 
+
 }
 
 LoadDescriptionMediator::LoadDescriptionMediator(ObjectEditorPaletteModel& paletteModel, 
@@ -59,4 +73,6 @@ void LoadDescriptionMediator::toColleague(){
 	this->descriptionController.setModel(this->descriptionModel);	
 }
 
-
+void LoadDescriptionMediator::setPaletteList(PaletteList& paletteList){
+	this->paletteList = paletteList; 
+}
