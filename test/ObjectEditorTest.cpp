@@ -402,7 +402,28 @@ TEST(PaletteListTest,AddToListSingle){
 
 	PaletteList listObject = {}; 
 	ObjectDescriptionModelFactory factory = {}; 
-	ObjectEditorDescriptionModel model = factory.getModel(); 
+	std::string windowText = "Palette Description"; 
+	Position position = {}; 
+	TextObject title = {windowText,position}; 
+	std::string nameText = "Name:pool";
+	Position namePosition = {1,0}; 
+	TextObject name = {nameText,namePosition}; 
+	std::string characterText = "Render Character:@";
+	Position characterPosition = {3,0}; 
+	TextObject character = {characterText,characterPosition}; 
+	std::string backgroundText = "Background Color:blue";
+	Position backgroundPosition = {5,0}; 	
+	TextObject background = {backgroundText,backgroundPosition}; 
+	std::string foregroundText = "Foreground Color:cyan";
+	Position foregroundPosition = {7,0}; 
+	TextObject foreground = {foregroundText,foregroundPosition}; 
+	std::vector<TextObject> textList = {};
+	textList.push_back(title); 
+	textList.push_back(name); 
+	textList.push_back(character);
+	textList.push_back(background);
+	textList.push_back(foreground);	
+	ObjectEditorDescriptionModel model = {textList}; 
 	listObject.addModel(model);
 	std::vector<ObjectEditorDescriptionModel> list = listObject.getList(); 
 	EXPECT_TRUE((list[0] == model));
@@ -412,7 +433,28 @@ TEST(PaletteListTest,AddToListUnique){
 	
 	PaletteList listObject = {}; 
 	ObjectDescriptionModelFactory factory = {}; 
-	ObjectEditorDescriptionModel model = factory.getModel(); 
+	std::string windowText = "Palette Description"; 
+	Position position = {}; 
+	TextObject title = {windowText,position}; 
+	std::string nameText = "Name:pool";
+	Position namePosition = {1,0}; 
+	TextObject name = {nameText,namePosition}; 
+	std::string characterText = "Render Character:@";
+	Position characterPosition = {3,0}; 
+	TextObject characterObject = {characterText,characterPosition}; 
+	std::string backgroundText = "Background Color:blue";
+	Position backgroundPosition = {5,0}; 	
+	TextObject background = {backgroundText,backgroundPosition}; 
+	std::string foregroundText = "Foreground Color:cyan";
+	Position foregroundPosition = {7,0}; 
+	TextObject foreground = {foregroundText,foregroundPosition}; 
+	std::vector<TextObject> textList = {};
+	textList.push_back(title); 
+	textList.push_back(name); 
+	textList.push_back(characterObject);
+	textList.push_back(background);
+	textList.push_back(foreground);	
+	ObjectEditorDescriptionModel model = {textList}; 
 	listObject.addModel(model);
 	ObjectEditorDescriptionModel otherModel = factory.getModel(); 
 	int character = 80; 
@@ -425,11 +467,36 @@ TEST(PaletteListTest,AddToListUnique){
 TEST(PaletteListTest,AddToListNonUnique){
 
 	PaletteList listObject = {}; 
-	ObjectDescriptionModelFactory factory = {}; 
-	ObjectEditorDescriptionModel model = factory.getModel(); 
+	std::string windowText = "Palette Description"; 
+	Position position = {}; 
+	TextObject title = {windowText,position}; 
+
+	std::string nameText = "Name:Pool";
+	Position namePosition = {1,0}; 
+	TextObject name = {nameText,namePosition}; 
+
+	std::string characterText = "Render Character:@";
+	Position characterPosition = {3,0}; 
+	TextObject character = {characterText,characterPosition}; 
+	
+	std::string backgroundText = "Background Color:blue";
+	Position backgroundPosition = {5,0}; 	
+	TextObject background = {backgroundText,backgroundPosition}; 
+
+	std::string foregroundText = "Foreground Color:cyan";
+	Position foregroundPosition = {7,0}; 
+	TextObject foreground = {foregroundText,foregroundPosition}; 
+
+	std::vector<TextObject> textList = {};
+	textList.push_back(title); 
+	textList.push_back(name); 
+	textList.push_back(character);
+	textList.push_back(background);
+	textList.push_back(foreground);
+	PaletteList paletteList = {}; 
+	ObjectEditorDescriptionModel model = {textList}; 
 	listObject.addModel(model);
-	ObjectEditorDescriptionModel otherModel = factory.getModel(); 
-	EXPECT_THROW(listObject.addModel(otherModel),PaletteListError);
+	EXPECT_THROW(listObject.addModel(model),PaletteListError);
 
 }
 
@@ -634,9 +701,6 @@ TEST(PaletteListSerializationTest,PaletteSerialization){
 
 	PaletteList paletteList = {}; 
 	
-	ObjectDescriptionModelFactory factory = {}; 
-	ObjectEditorDescriptionModel model = factory.getModel(); 
-	
 	std::string windowText = "Palette Description"; 
 	Position position = {}; 
 	TextObject title = {windowText,position}; 
@@ -660,13 +724,11 @@ TEST(PaletteListSerializationTest,PaletteSerialization){
 	textList.push_back(foreground);	
 	ObjectEditorDescriptionModel otherModel = {textList}; 
 
-	paletteList.addModel(model);
 	paletteList.addModel(otherModel);
 
 	nlohmann::json serializedPaletteList = paletteList; 
 	
 	std::vector<ObjectEditorDescriptionModel> rawList = {}; 
-	rawList.push_back(model);
 	rawList.push_back(otherModel);
 
 	nlohmann::json serializedResult = rawList; 
@@ -750,9 +812,6 @@ TEST(PaletteListDeserialization,DeserializationTest){
 
 	PaletteList paletteList = {}; 
 	
-	ObjectDescriptionModelFactory factory = {}; 
-	ObjectEditorDescriptionModel model = factory.getModel(); 
-	
 	std::string windowText = "Palette Description"; 
 	Position position = {}; 
 	TextObject title = {windowText,position}; 
@@ -776,7 +835,6 @@ TEST(PaletteListDeserialization,DeserializationTest){
 	textList.push_back(foreground);	
 	ObjectEditorDescriptionModel otherModel = {textList}; 
 
-	paletteList.addModel(model);
 	paletteList.addModel(otherModel);
 
 	nlohmann::json jsonPaletteList = paletteList.getList(); 
@@ -786,18 +844,13 @@ TEST(PaletteListDeserialization,DeserializationTest){
 	from_json(jsonPaletteList,listOutput); 
 
 	std::vector<ObjectEditorDescriptionModel> modelList = listOutput.getList(); 
-	std::cout << "Length of model list:" << modelList.size() << std::endl; 
-	EXPECT_TRUE((modelList[0] == model));
-	EXPECT_TRUE((modelList[1] == otherModel));
+	EXPECT_TRUE((modelList[0] == otherModel));
 }
 
 TEST(TestJsonToFile,WritingAndReading){
 
 	std::filesystem::path path = "./jsonTest.json"; 
 	PaletteList paletteList = {}; 
-	
-	ObjectDescriptionModelFactory factory = {}; 
-	ObjectEditorDescriptionModel model = factory.getModel(); 
 	
 	std::string windowText = "Palette Description"; 
 	Position position = {}; 
@@ -822,7 +875,6 @@ TEST(TestJsonToFile,WritingAndReading){
 	textList.push_back(foreground);	
 	ObjectEditorDescriptionModel otherModel = {textList}; 
 
-	paletteList.addModel(model);
 	paletteList.addModel(otherModel);
 
 	nlohmann::json jsonOut; 
@@ -833,7 +885,5 @@ TEST(TestJsonToFile,WritingAndReading){
 	nlohmann::json jsonPalette = nlohmann::json::parse(jsonData);
 	from_json(jsonPalette,paletteOutput);
         std::vector<ObjectEditorDescriptionModel> modelList = paletteOutput.getList(); 	
-	std::cout << "Model List Length: " << modelList.size() << std::endl; 
-	EXPECT_TRUE((modelList[0] == model));
-	EXPECT_TRUE((modelList[1] == otherModel));
+	EXPECT_TRUE((modelList[0] == otherModel));
 }
