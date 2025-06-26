@@ -2,7 +2,7 @@
 #include <vector>
 #include "../../include/ObjectEditor/ObjectModel.hpp"
 #include "../../lib/ObjectEditor/Errors.cpp"
-
+#include "../../include/ObjectEditor/Factories.hpp"
 PaletteList::PaletteList(){
 
 	this->list = {}; 
@@ -19,7 +19,13 @@ void PaletteList::setList(std::vector<ObjectEditorDescriptionModel>& list){
 }
 
 void PaletteList::addModel(ObjectEditorDescriptionModel& model){
+
+	ObjectDescriptionModelFactory factory = {}; 
+	ObjectEditorDescriptionModel emptyModel = factory.getModel(); 
+	if(model == emptyModel){
 	
+		throw PaletteListError("PaletteListError: Object is empty"); 
+	}
 	for(ObjectEditorDescriptionModel localModel : this->list){
 	
 		if((localModel == model)){
@@ -29,6 +35,8 @@ void PaletteList::addModel(ObjectEditorDescriptionModel& model){
 		 );
 
 		}
+		
 	}	
+
 	this->list.push_back(model);
 }
