@@ -5,16 +5,20 @@
 #include <iostream>
 #include <cstdlib>
 #include <ncurses.h>
+#include "../../include/ObjectEditor/IO.hpp"
+
 ObjectEditorOptionsController::ObjectEditorOptionsController
 				(NCursesModel& model,NCursesView& view,
 				 RenderDescriptionMediator& renderMediator,
 				 SaveDescriptionMediator& saveDescriptionMediator,
-				 LoadDescriptionMediator& loadDescriptionMediator)
+				 LoadDescriptionMediator& loadDescriptionMediator,
+				 Writer& writer,PaletteList& paletteList)
 				   :NCursesController(dynamic_cast<NCursesModel&>(model),
 						   dynamic_cast<NCursesView&>(view)),
 				 mediator(renderMediator),
 				 saveDescriptionMediator(saveDescriptionMediator),
-				 loadDescriptionMediator(loadDescriptionMediator){
+				 loadDescriptionMediator(loadDescriptionMediator),
+				 paletteList(paletteList),writer(writer){
 }
 
 void ObjectEditorOptionsController::takeInput(int character){
@@ -26,7 +30,7 @@ void ObjectEditorOptionsController::takeInput(int character){
 		case KEY_UP:
 			moveVariable = this->model.getCursorXPosition(); 
 			moveVariable -= 1; 
-			moveVariable %= 6; 
+			moveVariable %= 8; 
 			if(moveVariable == 0){
 				
 				moveVariable += 1; 
@@ -36,7 +40,7 @@ void ObjectEditorOptionsController::takeInput(int character){
 		case KEY_DOWN:
 			moveVariable = this->model.getCursorXPosition(); 
 			moveVariable += 1; 
-			moveVariable %= 6; 
+			moveVariable %= 8; 
 			if(moveVariable == 0){
 				
 				moveVariable += 1; 
@@ -56,8 +60,10 @@ void ObjectEditorOptionsController::takeInput(int character){
 			if(this->model.getCursorXPosition() == 5){
 				endwin(); 	
 				exit(0); 
-			
 			}
+			if(this->model.getCursorXPosition() == 6){
+				writer.write(this->paletteList); 
+			}	
 			break; 	
 	}
 	this->view.updateModel(this->model); 	

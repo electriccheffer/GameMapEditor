@@ -48,6 +48,7 @@ class LoadDescriptionMediator{
 		ObjectEditorDescriptionController& descriptionController; 
 		PaletteList& paletteList; 
 		ObjectEditorDescriptionModel& descriptionModel; 
-
+		
 }; 
+
 #endif

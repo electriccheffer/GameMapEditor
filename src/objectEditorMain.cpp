@@ -17,6 +17,7 @@
 #include "../include/ObjectEditor/Mediator.hpp"
 #include "../include/ObjectEditor/DataStructures.hpp"
 #include <vector>
+#include <filesystem>
 
 int main(int argc, char** argv){
 
@@ -56,8 +57,12 @@ int main(int argc, char** argv){
 	SaveDescriptionMediator saveDescriptionMediator(paletteList,descriptionModel,paletteController,paletteModel);		
 	
 	LoadDescriptionMediator loadDescriptionMediator(paletteModel,descriptionController,descriptionModel,paletteList); 
+	
+	std::filesystem::path filePath = "./character.json"; 
+	Writer writer(filePath);
 
-	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,saveDescriptionMediator,loadDescriptionMediator); 
+	ObjectEditorOptionsController optionsController(optionsModel,optionsView,mediator,
+				saveDescriptionMediator,loadDescriptionMediator,writer,paletteList); 
 	
 	ObjectEditorControllerContext context(&optionsController,&descriptionController,
 						&paletteController);

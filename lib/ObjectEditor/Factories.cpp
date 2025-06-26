@@ -111,6 +111,8 @@ void ObjectOptionsModelFactory::setStaticText(){
 	std::string newOption = "NEW OBJECT";
 	std::string loadOption = "LOAD";
 	std::string quitOption = "QUIT";
+	std::string writeToFile = "WRITE";
+	std::string loadFromFile = "READ";
 
 	Position position = {}; 
 	Position savePosition = {1,1}; 
@@ -118,6 +120,8 @@ void ObjectOptionsModelFactory::setStaticText(){
 	Position newPosition = {3,1};
 	Position loadPosition = {4,1};
 	Position quitPosition = {5,1};
+	Position writePosition = {6,1};
+	Position loadFromFilePosition = {7,1}; 
 
 	TextObject title = {windowTitle,position}; 
 	TextObject save = {saveOption,savePosition}; 
@@ -125,15 +129,19 @@ void ObjectOptionsModelFactory::setStaticText(){
 	TextObject newObject = {newOption,newPosition}; 
 	TextObject load = {loadOption,loadPosition};
 	TextObject quit = {quitOption,quitPosition}; 
+	TextObject write = {writeToFile,writePosition};
+	TextObject read = {loadFromFile,loadFromFilePosition}; 
 
 	std::vector<TextObject> textObjectList = {}; 
-	
 	textObjectList.push_back(title);
 	textObjectList.push_back(save);
 	textObjectList.push_back(render);
 	textObjectList.push_back(newObject);
 	textObjectList.push_back(load);
 	textObjectList.push_back(quit);
+	textObjectList.push_back(write);
+	textObjectList.push_back(read);
+
 	this->model = {textObjectList};
 }
 

@@ -5,6 +5,7 @@
 #include "../../include/ObjectEditor/ObjectView.hpp"
 #include "../../include/ObjectEditor/ObjectModel.hpp"
 #include "Mediator.hpp"
+#include "../../include/ObjectEditor/IO.hpp"
 
 class ObjectEditorOptionsController : public NCursesController{
 
@@ -12,12 +13,15 @@ class ObjectEditorOptionsController : public NCursesController{
 		ObjectEditorOptionsController(NCursesModel& model, NCursesView& view,
 				 		RenderDescriptionMediator& renderMediator,
 					SaveDescriptionMediator& saveDescriptionMediator,
-					LoadDescriptionMediator& loadDescriptionMediator); 
+					LoadDescriptionMediator& loadDescriptionMediator,
+					Writer& writer,PaletteList& paletteList); 
 		void takeInput(int character)override; 
 	protected: 
 		RenderDescriptionMediator& mediator; 
 		SaveDescriptionMediator& saveDescriptionMediator;
 	        LoadDescriptionMediator& loadDescriptionMediator; 	
+		Writer& writer; 
+		PaletteList& paletteList; 
 };
 
 

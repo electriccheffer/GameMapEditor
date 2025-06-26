@@ -9,6 +9,16 @@
 #include <string>
 #include <fstream>
 
+class Writer{
+
+	public:
+	      	Writer(std::filesystem::path& path); 	
+		void write(PaletteList& paletteList); 
+	protected: 
+		std::filesystem::path& path; 		
+
+};
+
 void to_json(nlohmann::json& jsonObject, const Position& position); 
 
 void from_json(const nlohmann::json& jsonObject,Position& position);

@@ -8,6 +8,17 @@
 #include "../../include/ObjectEditor/ObjectModel.hpp"
 #include "../../include/ObjectEditor/DataStructures.hpp"
 
+
+Writer::Writer(std::filesystem::path& path):path(path){}
+
+void Writer::write(PaletteList& paletteList){
+	
+	nlohmann::json jsonPalette; 
+	to_json(jsonPalette,paletteList); 
+	write_json_to_file(this->path,jsonPalette); 
+
+}
+
 void to_json(nlohmann::json& jsonObject, const Position& position){
 
 	jsonObject = {{"xPosition",position.getX()},{"yPosition",position.getY()}}; 

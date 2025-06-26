@@ -58,3 +58,5 @@ void LoadDescriptionMediator::toColleague(){
 	this->descriptionModel = modelList[paletteModelIndex]; 
 	this->descriptionController.setModel(this->descriptionModel);	
 }
+
+
