@@ -19,6 +19,15 @@ class Writer{
 
 };
 
+class Reader{
+
+	public: 
+		Reader(std::filesystem::path& path);
+		PaletteList read(); 
+	protected: 
+		std::filesystem::path& path; 
+};
+
 void to_json(nlohmann::json& jsonObject, const Position& position); 
 
 void from_json(const nlohmann::json& jsonObject,Position& position);

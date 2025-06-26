@@ -19,6 +19,17 @@ void Writer::write(PaletteList& paletteList){
 
 }
 
+Reader::Reader(std::filesystem::path& path):path(path){}
+
+PaletteList Reader::read(){
+	
+	std::string fileJson = read_json_from_file(this->path); 
+	nlohmann::json jsonObject = nlohmann::json::parse(fileJson);
+        PaletteList newPalette; 
+	from_json(jsonObject,newPalette);
+	return newPalette; 	
+}
+
 void to_json(nlohmann::json& jsonObject, const Position& position){
 
 	jsonObject = {{"xPosition",position.getX()},{"yPosition",position.getY()}}; 
