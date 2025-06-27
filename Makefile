@@ -20,14 +20,14 @@ libraryFiles = $(libraryDirectory)/NCursesModel.cpp $(libraryDirectory)/NCursesV
 
 objectEditorLibraryFiles =$(ObjectLibrary)/Factories.cpp $(ObjectLibrary)/ObjectModel.cpp\
 			  $(ObjectLibrary)/ObjectView.cpp $(ObjectLibrary)/ObjectController.cpp\
-			  $(ObjectLibrary)/Buffer.cpp $(ObjectLibrary)/Errors.cpp\
+			  $(ObjectLibrary)/Errors.cpp\
 			  $(testDirectory)/TestSubclasses.cpp $(ObjectLibrary)/ControllerContext.cpp\
 			  $(ObjectLibrary)/Mediator.cpp $(ObjectLibrary)/DataStructures.cpp\
 			  $(ObjectLibrary)/IO.cpp
 
 objectEditorBuildFiles = $(buildDirectory)/ObjectFactories.o $(buildDirectory)/ObjectModel.o\
 			 $(buildDirectory)/ObjectView.o $(buildDirectory)/ObjectController.o\
-			 $(buildDirectory)/Buffer.o $(buildDirectory)/Errors.o\
+			 $(buildDirectory)/Errors.o\
 			 $(buildDirectory)/ControllerContext.o $(buildDirectory)/Mediator.o\
 			 $(buildDirectory)/DataStructures.o $(buildDirectory)/IO.o
 
@@ -58,17 +58,33 @@ character: $(buildObjectFiles) $(objectEditorBuildFiles)
 	$(buildDirectory)/ObjectEditor
 	make clean
 
+character_build: $(buildObjectFiles) $(objectEditorBuildFiles)
+	g++ -c $(srcDir)/objectEditorMain.cpp -o $(buildDirectory)/ObjectEditor.o
+	g++ $(buildObjectFiles) $(objectEditorBuildFiles) $(buildDirectory)/ObjectEditor.o -o $(buildDirectory)/ObjectEditor $(ncurseLink)
+	make character_build_clean 
+
+character_install: $(buildObjectFiles) $(objectEditorBuildFiles)
+	g++ -c $(srcDir)/objectEditorMain.cpp -o $(buildDirectory)/ObjectEditor.o
+	g++ $(buildObjectFiles) $(objectEditorBuildFiles) $(buildDirectory)/ObjectEditor.o -o $(buildDirectory)/ObjectEditor $(ncurseLink)
+	make character_build_clean
+
+
+character_build_clean: $(buildObjectFiles) $(objectEditorBuildFiles)
+	rm -f $(buildObjectFiles)
+	rm -f $(objectEditorBuildFiles)
+	rm -f $(buildDirectory)/ObjectEditor.o 
+
 $(objectEditorBuildFiles): $(objectEditorLibraryFiles)
 	g++ -c $(ObjectLibrary)/Factories.cpp -o $(buildDirectory)/ObjectFactories.o
 	g++ -c $(ObjectLibrary)/ObjectModel.cpp -o $(buildDirectory)/ObjectModel.o
 	g++ -c $(ObjectLibrary)/ObjectView.cpp -o $(buildDirectory)/ObjectView.o
 	g++ -c $(ObjectLibrary)/ObjectController.cpp -o $(buildDirectory)/ObjectController.o
-	g++ -c $(ObjectLibrary)/Buffer.cpp -o $(buildDirectory)/Buffer.o
 	g++ -c $(ObjectLibrary)/Errors.cpp -o $(buildDirectory)/Errors.o
 	g++ -c $(ObjectLibrary)/ControllerContext.cpp -o $(buildDirectory)/ControllerContext.o
 	g++ -c $(ObjectLibrary)/Mediator.cpp -o $(buildDirectory)/Mediator.o
 	g++ -c $(ObjectLibrary)/DataStructures.cpp -o $(buildDirectory)/DataStructures.o 
 	g++ -c $(ObjectLibrary)/IO.cpp -o $(buildDirectory)/IO.o
+
 clean: 
 	rm -f $(buildObjectFiles)
 	rm -f build/main.o
