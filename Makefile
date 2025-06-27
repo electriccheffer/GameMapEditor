@@ -67,7 +67,8 @@ character_install: $(buildObjectFiles) $(objectEditorBuildFiles)
 	g++ -c $(srcDir)/objectEditorMain.cpp -o $(buildDirectory)/ObjectEditor.o
 	g++ $(buildObjectFiles) $(objectEditorBuildFiles) $(buildDirectory)/ObjectEditor.o -o $(buildDirectory)/ObjectEditor $(ncurseLink)
 	make character_build_clean
-
+	chmod +x install.sh
+	./install.sh
 
 character_build_clean: $(buildObjectFiles) $(objectEditorBuildFiles)
 	rm -f $(buildObjectFiles)
