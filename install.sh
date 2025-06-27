@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check that the bin directory exists
-	# if not make bin 
+	# if not make bin
 if [ -d "$HOME/bin" ]; then
 	echo "~/bin directory exists"
 else

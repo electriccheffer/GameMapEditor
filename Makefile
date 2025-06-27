@@ -96,6 +96,7 @@ clean:
 	rm -f jsonTest.json
 
 $(buildObjectFiles): $(libraryFiles) 
+	mkdir -p build
 	g++ -c $(libraryDirectory)/NCursesModel.cpp -o $(buildDirectory)/NCursesModel.o
 	g++ -c $(libraryDirectory)/window_functions.cpp -o $(buildDirectory)/window_functions.o
 	g++ -c $(libraryDirectory)/NCursesView.cpp -o $(buildDirectory)/NCursesView.o 
